@@ -1,0 +1,1 @@
+[".dockerignore",".github",".gitignore",".golangci.yaml",".release-please-manifest.json","AGENTS.md","CHANGELOG.md","CODEOWNERS","LICENSE","README.md","SECURITY.md","cmd","docs","go.mod","go.sum","internal","proto","release-please-config.json","scripts","server","store","web"]

@@ -1,0 +1,1 @@
+[".circleci",".github",".gitignore",".golangci.yml",".goreleaser.yml","AGENTS.md","CLAUDE.md","LICENSE","Makefile","Makefile.cross-compiles","README.md","README_zh.md","Release.md","assets","client","cmd","conf","doc","dockerfiles","go.mod","go.sum","hack","package.sh","pkg","server","test","web"]

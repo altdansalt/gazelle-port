@@ -1,0 +1,1 @@
+[".dockerignore",".editorconfig",".gitattributes",".github",".gitignore",".mvn",".settings.xml","LICENSE","README.md","RELEASE.md","SECURITY.md","benchmarks","build-bin","docker","mvnw","mvnw.cmd","pom.xml","src","zipkin-collector","zipkin-junit5","zipkin-lens","zipkin-server","zipkin-storage","zipkin-tests","zipkin"]

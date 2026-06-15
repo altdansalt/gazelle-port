@@ -1,0 +1,1 @@
+[".build-tools",".codecov.yaml",".devcontainer",".gitattributes",".github",".gitignore",".golangci.yml",".prettierignore",".prettierrc.json","CODEOWNERS","CONTRIBUTING.md","GOVERNANCE.md","LICENSE","Makefile","README.md","RELEASE.md","SECURITY.md","charts","cmd","dapr","docker","docs","go.mod","go.sum","grafana","img","pkg","swagger","tests","tools","utils"]

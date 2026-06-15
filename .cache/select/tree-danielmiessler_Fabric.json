@@ -1,0 +1,1 @@
+[".devcontainer",".dockerignore",".envrc",".github",".gitignore",".goreleaser.yaml",".vscode","CHANGELOG.md","LICENSE","README.md","README.zh.md","cmd","completions","data","docs","flake.lock","flake.nix","go.mod","go.sum","internal","nix","scripts","web"]

@@ -1,0 +1,14 @@
+{
+  "rules_go": "0.61.1",
+  "gazelle": "0.51.3",
+  "rules_python": "2.0.2",
+  "rules_python_gazelle_plugin": "2.0.2",
+  "aspect_rules_js": "3.2.2",
+  "aspect_rules_ts": "3.8.11",
+  "rules_jvm_external": "7.0",
+  "rules_proto": "7.1.0",
+  "protobuf": "35.1",
+  "platforms": "1.1.0",
+  "bazel_skylib": "1.9.0",
+  "rules_cc": "0.2.19"
+}

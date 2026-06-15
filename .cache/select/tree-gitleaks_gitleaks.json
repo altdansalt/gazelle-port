@@ -1,0 +1,1 @@
+[".github",".gitignore",".gitleaks.toml",".gitleaksignore",".golangci.yaml",".goreleaser.yml",".pre-commit-hooks.yaml","CONTRIBUTING.md","Dockerfile","LICENSE","Makefile","README.md","SECURITY.md","USERS.md","cmd","config","detect","go.mod","go.sum","logging","main.go","regexp","report","report_templates","scripts","sources","testdata","version"]

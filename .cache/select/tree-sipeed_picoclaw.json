@@ -1,0 +1,1 @@
+[".dockerignore",".env.example",".gitattributes",".github",".gitignore",".golangci.yaml",".goreleaser.yaml","CONTRIBUTING.md","LICENSE","Makefile","README.md","ROADMAP.md","assets","cmd","config","docker","docs","examples","go.mod","go.sum","integration","onboard_workspace_embed.go","pkg","scripts","web","workspace"]

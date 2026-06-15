@@ -1,0 +1,1 @@
+[".bandit.yml",".dockerignore",".github",".gitignore",".pre-commit-config.yaml",".readthedocs.yaml","CODE_OF_CONDUCT.md","CONTRIBUTING.md","Dockerfile","LICENSE","MANIFEST.in","README.md","ROADMAP.md","agent-skill","benchmarks.py","cleanup.py","docs","images","pyproject.toml","pytest.ini","ruff.toml","scrapling","server.json","setup.cfg","tests","tox.ini","zensical.toml"]

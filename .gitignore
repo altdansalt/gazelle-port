@@ -1,0 +1,8 @@
+# Heavy / regenerable artifacts — NOT committed.
+.cache/            # shallow clones + live git worktrees of target repos
+*.tmp
+bazel-*
+
+# Large raw transcripts are kept locally; we commit distilled records instead.
+# (Flip this if we decide to version full stream-json traces.)
+traces/**/*.stream.jsonl

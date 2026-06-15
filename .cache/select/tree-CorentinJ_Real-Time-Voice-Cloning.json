@@ -1,0 +1,1 @@
+[".gitattributes",".github",".gitignore","LICENSE","README.md","demo_cli.py","demo_toolbox.py","encoder","encoder_preprocess.py","encoder_train.py","pyproject.toml","samples","synthesizer","synthesizer_preprocess_audio.py","synthesizer_preprocess_embeds.py","synthesizer_train.py","tests","toolbox","utils","uv.lock","vocoder","vocoder_preprocess.py","vocoder_train.py"]

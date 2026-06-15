@@ -1,0 +1,1 @@
+[".dockerignore",".env.cluster.example",".env.example",".github",".gitignore","AGENTS.md","CLAUDE.md","Dockerfile","LICENSE","README.md","README_CN.md","README_JA.md","assets","auths","cmd","config.example.yaml","docker-build.ps1","docker-build.sh","docker-compose.cluster.yml","docker-compose.yml","docs","examples","go.mod","go.sum","internal","sdk","test"]

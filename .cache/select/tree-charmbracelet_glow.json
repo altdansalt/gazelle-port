@@ -1,0 +1,1 @@
+[".editorconfig",".github",".gitignore",".golangci.yml",".goreleaser.yml","Dockerfile","LICENSE","README.md","Taskfile.yaml","config_cmd.go","console_windows.go","example.png","github.go","gitlab.go","glow_test.go","go.mod","go.sum","log.go","main.go","man_cmd.go","style.go","ui","url.go","url_test.go","utils"]
