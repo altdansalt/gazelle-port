@@ -22,9 +22,21 @@ project's source logic.
 - Prefer a buildable **slice** over an impossible whole. If the repo is a huge monorepo
   or app, target a coherent library subtree and say so in `scope`.
 - Each approach's `module_bazel` must be a complete, resolvable MODULE.bazel using the
-  provided BCR versions, registering a hermetic language toolchain (e.g. for Go, register
-  a `go_sdk` matching the repo's go.mod version). The `root_build` must contain the
-  `gazelle` rule and the correct prefix/directives.
+  provided BCR versions, registering a hermetic language toolchain. The `root_build` must
+  contain the `gazelle` rule and the correct prefix/directives.
+
+### Hard-won rules (encode these; do not relearn them)
+- **Go SDK version:** pin `go_sdk.download(version = "1.25.4")` — a recent stable Go.
+  Do **NOT** use the repo's `go.mod` minimum (e.g. `go 1.17`). rules_go+gazelle's own
+  build tools require a modern SDK (currently ≥1.24.12; older fails with
+  `flag provided but not defined: -buildvcs` or `go.work requires go >= …`). The repo's
+  declared minimum is irrelevant to the *build* SDK — Go is backward compatible.
+- **use_repo lists:** do not hand-guess the `use_repo(go_deps, …)` repo names. Emit
+  `go_deps.from_file(go_mod = "//:go.mod")` with **no** `use_repo` block (or a minimal
+  one); the setup command `bazel mod tidy` fills/corrects it deterministically. List
+  `bazel mod tidy` in `setup_commands` right after the gazelle run.
+- Prefer excluding nested modules early: if the tree has a secondary `go.mod` (tools,
+  codegen, examples), add `# gazelle:exclude <dir>` for it in `root_build`.
 
 ## Output — STRICT JSON, no prose, no markdown fences
 ```json

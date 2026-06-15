@@ -94,7 +94,7 @@ set +e
 ( cd "$WT" && \
   ANTHROPIC_BASE_URL="$GW" ANTHROPIC_API_KEY=implicit ANTHROPIC_MODEL="$WORKER_MODEL" \
   timeout "$WORKER_TIMEOUT" claude -p "$WORKER_PROMPT" \
-    --model "$WORKER_MODEL" --max-turns "$WORKER_TURNS" \
+    --model "$WORKER_MODEL" \
     --dangerously-skip-permissions \
     --output-format stream-json --verbose \
 ) > "$TRACEDIR/worker.stream.jsonl" 2>"$TRACEDIR/worker.err"

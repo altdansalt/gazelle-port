@@ -1,0 +1,30 @@
+```json
+{
+  "repo": "stretchr/testify",
+  "approaches": [
+    {
+      "id": "go-native",
+      "language": "Go",
+      "scope": "//...",
+      "rationale": "Testify is a pure-Go library with a standard go.mod at the root; Gazelle with rules_go can generate go_library/go_test targets across all packages and resolve external deps from go.sum.",
+      "module_bazel": "module(\n    name = \"testify\",\n    version = \"1.0.0\",\n)\n\nbazel_dep(name = \"rules_go\", version = \"0.61.1\")\nbazel_dep(name = \"gazelle\", version = \"0.51.3\")\n\ngo_sdk = use_extension(\"@rules_go//go:extensions.bzl\", \"go_sdk\")\ngo_sdk.download(version = \"1.17\")\n\ngo_deps = use_extension(\"@gazelle//:extensions.bzl\", \"go_deps\")\ngo_deps.from_file(go_mod = \"//:go.mod\")\nuse_repo(\n    go_deps,\n    \"com_github_davecgh_go_spew\",\n    \"com_github_pmezard_go_difflib\",\n    \"com_github_stretchr_objx\",\n    \"in_gopkg_yaml_v3\",\n)\n",
+      "root_build": "load(\"@gazelle//:def.bzl\", \"gazelle\")\n\n# gazelle:prefix github.com/stretchr/testify\n# gazelle:exclude _codegen\n# gazelle:exclude _readme-gofmt\ngazelle(name = \"gazelle\")\n",
+      "bazelrc": "common --enable_bzlmod\ntest --test_output=errors\n",
+      "setup_commands": [
+        "bazel run //:gazelle",
+        "bazel mod tidy",
+        "bazel build //...",
+        "bazel test //..."
+      ],
+      "anticipated_risks": [
+        "go.mod declares an older go directive (go 1.17) which may not match the SDK default",
+        "_codegen has its own go.mod and must be excluded",
+        "template files (.go.tmpl) are non-Go and should be ignored by Gazelle",
+        "spew internal package has cgo-conditional test files (dumpcgo_test.go / dumpnocgo_test.go) with build tags",
+        "use_repo deps list may need adjustment after bazel mod tidy"
+      ],
+      "predicted_tier": 4
+    }
+  ]
+}
+```

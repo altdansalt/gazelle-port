@@ -1,0 +1,18 @@
+ .bazelrc                                |   3 +
+ BUILD.bazel                             |  21 +
+ MODULE.bazel                            |  18 +
+ MODULE.bazel.lock                       | 822 ++++++++++++++++++++++++++++++++
+ assert/BUILD.bazel                      |  35 ++
+ assert/internal/unsafetests/BUILD.bazel |  14 +
+ assert/yaml/BUILD.bazel                 |   9 +
+ bazel-bin                               |   1 +
+ bazel-out                               |   1 +
+ bazel-stretchr__testify__manual         |   1 +
+ bazel-testlogs                          |   1 +
+ http/BUILD.bazel                        |  13 +
+ internal/difflib/BUILD.bazel            |  14 +
+ internal/spew/BUILD.bazel               |  32 ++
+ mock/BUILD.bazel                        |  27 ++
+ require/BUILD.bazel                     |  25 +
+ suite/BUILD.bazel                       |  30 ++
+ 17 files changed, 1067 insertions(+)
