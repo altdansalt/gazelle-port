@@ -1,1 +1,0 @@
-[".build",".github",".gitignore",".gitmodules",".goreleaser.yaml","Dockerfile","LICENSE","README.md","README_zh-CN.md","SECURITY.md","application","assets","azure-pipelines.yml","cmd","docker-compose.yml","ent","giscus.json","go.mod","go.sum","inventory","main.go","middleware","pkg","routers","service"]

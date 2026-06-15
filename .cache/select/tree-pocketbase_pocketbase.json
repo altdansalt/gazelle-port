@@ -1,1 +1,0 @@
-[".github",".gitignore",".goreleaser.yaml","CHANGELOG.md","CHANGELOG_16_22.md","CHANGELOG_8_15.md","CONTRIBUTING.md","LICENSE.md","Makefile","README.md","apis","cmd","core","examples","forms","go.mod","go.sum","golangci.yml","mails","migrations","modernc_versions_check.go","plugins","pocketbase.go","pocketbase_test.go","tests","tools","ui"]

@@ -1,1 +1,0 @@
-[".gitattributes",".github",".gitignore",".golangci.yml",".goreleaser.yml","CONTRIBUTING.md","Cask.toml","LICENSE","README.md","app","codecov.yml","config","downloader","extractors","go.mod","go.sum","main.go","parser","request","script","test","utils"]

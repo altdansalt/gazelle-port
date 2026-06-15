@@ -1,1 +1,0 @@
-[".editorconfig",".github",".gitignore",".golangci.yml","LICENSE","Makefile","README.md","SECURITY.md","app","cli","cmd","colima.gif","colima.nix","colima.png","config","core","daemon","default.nix","docs","embedded","environment","flake.lock","flake.nix","go.mod","go.sum","integration","model","scripts","shell.nix","store","util"]

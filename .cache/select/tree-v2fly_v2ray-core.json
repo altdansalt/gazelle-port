@@ -1,1 +1,0 @@
-[".github",".gitignore","LICENSE","README.md","SECURITY.md","annotations.go","app","common","config.go","config.pb.go","config.proto","context.go","context_test.go","core.go","errors.generated.go","features","format.go","functions.go","functions_test.go","go.mod","go.sum","infra","main","mocks.go","proto.go","proxy","release","testing","transport","v2ray.go","v2ray_test.go"]
