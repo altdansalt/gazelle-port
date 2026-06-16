@@ -41,6 +41,27 @@ B (`rules_foreign_cc`) approach to compare. Set `strategy` and `ruleset` on each
 ### Per-ecosystem wiring (use the catalog versions)
 - **Python:** `rules_python` + `rules_python_gazelle_plugin`; `pip.parse` from a
   requirements lock; `gazelle_python_manifest`. Risk: unpinned deps, native wheels.
+  For Python probes, ALSO emit a second approach using **`gazelle_py`**
+  (perplexityai/gazelle_py) to compare — it has better test/conftest handling. Wiring:
+  ```starlark
+  # MODULE.bazel
+  bazel_dep(name = "rules_python", version = "<bcr>")
+  bazel_dep(name = "gazelle", version = "0.50.0")   # gazelle_py pins this
+  bazel_dep(name = "gazelle_py", version = "<bcr>")
+  ```
+  ```starlark
+  # root BUILD.bazel
+  load("@gazelle//:def.bzl", "gazelle", "gazelle_binary")
+  gazelle_binary(name = "gazelle_bin", languages = ["@gazelle_py//py"])
+  gazelle(name = "gazelle", gazelle = ":gazelle_bin")
+  ```
+  It reads pyproject.toml/requirements at the repo root (no separate manifest needed);
+  directive keys mirror rules_python's plugin. Run `bazel run //:gazelle`.
+- **Proto (native gazelle):** `gazelle` natively emits `proto_library` (+ lang protos with
+  rules_go/rules_proto). For a proto-heavy repo, scope to the proto tree; tier-2 =
+  proto_library builds, tier-4 may be N/A if there are no proto-level tests.
+- **Java/Kotlin:** `contrib_rules_jvm` ships a Java gazelle extension (compose a
+  `gazelle_binary` with its java language) + `rules_jvm_external` for Maven deps.
 - **JS/TS:** `aspect_rules_js` (+ `aspect_rules_ts`) + `aspect_gazelle_js`; consumes
   `pnpm-lock.yaml` (convert npm/yarn locks if needed). Risk: pnpm coupling, TS paths.
 - **Rust:** `rules_rust` + `gazelle_rust`; crate deps via `crate_universe` from
