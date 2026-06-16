@@ -1,0 +1,61 @@
+{
+  "tier_reached": 3,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "deps-query",
+      "tier": 1,
+      "cmd": "bazel query 'deps(//:llama_cpp)' --output=label",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "target-exists",
+      "tier": 1,
+      "cmd": "bazel query '//:llama_cpp'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //:llama_cpp",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "is-cmake-rule",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"cmake\", //:llama_cpp)' --output=label",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "outputs-exist",
+      "tier": 3,
+      "cmd": "bash -c 'bazel cquery --output=files //:llama_cpp 2>/dev/null | grep -E \"libllama\\.a$\"'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "repo": "ggml-org/llama.cpp",
+  "approach_id": "cpp-foreign-cmake",
+  "scope": "//:llama_cpp",
+  "predicted_tier": 2,
+  "extra_edited_files": 4,
+  "worker_exit": 0
+}

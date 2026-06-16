@@ -1,0 +1,14 @@
+ .bazelignore                                   |    1 +
+ .bazelrc                                       |   17 +
+ BUILD.bazel                                    |   20 +
+ EXPECTATIONS.json                              |   13 +
+ MODULE.bazel                                   |   57 +
+ MODULE.bazel.lock                              | 1679 ++++++++++++++++++++++++
+ bazel-bin                                      |    1 +
+ bazel-microsoft__TypeScript__ts-gazelle-js     |    1 +
+ bazel-out                                      |    1 +
+ bazel-testlogs                                 |    1 +
+ package.json                                   |    3 +
+ patches/BUILD.bazel                            |    1 +
+ patches/aspect_rules_js_npm_package_lock.patch |   12 +
+ 13 files changed, 1807 insertions(+)

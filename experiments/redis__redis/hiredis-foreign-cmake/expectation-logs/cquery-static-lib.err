@@ -1,0 +1,6 @@
+INFO: Invocation ID: 993064c6-d5ec-41c4-91ca-b60963dd7155
+INFO: Analyzed target //:hiredis (0 packages loaded, 0 targets configured).
+INFO: Found 1 target...
+INFO: Elapsed time: 0.443s, Critical Path: 0.00s
+INFO: 0 processes.
+INFO: Build completed successfully, 0 total actions

@@ -1,0 +1,22 @@
+All six expectations pass. Here's the final report:
+
+---
+
+## Final Report
+
+**Tier reached:** Tier 3 (all expectations pass, including outputs-exist)
+
+**Edits made:**
+
+1. `BUILD.bazel` — Added three cmake cache entries to disable the standalone build's extras:
+   - `LLAMA_BUILD_TOOLS: "OFF"` 
+   - `LLAMA_BUILD_COMMON: "OFF"`
+   - `LLAMA_BUILD_APP: "OFF"`
+
+   **Why:** llama.cpp in standalone mode (`CMAKE_SOURCE_DIR == CMAKE_CURRENT_SOURCE_DIR`) enables `LLAMA_BUILD_COMMON` and `LLAMA_BUILD_TOOLS` by default. The `tools/` subdirectory installs `libllama-batched-bench-impl.a` during `cmake --install`, but that library was never built (the tools build was failing silently). Disabling `LLAMA_BUILD_COMMON` breaks the chain that enables tools/examples/app, leaving only the core `llama` target.
+
+**Nothing excluded** — the core `llama` cmake target built cleanly once the extraneous install steps were removed.
+
+**MODULE.bazel was not modified** — the seeded version (`rules_foreign_cc@0.15.1`, `rules_cc@0.2.19`) resolved correctly with no adjustments needed.
+
+**Biggest blocker (already resolved):** The cmake install phase iterating over all subdirectories including `tools/`, which tried to install an artifact (`libllama-batched-bench-impl.a`) that rules_foreign_cc never copied out. The fix was one line per disabled subsystem.

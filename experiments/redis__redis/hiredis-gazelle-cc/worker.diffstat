@@ -1,0 +1,13 @@
+ .bazelrc                               |   7 +
+ BUILD.bazel                            |  19 +
+ EXPECTATIONS.json                      |  13 +
+ MODULE.bazel                           |  18 +
+ MODULE.bazel.lock                      | 991 +++++++++++++++++++++++++++++++++
+ bazel-bin                              |   1 +
+ bazel-out                              |   1 +
+ bazel-redis__redis__hiredis-gazelle-cc |   1 +
+ bazel-testlogs                         |   1 +
+ deps/hiredis/BUILD.bazel               |  38 ++
+ deps/hiredis/adapters/BUILD.bazel      |  21 +
+ deps/hiredis/hiredis_test.c            |  27 +
+ 12 files changed, 1138 insertions(+)

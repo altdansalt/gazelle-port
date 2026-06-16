@@ -7,3 +7,11 @@ ts	repo	approach	lang	scope	tier	predicted	extra_files	worker_exit
 2026-06-16T00:44:06Z	go-kratos/kratos	go-native-root	Go	//... (root module only; contrib/* and cmd/* nested modules excluded)	4	3	53	0
 2026-06-16T00:55:18Z	pallets/flask	py-native	Python	//src/...	2	2	9	0
 2026-06-16T01:22:33Z	pmndrs/zustand	ts-gazelle-js	TypeScript	//src/...	1	2	5	124
+2026-06-16T01:54:02Z	gitleaks/gitleaks	go-gazelle	Go	//...	3	3	19	124
+2026-06-16T01:59:14Z	redis/redis	jemalloc-foreign-make	Cpp	deps/jemalloc/...	3	2	4	0
+2026-06-16T02:01:39Z	redis/redis	hiredis-foreign-cmake	Cpp	deps/hiredis/...	3	2	4	0
+2026-06-16T02:19:45Z	redis/redis	hiredis-gazelle-cc	Cpp	deps/hiredis/...	4	2	7	0
+2026-06-16T02:52:15Z	astral-sh/uv	rust-gazelle	Rust	//crates/...	1	1	124	124
+2026-06-16T03:04:11Z	ggml-org/llama.cpp	cpp-foreign-cmake	Cpp	//:llama_cpp	3	2	4	0
+2026-06-16T03:22:13Z	ggml-org/llama.cpp	cpp-gazelle-cc	Cpp	//common/...	4	1	7	0
+2026-06-16T03:48:38Z	microsoft/TypeScript	ts-gazelle-js	TypeScript	//src/...	0	1	8	124

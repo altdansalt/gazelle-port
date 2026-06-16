@@ -1,0 +1,29 @@
+{
+  "repo": "microsoft/TypeScript",
+  "approaches": [
+    {
+      "id": "ts-gazelle-js",
+      "language": "TypeScript",
+      "strategy": "A-gazelle",
+      "ruleset": "aspect_gazelle_js",
+      "scope": "//src/...",
+      "rationale": "TypeScript is a large npm/TS monorepo with a package-lock.json; aspect_gazelle_js + aspect_rules_ts can generate ts_project/js_library targets from the src tree. We scope to src to avoid the build-script/gulp tooling and target the compiler/services source.",
+      "module_bazel": "module(\n    name = \"typescript\",\n    version = \"0.0.0\",\n)\n\nbazel_dep(name = \"aspect_rules_js\", version = \"3.2.2\")\nbazel_dep(name = \"aspect_rules_ts\", version = \"3.8.11\")\nbazel_dep(name = \"aspect_gazelle_js\", version = \"1.1.0\")\nbazel_dep(name = \"gazelle\", version = \"0.51.3\")\nbazel_dep(name = \"bazel_skylib\", version = \"1.9.0\")\nbazel_dep(name = \"platforms\", version = \"1.1.0\")\n\n# Node toolchain (hermetic)\nnode = use_extension(\"@aspect_rules_js//npm:extensions.bzl\", \"node\", dev_dependency = True)\nnode.toolchain(node_version = \"20.11.1\")\n\n# TS toolchain pinned to the version this repo builds.\nrules_ts_ext = use_extension(\"@aspect_rules_ts//ts:extensions.bzl\", \"ext\", dev_dependency = True)\nrules_ts_ext.deps(\n    ts_version_from = \"//:package.json\",\n)\nuse_repo(rules_ts_ext, \"npm_typescript\")\n\n# npm deps from the existing lockfile. The repo ships package-lock.json (npm),\n# not pnpm; aspect_rules_js can translate it via the npm_translate_lock path.\nnpm = use_extension(\"@aspect_rules_js//npm:extensions.bzl\", \"npm\", dev_dependency = True)\nnpm.npm_translate_lock(\n    name = \"npm\",\n    npm_package_lock = \"//:package-lock.json\",\n    verify_node_modules_ignored = \"//:.bazelignore\",\n)\nuse_repo(npm, \"npm\")\n",
+      "root_build": "load(\"@aspect_gazelle_js//gazelle:defs.bzl\", \"gazelle\")\n\n# gazelle:js_pnpm_lockfile package-lock.json\n# gazelle:exclude scripts\n# gazelle:exclude tests\n# gazelle:exclude bin\n# gazelle:exclude node_modules\n# gazelle:js_resolve **/*.json :json\n\ngazelle(\n    name = \"gazelle\",\n    gazelle = \"@aspect_gazelle_js//gazelle:gazelle_js_binary\",\n)\n",
+      "bazelrc": "common --enable_bzlmod\nbuild --incompatible_strict_action_env\ntest --test_output=errors\n",
+      "setup_commands": [
+        "touch .bazelignore",
+        "bazel run //:gazelle",
+        "bazel build //src/..."
+      ],
+      "anticipated_risks": [
+        "npm lock is package-lock.json not pnpm; npm_translate_lock conversion may need adjustment",
+        "internal _namespaces module-merging pattern and tsconfig project references not modeled by gazelle",
+        "code generation (processDiagnosticMessages, generated lib d.ts) is build-time and not captured",
+        "tsconfig path aliases / outFile bundling semantics differ from per-file ts_project",
+        "self-hosting build (TS compiles itself via Herebyfile) is not reproduced by ts_project"
+      ],
+      "predicted_tier": 1
+    }
+  ]
+}

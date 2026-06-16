@@ -1,0 +1,13 @@
+ .bazelrc                                  |   8 +
+ BUILD.bazel                               |  15 +
+ EXPECTATIONS.json                         |  13 +
+ MODULE.bazel                              |  15 +
+ MODULE.bazel.lock                         | 827 ++++++++++++++++++++++++++++++
+ bazel-bin                                 |   1 +
+ bazel-ggml-org__llama.cpp__cpp-gazelle-cc |   1 +
+ bazel-out                                 |   1 +
+ bazel-testlogs                            |   1 +
+ common/BUILD.bazel                        |  17 +
+ common/jinja/BUILD.bazel                  |  31 ++
+ common/unicode_test.cpp                   |  15 +
+ 12 files changed, 945 insertions(+)

@@ -1,0 +1,10 @@
+ .bazelrc                                     |   8 +
+ BUILD.bazel                                  |  29 ++
+ EXPECTATIONS.json                            |  13 +
+ MODULE.bazel                                 |  13 +
+ MODULE.bazel.lock                            | 480 +++++++++++++++++++++++++++
+ bazel-bin                                    |   1 +
+ bazel-ggml-org__llama.cpp__cpp-foreign-cmake |   1 +
+ bazel-out                                    |   1 +
+ bazel-testlogs                               |   1 +
+ 9 files changed, 547 insertions(+)

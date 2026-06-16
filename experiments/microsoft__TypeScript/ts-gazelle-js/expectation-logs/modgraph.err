@@ -1,0 +1,29 @@
+INFO: Invocation ID: 83e0293c-a947-4847-ba54-7f18277f5866
+ERROR: /home/exedev/.cache/bazel/_bazel_exedev/7236c92a83a9e12ac35c703a44b7f745/external/aspect_rules_js+/npm/private/npm_translate_lock.bzl:517:13: Traceback (most recent call last):
+	File "/home/exedev/.cache/bazel/_bazel_exedev/7236c92a83a9e12ac35c703a44b7f745/external/aspect_rules_js+/npm/extensions.bzl", line 89, column 39, in _npm_extension_impl
+		_npm_translate_lock_bzlmod(module_ctx, mod, attr, exclude_package_contents_config, replace_packages)
+	File "/home/exedev/.cache/bazel/_bazel_exedev/7236c92a83a9e12ac35c703a44b7f745/external/aspect_rules_js+/npm/extensions.bzl", line 137, column 34, in _npm_translate_lock_bzlmod
+		state = parse_and_verify_lock(module_ctx, mod, attr)
+	File "/home/exedev/.cache/bazel/_bazel_exedev/7236c92a83a9e12ac35c703a44b7f745/external/aspect_rules_js+/npm/private/npm_translate_lock.bzl", line 357, column 33, in parse_and_verify_lock
+		if _update_pnpm_lock(rctx, attr, state):
+	File "/home/exedev/.cache/bazel/_bazel_exedev/7236c92a83a9e12ac35c703a44b7f745/external/aspect_rules_js+/npm/private/npm_translate_lock.bzl", line 517, column 13, in _update_pnpm_lock
+		fail(msg)
+Error in fail: 
+
+ERROR: `pnpm import` exited with status 1.
+
+       Make sure all package.json and other data files required for the running `pnpm import` are added to
+       the data attribute of `npm_translate_lock(name = "npm")`.
+
+       If the problem persists, install pnpm (https://pnpm.io/installation) and run `pnpm import`
+       manually to update the pnpm-lock.yaml file. If you have specified `preupdate` scripts in
+       `npm_translate_lock(name = "npm")` you may have to run these manually as well.
+
+STDOUT:
+
+STDERR:
+ ERROR  This project is configured to use npm
+For help, run: pnpm help import
+
+ERROR: error evaluating module extension @@aspect_rules_js+//npm:extensions.bzl%npm
+ERROR: Results may be incomplete as 1 extension failed.

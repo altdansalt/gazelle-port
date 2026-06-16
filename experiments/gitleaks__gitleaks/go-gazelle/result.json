@@ -1,0 +1,69 @@
+{
+  "tier_reached": 3,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "gazelle",
+      "tier": 1,
+      "cmd": "bazel run //:gazelle",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //...",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-go-libraries",
+      "tier": 2,
+      "cmd": "bazel query 'kind(\"go_library rule\", //...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-go-binary",
+      "tier": 2,
+      "cmd": "bazel query 'kind(\"go_binary rule\", //...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-tests",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"go_test rule\", //...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "test",
+      "tier": 4,
+      "cmd": "bazel test //... --test_output=errors",
+      "exit": 3,
+      "pass": false,
+      "reason": "exit 3 != 0"
+    }
+  ],
+  "passed": 6,
+  "total": 7,
+  "repo": "gitleaks/gitleaks",
+  "approach_id": "go-gazelle",
+  "scope": "//...",
+  "predicted_tier": 3,
+  "extra_edited_files": 19,
+  "worker_exit": 124
+}

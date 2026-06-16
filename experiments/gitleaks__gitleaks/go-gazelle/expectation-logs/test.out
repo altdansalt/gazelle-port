@@ -1,0 +1,12 @@
+stdout (/home/exedev/.cache/bazel/_bazel_exedev/54ea72a471a844e3dc57d3dccc12061d/execroot/_main/bazel-out/_tmp/actions/stdout-2) 2975516 exceeds maximum size of --experimental_ui_max_stdouterr_bytes=1048576 bytes; skipping
+//cmd/generate/config/base:base_test                            (cached) PASSED in 0.1s
+//cmd/generate/config/utils:utils_test                          (cached) PASSED in 0.1s
+//config:config_test                                            (cached) PASSED in 0.3s
+//detect/codec:codec_test                                       (cached) PASSED in 0.1s
+//report:report_test                                            (cached) PASSED in 0.1s
+//sources:sources_test                                          (cached) PASSED in 0.1s
+//detect:detect_test                                                     FAILED in 2.7s
+  /home/exedev/.cache/bazel/_bazel_exedev/54ea72a471a844e3dc57d3dccc12061d/execroot/_main/bazel-out/k8-fastbuild/testlogs/detect/detect_test/test.log
+
+Executed 1 out of 7 tests: 6 tests pass and 1 fails locally.
+There were tests whose specified size is too big. Use the --test_verbose_timeout_warnings command line option to see which ones these are.

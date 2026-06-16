@@ -1,0 +1,2 @@
+bazel-out/k8-fastbuild/bin/hiredis/include
+bazel-out/k8-fastbuild/bin/hiredis/lib/libhiredis.a

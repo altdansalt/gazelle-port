@@ -1,0 +1,10 @@
+ .bazelrc                                  |   7 +
+ BUILD.bazel                               |  23 ++
+ EXPECTATIONS.json                         |  13 +
+ MODULE.bazel                              |  13 +
+ MODULE.bazel.lock                         | 480 ++++++++++++++++++++++++++++++
+ bazel-bin                                 |   1 +
+ bazel-out                                 |   1 +
+ bazel-redis__redis__jemalloc-foreign-make |   1 +
+ bazel-testlogs                            |   1 +
+ 9 files changed, 540 insertions(+)

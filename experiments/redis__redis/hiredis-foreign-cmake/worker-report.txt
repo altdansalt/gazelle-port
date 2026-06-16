@@ -1,0 +1,17 @@
+All expectations pass. Here is the final report:
+
+---
+
+**Final Report**
+
+**Tier reached:** Tier 4 (all expectations pass)
+
+**Edits made** (`BUILD.bazel` only):
+
+1. **Removed `working_directory = "deps/hiredis"`** — The filegroup glob `deps/hiredis/**` causes rules_foreign_cc to set the cmake source root at `deps/hiredis/`. Appending `working_directory = "deps/hiredis"` doubled the path to `deps/hiredis/deps/hiredis`, which doesn't exist. CMakeLists.txt is already at the root of the source tree, so no `working_directory` is needed.
+
+2. **Added `"BUILD_SHARED_LIBS": "OFF"` to `cache_entries`** — Hiredis CMakeLists.txt defaults `BUILD_SHARED_LIBS=ON`, so cmake built only `libhiredis.so`. Setting it to `OFF` produces the `libhiredis.a` that `out_static_libs` expects.
+
+**Excluded:** Nothing. All source compiles cleanly with `DISABLE_TESTS=ON ENABLE_SSL=OFF BUILD_SHARED_LIBS=OFF`.
+
+**Biggest blocker encountered:** The doubled `working_directory` path caused the first cmake invocation to fail immediately with "source directory does not exist."

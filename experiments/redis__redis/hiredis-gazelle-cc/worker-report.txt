@@ -1,0 +1,31 @@
+All 6 expectations pass (all tier 1–4). Here is the final report:
+
+---
+
+## Final Report
+
+**Tier reached:** 4 (all expectations pass)
+
+### Edits made
+
+**`BUILD.bazel` (root):**
+- Removed the broken `load("@gazelle_cc//:def.bzl", "GAZELLE_CC_LANGUAGES")` — that file doesn't exist in gazelle_cc v0.6.0
+- Added `# gazelle:exclude` for: `deps/hiredis/ssl.c` (needs OpenSSL, not available), `deps/hiredis/adapters` (external deps: glib/libevent/libuv not in MODULE.bazel), `deps/hiredis/sds.c` (has a conditional `main()` that gazelle misclassifies as binary), `deps/hiredis/dict.c` (included via `#include "dict.c"` from async.c — not a standalone compile unit)
+
+**`deps/hiredis/BUILD.bazel` (gazelle-generated + manual preservation):**
+- `sds.c` added to `hiredis` srcs with `# keep` comment so gazelle doesn't remove it on re-runs
+- `textual_hdrs = ["dict.c"]` preserved so async.c's `#include "dict.c"` finds it
+- `cc_test(name = "hiredis_test")` added, pointing to `hiredis_test.c`
+
+**`deps/hiredis/hiredis_test.c` (new, 26 lines):**
+- Minimal smoke test: exercises `redisFormatCommand` and the reply reader with no Redis server required
+
+### What was excluded and why
+- `ssl.c` — requires `openssl/ssl.h`, no OpenSSL dep in the Bazel module graph
+- `adapters/` — each adapter header includes external libs (glib, libevent, libuv, etc.) not in MODULE.bazel
+- `sds.c` — has a `#ifdef HI_SDS_TEST_MAIN`-guarded `main()` that gazelle detects and misclassifies as a binary source; kept in library via `# keep`
+- `dict.c` — included directly via `#include "dict.c"` from async.c; must be `textual_hdrs`, not a separate compile unit; excluded from gazelle's scan so it doesn't appear in `srcs`
+- `test.c`, `examples/`, `fuzzing/` — server-integration test (can't pass without a running Redis), example binaries, fuzz inputs (already in the seed excludes)
+
+### Biggest blocker (encountered and solved)
+Gazelle's `findEmptyRules` deletes any `cc_test` or `cc_library`-family rule whose source files aren't found in the scanned file list. The solution was two-fold: (1) keep `hiredis_test.c` visible to gazelle (so it appears in fileInfos and the cc_test is not flagged for deletion), and (2) use `# keep` on the `sds.c` srcs entry so gazelle preserves it even though sds.c itself is excluded from gazelle's classification (to prevent the broken cc_binary from being generated).

@@ -1,0 +1,15 @@
+```json
+{
+  "repo": "redis/redis",
+  "approach_id": "hiredis-foreign-cmake",
+  "scope": "deps/hiredis/...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0,"stdout_regex":"rules_foreign_cc"}},
+    {"id":"cc-toolchain","tier":1,"cmd":"bazel query '@rules_foreign_cc//foreign_cc:defs.bzl' --output=label 2>/dev/null || bazel query 'kind(\"cmake rule\", //...)'","expect":{"exit":0,"allow_nonzero":true}},
+    {"id":"build-hiredis","tier":2,"cmd":"bazel build //:hiredis","expect":{"exit":0}},
+    {"id":"have-cmake-target","tier":3,"cmd":"bazel query 'kind(\"cmake rule\", //...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"cquery-static-lib","tier":3,"cmd":"bazel cquery //:hiredis --output=files","expect":{"exit":0,"stdout_regex":"libhiredis\\.a"}},
+    {"id":"no-test-target","tier":4,"cmd":"bazel query 'kind(\"_test rule\", //...)'","expect":{"exit":0,"allow_nonzero":true}}
+  ]
+}
+```

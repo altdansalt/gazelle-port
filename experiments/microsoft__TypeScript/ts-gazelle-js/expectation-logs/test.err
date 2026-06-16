@@ -1,0 +1,7 @@
+INFO: Invocation ID: e16e0f3a-da8e-4f3e-8b7c-24a6413f8b00
+ERROR: Skipping '//src/...': no targets found beneath 'src'
+ERROR: no targets found beneath 'src'
+INFO: Elapsed time: 0.253s
+INFO: 0 processes.
+ERROR: Build did NOT complete successfully
+ERROR: Couldn't start the build. Unable to run tests

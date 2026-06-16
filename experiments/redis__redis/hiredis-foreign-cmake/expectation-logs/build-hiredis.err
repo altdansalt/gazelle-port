@@ -1,0 +1,9 @@
+INFO: Invocation ID: d63a7d09-4ec8-4a6c-8bae-92102dbbc2a7
+INFO: Analyzed target //:hiredis (95 packages loaded, 10050 targets configured).
+INFO: Found 1 target...
+Target //:hiredis up-to-date:
+  bazel-bin/hiredis/include
+  bazel-bin/hiredis/lib/libhiredis.a
+INFO: Elapsed time: 4.115s, Critical Path: 0.17s
+INFO: 1 process: 9 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action

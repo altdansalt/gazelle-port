@@ -1,0 +1,13 @@
+{
+  "repo": "redis/redis",
+  "approach_id": "jemalloc-foreign-make",
+  "scope": "deps/jemalloc/...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0,"stdout_regex":"rules_foreign_cc"}},
+    {"id":"foreign-cc-resolves","tier":1,"cmd":"bazel query '@rules_foreign_cc//foreign_cc:defs.bzl'","expect":{"exit":0,"allow_nonzero":true}},
+    {"id":"jemalloc-target-exists","tier":1,"cmd":"bazel query '//:jemalloc'","expect":{"exit":0,"stdout_regex":"//:jemalloc"}},
+    {"id":"build-jemalloc","tier":2,"cmd":"bazel build //:jemalloc","expect":{"exit":0}},
+    {"id":"foreign-rule-kind","tier":3,"cmd":"bazel query 'kind(\"configure_make rule\", //:all)'","expect":{"exit":0,"stdout_regex":"//:jemalloc"}},
+    {"id":"static-lib-output","tier":3,"cmd":"bazel cquery --output=files //:jemalloc","expect":{"exit":0,"stdout_regex":"libjemalloc\\.a"}}
+  ]
+}

@@ -1,0 +1,9 @@
+INFO: Invocation ID: 8690fb62-c272-46f5-a6c0-e98c3a814e50
+INFO: Analyzed target //:jemalloc (92 packages loaded, 2503 targets configured).
+INFO: Found 1 target...
+Target //:jemalloc up-to-date:
+  bazel-bin/jemalloc/include
+  bazel-bin/jemalloc/lib/libjemalloc.a
+INFO: Elapsed time: 2.296s, Critical Path: 0.04s
+INFO: 1 process: 9 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action

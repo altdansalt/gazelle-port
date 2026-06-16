@@ -1,0 +1,11 @@
+INFO: Invocation ID: dc6faee9-b47d-4840-ae32-d0a6d1b395c5
+INFO: Analyzed target //:gazelle (364 packages loaded, 89111 targets configured, 197 aspect applications).
+INFO: Found 1 target...
+Target //:gazelle up-to-date:
+  bazel-bin/gazelle-runner.bash
+  bazel-bin/gazelle
+INFO: Elapsed time: 28.356s, Critical Path: 0.35s
+INFO: 2 processes: 1788 action cache hit, 2 internal.
+INFO: Build completed successfully, 2 total actions
+INFO: Running command line: bazel-bin/gazelle
+failed to read lockfile "package-lock.json": failed to find lockfile version in: "{"2026/06/16 03:48:26 failed to read lockfile "package-lock.json": failed to find lockfile version in: "{"

@@ -11,8 +11,13 @@ inside an isolated git worktree, and a deterministic **harness** scores the resu
 
 ## Status
 
-Bootstrapped 2026-06-15 (overnight autonomous run). See `docs/` for the live record of
-goals, decisions, findings, and hypotheses, and `data/` for the candidate repo set.
+Bootstrapped 2026-06-15 (overnight autonomous run). 16 experiments across 11 repos, 2
+phases. **Achievable-now ranking (Gazelle, source-native): Go ≫ C/C++ > Python > Rust >
+TS.** Separately, `rules_foreign_cc` reliably wraps CMake/Make C/C++ giants (e.g. full
+`llama.cpp`, `jemalloc`) into a building Bazel target with ~4 edits. Standout surprise:
+`gazelle_cc` generates real, buildable fine-grained C++ graphs. See `docs/findings.md` for
+the evidence, `data/results.tsv` for the table, `docs/06-ruleset-catalog.md` for the
+plugin universe. See `docs/` for goals/decisions/hypotheses and `data/` for candidates.
 
 ## Layout
 

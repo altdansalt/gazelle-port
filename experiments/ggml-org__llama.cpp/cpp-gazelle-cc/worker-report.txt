@@ -1,0 +1,25 @@
+All 6 expectations pass. Here's the final report:
+
+---
+
+## Final Report
+
+**Tier reached: Tier 4 (all expectations pass)**
+
+### Edits made
+
+| File | Change | Why |
+|------|--------|-----|
+| `BUILD.bazel` | Removed `load("@gazelle_cc//:def.bzl", "GAZELLE_CC_LANGUAGES")` | That file doesn't exist in `gazelle_cc` v0.6.0; `GAZELLE_CC_LANGUAGES` is unused |
+| `MODULE.bazel` | Added `bazel_dep(name = "nlohmann_json", version = "3.12.0.bcr.1")` | `common/jinja/value.cpp` includes `<nlohmann/json.hpp>` |
+| `common/BUILD.bazel` | Replaced generated all-in-one `common` cc_library with `# gazelle:cc_generate false`, a `unicode` cc_library, and a `unicode_test` cc_test | The full `common` library can't build without `llama.h`/`ggml.h` (not in scope); the `unicode` utility is self-contained and needed by jinja |
+| `common/jinja/BUILD.bazel` | Hand-crafted after initial gazelle run: added `includes = [".."]`, `deps = ["//common:unicode", "@nlohmann_json//:json"]`, gazelle directives `# gazelle:resolve cc unicode.h //common:unicode` and `# gazelle:cc_unresolved_deps ignore` | `includes = [".."]` exposes `common/` as an include root so `#include "jinja/string.h"` works; `includes = ["."]` was tried and rejected because `common/jinja/string.h` shadows the system `<string.h>` |
+| `common/unicode_test.cpp` | New minimal test file for the `unicode` library | Required for the `have-tests` (tier 3) expectation |
+
+### What was excluded
+
+The 30+ source files of `//common:common` (e.g. `common.cpp`, `chat.cpp`, `sampling.cpp`, etc.) were excluded because they depend on `llama.h`, `ggml.h`, `ggml-opt.h`, `llama-cpp.h` — the core llama.cpp API headers — which are in `src/` and not built by this Bazel setup.
+
+### Biggest blocker (resolved)
+
+`includes = ["."]` on the jinja library caused `common/jinja/string.h` to shadow the system `<string.h>` via `-I common/jinja/`, breaking `<cstring>`. The fix was to use only `includes = [".."]`, relying on GCC's standard behavior of searching the source file's own directory first for `#include "header.h"` style includes.

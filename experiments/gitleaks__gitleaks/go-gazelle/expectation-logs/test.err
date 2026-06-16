@@ -1,0 +1,8 @@
+INFO: Invocation ID: 87310c29-179b-49dd-8023-4358c20dd6e4
+INFO: Analyzed 27 targets (0 packages loaded, 0 targets configured).
+FAIL: //detect:detect_test (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/54ea72a471a844e3dc57d3dccc12061d/execroot/_main/bazel-out/k8-fastbuild/testlogs/detect/detect_test/test.log)
+INFO: From Testing //detect:detect_test:
+INFO: Found 20 targets and 7 test targets...
+INFO: Elapsed time: 3.081s, Critical Path: 2.73s
+INFO: 2 processes: 6 action cache hit, 1 internal, 1 local.
+INFO: Build completed, 1 test FAILED, 2 total actions

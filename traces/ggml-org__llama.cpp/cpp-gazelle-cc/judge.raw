@@ -1,0 +1,15 @@
+```json
+{
+  "repo": "ggml-org/llama.cpp",
+  "approach_id": "cpp-gazelle-cc",
+  "scope": "//common/...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle -- common","expect":{"exit":0}},
+    {"id":"build","tier":2,"cmd":"bazel build //common/...","expect":{"exit":0}},
+    {"id":"have-cc-libs","tier":3,"cmd":"bazel query 'kind(\"cc_library rule\", //common/...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\"cc_test rule\", //common/...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"test","tier":4,"cmd":"bazel test //common/... --test_output=errors","expect":{"exit":0}}
+  ]
+}
+```

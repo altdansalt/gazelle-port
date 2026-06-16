@@ -1,0 +1,10 @@
+All expectations pass. Here's the **final report**:
+
+**Tier reached:** Tier 3 (all expectations pass)
+
+**Edits made:**
+- `BUILD.bazel`: Removed `"deps/jemalloc/test/**"` from the glob exclusion list. The `configure_make` rule runs jemalloc's `./configure` script, which uses `AC_CONFIG_FILES` to generate `test/test.sh` from `test/test.sh.in`. Since `test/**` was excluded from the `jemalloc_srcs` filegroup, the template file was missing and configure would error out. Including the test directory (while still excluding `msvc/**`) lets configure complete successfully.
+
+**What was excluded:** `deps/jemalloc/msvc/**` (Windows MSVC project files — irrelevant on Linux).
+
+**Biggest blocker (now resolved):** jemalloc's `./configure` unconditionally references `test/test.sh.in` via `AC_CONFIG_FILES`, so excluding the test directory from sources caused a hard configure failure. The fix was one-line: remove the test exclusion from the glob.

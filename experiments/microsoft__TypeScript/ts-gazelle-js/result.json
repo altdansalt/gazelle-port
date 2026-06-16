@@ -1,0 +1,61 @@
+{
+  "tier_reached": 0,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 2,
+      "pass": false,
+      "reason": "exit 2 != 0"
+    },
+    {
+      "id": "gazelle",
+      "tier": 1,
+      "cmd": "bazel run //:gazelle",
+      "exit": 1,
+      "pass": false,
+      "reason": "exit 1 != 0"
+    },
+    {
+      "id": "gazelle-generated-targets",
+      "tier": 1,
+      "cmd": "bazel query 'kind(\"ts_project|js_library\", //src/...)'",
+      "exit": 7,
+      "pass": false,
+      "reason": "exit 7 != 0"
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //src/...",
+      "exit": 1,
+      "pass": false,
+      "reason": "exit 1 != 0"
+    },
+    {
+      "id": "have-tests",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\".*_test rule\", //src/...)'",
+      "exit": 7,
+      "pass": false,
+      "reason": "exit 7 != 0"
+    },
+    {
+      "id": "test",
+      "tier": 4,
+      "cmd": "bazel test //src/... --test_output=errors",
+      "exit": 1,
+      "pass": false,
+      "reason": "exit 1 != 0"
+    }
+  ],
+  "passed": 0,
+  "total": 6,
+  "repo": "microsoft/TypeScript",
+  "approach_id": "ts-gazelle-js",
+  "scope": "//src/...",
+  "predicted_tier": 1,
+  "extra_edited_files": 8,
+  "worker_exit": 124
+}

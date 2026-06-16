@@ -1,0 +1,15 @@
+```json
+{
+  "repo": "ggml-org/llama.cpp",
+  "approach_id": "cpp-foreign-cmake",
+  "scope": "//:llama_cpp",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0,"stdout_regex":"rules_foreign_cc"}},
+    {"id":"deps-query","tier":1,"cmd":"bazel query 'deps(//:llama_cpp)' --output=label","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"target-exists","tier":1,"cmd":"bazel query '//:llama_cpp'","expect":{"exit":0,"stdout_regex":"//:llama_cpp"}},
+    {"id":"build","tier":2,"cmd":"bazel build //:llama_cpp","expect":{"exit":0}},
+    {"id":"is-cmake-rule","tier":3,"cmd":"bazel query 'kind(\"cmake\", //:llama_cpp)' --output=label","expect":{"exit":0,"stdout_regex":"//:llama_cpp"}},
+    {"id":"outputs-exist","tier":3,"cmd":"bash -c 'bazel cquery --output=files //:llama_cpp 2>/dev/null | grep -E \"libllama\\.a$\"'","expect":{"exit":0,"stdout_min_lines":1}}
+  ]
+}
+```

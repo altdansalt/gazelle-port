@@ -1,0 +1,30 @@
+{
+  "repo": "astral-sh/uv",
+  "approaches": [
+    {
+      "id": "rust-gazelle",
+      "language": "Rust",
+      "strategy": "A-gazelle",
+      "ruleset": "gazelle_rust",
+      "scope": "//crates/...",
+      "rationale": "uv is a large Cargo workspace of pure-Rust crates; gazelle_rust + rules_rust with crate_universe from the existing Cargo.lock is the source-native port. Scope to the crates subtree where the workspace members live.",
+      "module_bazel": "module(\n    name = \"uv\",\n    version = \"0.0.0\",\n)\n\nbazel_dep(name = \"rules_rust\", version = \"0.70.0\")\nbazel_dep(name = \"gazelle\", version = \"0.51.3\")\nbazel_dep(name = \"gazelle_rust\", version = \"0.1.0\")\nbazel_dep(name = \"bazel_skylib\", version = \"1.9.0\")\nbazel_dep(name = \"platforms\", version = \"1.1.0\")\nbazel_dep(name = \"rules_cc\", version = \"0.2.19\")\n\nrust = use_extension(\"@rules_rust//rust:extensions.bzl\", \"rust\")\nrust.toolchain(\n    edition = \"2021\",\n    versions = [\"1.86.0\"],\n)\nuse_repo(rust, \"rust_toolchains\")\nregister_toolchains(\"@rust_toolchains//:all\")\n\ncrate = use_extension(\"@rules_rust//crate_universe:extensions.bzl\", \"crate\")\ncrate.from_cargo(\n    name = \"crates\",\n    cargo_lockfile = \"//:Cargo.lock\",\n    manifests = [\"//:Cargo.toml\"],\n)\nuse_repo(crate, \"crates\")\n",
+      "root_build": "load(\"@gazelle//:def.bzl\", \"gazelle\", \"gazelle_binary\")\n\n# gazelle:rust_crates_index crates\n\ngazelle_binary(\n    name = \"gazelle_rust_bin\",\n    languages = [\"@gazelle_rust//:rust\"],\n)\n\ngazelle(\n    name = \"gazelle\",\n    gazelle = \":gazelle_rust_bin\",\n)\n",
+      "bazelrc": "common --enable_bzlmod\nbuild --incompatible_strict_action_env\ntest --test_output=errors\n",
+      "setup_commands": [
+        "bazel run //:gazelle",
+        "bazel build //crates/uv-normalize/...",
+        "bazel build //crates/..."
+      ],
+      "anticipated_risks": [
+        "build.rs in uv-cli and others (build scripts unsupported by gazelle_rust generation)",
+        "proc-macro crate uv-macros",
+        "crate_universe resolution of a very large dependency graph (rkyv, reqwest, etc.)",
+        "vendored C deps / native libs (ring, openssl-sys, zstd) needing system or cc toolchains",
+        "workspace-level features and platform-specific deps (macos/windows keyring)",
+        "snapshot/insta tests and integration test harnesses"
+      ],
+      "predicted_tier": 1
+    }
+  ]
+}

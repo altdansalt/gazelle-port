@@ -1,0 +1,77 @@
+{
+  "tier_reached": 1,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "crate-deps",
+      "tier": 1,
+      "cmd": "bazel query @crates//:all",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "gazelle",
+      "tier": 1,
+      "cmd": "bazel run //:gazelle",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "build-smoke",
+      "tier": 2,
+      "cmd": "bazel build //crates/uv-normalize/...",
+      "exit": 1,
+      "pass": false,
+      "reason": "exit 1 != 0"
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //crates/...",
+      "exit": 1,
+      "pass": false,
+      "reason": "exit 1 != 0"
+    },
+    {
+      "id": "have-libs",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"rust_library rule\", //crates/...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-tests",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"rust_test rule\", //crates/...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "test",
+      "tier": 4,
+      "cmd": "bazel test //crates/... --test_output=errors",
+      "exit": 1,
+      "pass": false,
+      "reason": "exit 1 != 0"
+    }
+  ],
+  "passed": 5,
+  "total": 8,
+  "repo": "astral-sh/uv",
+  "approach_id": "rust-gazelle",
+  "scope": "//crates/...",
+  "predicted_tier": 1,
+  "extra_edited_files": 124,
+  "worker_exit": 124
+}

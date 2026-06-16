@@ -1,0 +1,15 @@
+{
+  "repo": "astral-sh/uv",
+  "approach_id": "rust-gazelle",
+  "scope": "//crates/...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0}},
+    {"id":"crate-deps","tier":1,"cmd":"bazel query @crates//:all","expect":{"exit":0,"allow_nonzero":true}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
+    {"id":"build-smoke","tier":2,"cmd":"bazel build //crates/uv-normalize/...","expect":{"exit":0}},
+    {"id":"build","tier":2,"cmd":"bazel build //crates/...","expect":{"exit":0}},
+    {"id":"have-libs","tier":3,"cmd":"bazel query 'kind(\"rust_library rule\", //crates/...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\"rust_test rule\", //crates/...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"test","tier":4,"cmd":"bazel test //crates/... --test_output=errors","expect":{"exit":0}}
+  ]
+}

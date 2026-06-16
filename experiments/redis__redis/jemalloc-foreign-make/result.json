@@ -1,0 +1,61 @@
+{
+  "tier_reached": 3,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "foreign-cc-resolves",
+      "tier": 1,
+      "cmd": "bazel query '@rules_foreign_cc//foreign_cc:defs.bzl'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "jemalloc-target-exists",
+      "tier": 1,
+      "cmd": "bazel query '//:jemalloc'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "build-jemalloc",
+      "tier": 2,
+      "cmd": "bazel build //:jemalloc",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "foreign-rule-kind",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"configure_make rule\", //:all)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "static-lib-output",
+      "tier": 3,
+      "cmd": "bazel cquery --output=files //:jemalloc",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "repo": "redis/redis",
+  "approach_id": "jemalloc-foreign-make",
+  "scope": "deps/jemalloc/...",
+  "predicted_tier": 2,
+  "extra_edited_files": 4,
+  "worker_exit": 0
+}

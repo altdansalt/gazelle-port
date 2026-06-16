@@ -1,0 +1,7 @@
+//cmd/generate/config/base:base_test
+//cmd/generate/config/utils:utils_test
+//config:config_test
+//detect:detect_test
+//detect/codec:codec_test
+//report:report_test
+//sources:sources_test

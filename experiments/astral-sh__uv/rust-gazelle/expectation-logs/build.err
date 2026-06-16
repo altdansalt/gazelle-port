@@ -1,0 +1,11 @@
+INFO: Invocation ID: 652ed8c5-59e9-46e7-b366-e4ca876a0d99
+ERROR: /home/exedev/gazel-port/.cache/worktrees/astral-sh__uv__rust-gazelle/crates/uv/src/bin/BUILD.bazel:3:12: in rust_binary rule //crates/uv/src/bin:uv: Visibility error:
+target '//crates/uv-bench/benches:uv' is not visible from
+target '//crates/uv/src/bin:uv'
+Recommendation: modify the visibility declaration if you think the dependency is legitimate. For more info see https://bazel.build/concepts/visibility
+ERROR: /home/exedev/gazel-port/.cache/worktrees/astral-sh__uv__rust-gazelle/crates/uv/src/bin/BUILD.bazel:3:12: Analysis of target '//crates/uv/src/bin:uv' (config: 91e2498) failed
+Use --verbose_failures to see the command lines of failed build steps.
+ERROR: Analysis of target '//crates/uv/src/bin:uv' failed; build aborted
+INFO: Elapsed time: 1.664s, Critical Path: 0.00s
+INFO: 1 process: 1 internal.
+ERROR: Build did NOT complete successfully

@@ -1,0 +1,15 @@
+```json
+{
+  "repo": "microsoft/TypeScript",
+  "approach_id": "ts-gazelle-js",
+  "scope": "//src/...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
+    {"id":"gazelle-generated-targets","tier":1,"cmd":"bazel query 'kind(\"ts_project|js_library\", //src/...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"build","tier":2,"cmd":"bazel build //src/...","expect":{"exit":0}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\".*_test rule\", //src/...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"test","tier":4,"cmd":"bazel test //src/... --test_output=errors","expect":{"exit":0}}
+  ]
+}
+```

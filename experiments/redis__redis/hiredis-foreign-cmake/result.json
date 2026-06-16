@@ -1,0 +1,61 @@
+{
+  "tier_reached": 3,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "cc-toolchain",
+      "tier": 1,
+      "cmd": "bazel query '@rules_foreign_cc//foreign_cc:defs.bzl' --output=label 2>/dev/null || bazel query 'kind(\"cmake rule\", //...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "build-hiredis",
+      "tier": 2,
+      "cmd": "bazel build //:hiredis",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-cmake-target",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"cmake rule\", //...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "cquery-static-lib",
+      "tier": 3,
+      "cmd": "bazel cquery //:hiredis --output=files",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "no-test-target",
+      "tier": 4,
+      "cmd": "bazel query 'kind(\"_test rule\", //...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "repo": "redis/redis",
+  "approach_id": "hiredis-foreign-cmake",
+  "scope": "deps/hiredis/...",
+  "predicted_tier": 2,
+  "extra_edited_files": 4,
+  "worker_exit": 0
+}

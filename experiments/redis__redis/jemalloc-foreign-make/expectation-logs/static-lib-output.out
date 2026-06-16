@@ -1,0 +1,2 @@
+bazel-out/k8-fastbuild/bin/jemalloc/include
+bazel-out/k8-fastbuild/bin/jemalloc/lib/libjemalloc.a

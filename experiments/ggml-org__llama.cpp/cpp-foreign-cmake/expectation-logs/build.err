@@ -1,0 +1,9 @@
+INFO: Invocation ID: b75787f8-611e-4e3c-997e-6ba4f644584b
+INFO: Analyzed target //:llama_cpp (88 packages loaded, 12977 targets configured).
+INFO: Found 1 target...
+Target //:llama_cpp up-to-date:
+  bazel-bin/llama_cpp/include
+  bazel-bin/llama_cpp/lib/libllama.a
+INFO: Elapsed time: 3.071s, Critical Path: 0.11s
+INFO: 1 process: 9 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action

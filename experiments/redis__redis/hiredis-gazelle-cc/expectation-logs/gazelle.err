@@ -1,0 +1,11 @@
+INFO: Invocation ID: 455ed73c-0850-4482-bb36-db5c320fe5f0
+INFO: Analyzed target //:gazelle (155 packages loaded, 13897 targets configured).
+INFO: Found 1 target...
+Target //:gazelle up-to-date:
+  bazel-bin/gazelle-runner.bash
+  bazel-bin/gazelle
+INFO: Elapsed time: 7.615s, Critical Path: 0.19s
+INFO: 1 process: 88 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action
+INFO: Running command line: bazel-bin/gazelle <args omitted>
+gazelle: @redis_hiredis_cc//deps/hiredis: could not find a library providing header - '#include "dict.c"' at deps/hiredis/async.c:44

@@ -1,0 +1,15 @@
+```json
+{
+  "repo": "redis/redis",
+  "approach_id": "hiredis-gazelle-cc",
+  "scope": "deps/hiredis/...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle -- deps/hiredis","expect":{"exit":0}},
+    {"id":"build","tier":2,"cmd":"bazel build deps/hiredis/...","expect":{"exit":0}},
+    {"id":"have-cc-libs","tier":3,"cmd":"bazel query 'kind(\"cc_library rule\", deps/hiredis/...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\".*_test rule\", deps/hiredis/...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"test","tier":4,"cmd":"bazel test deps/hiredis/... --test_output=errors","expect":{"exit":0}}
+  ]
+}
+```

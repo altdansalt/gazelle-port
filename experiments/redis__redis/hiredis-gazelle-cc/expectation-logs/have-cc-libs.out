@@ -1,0 +1,2 @@
+//deps/hiredis:hiredis
+//deps/hiredis/adapters:adapters

@@ -1,0 +1,25 @@
+ .bazelrc                              |   8 +
+ BUILD.bazel                           |  29 ++
+ EXPECTATIONS.json                     |  14 +
+ MODULE.bazel                          |  14 +
+ MODULE.bazel.lock                     | 822 ++++++++++++++++++++++++++++++++++
+ bazel-bin                             |   1 +
+ bazel-gitleaks__gitleaks__go-gazelle  |   1 +
+ bazel-out                             |   1 +
+ bazel-testlogs                        |   1 +
+ cmd/BUILD.bazel                       |  31 ++
+ cmd/generate/config/BUILD.bazel       |  20 +
+ cmd/generate/config/base/BUILD.bazel  |  18 +
+ cmd/generate/config/rules/BUILD.bazel | 146 ++++++
+ cmd/generate/config/utils/BUILD.bazel |  25 ++
+ cmd/generate/secrets/BUILD.bazel      |   9 +
+ cmd/scm/BUILD.bazel                   |   8 +
+ config/BUILD.bazel                    |  41 ++
+ detect/BUILD.bazel                    |  61 +++
+ detect/codec/BUILD.bazel              |  29 ++
+ logging/BUILD.bazel                   |   9 +
+ regexp/BUILD.bazel                    |   8 +
+ report/BUILD.bazel                    |  43 ++
+ sources/BUILD.bazel                   |  35 ++
+ version/BUILD.bazel                   |   8 +
+ 24 files changed, 1382 insertions(+)

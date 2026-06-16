@@ -1,0 +1,16 @@
+//:gitleaks_lib
+//cmd:cmd
+//cmd/generate/config:config_lib
+//cmd/generate/config/base:base
+//cmd/generate/config/rules:rules
+//cmd/generate/config/utils:utils
+//cmd/generate/secrets:secrets
+//cmd/scm:scm
+//config:config
+//detect:detect
+//detect/codec:codec
+//logging:logging
+//regexp:regexp
+//report:report
+//sources:sources
+//version:version
