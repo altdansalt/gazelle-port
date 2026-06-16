@@ -5,3 +5,5 @@ ts	repo	approach	lang	scope	tier	predicted	extra_files	worker_exit
 2026-06-16T00:31:01Z	charmbracelet/bubbletea	go-native	Go	//...	4	4	4	0
 2026-06-16T00:34:06Z	junegunn/fzf	go-native	Go	//...	4	3	9	0
 2026-06-16T00:44:06Z	go-kratos/kratos	go-native-root	Go	//... (root module only; contrib/* and cmd/* nested modules excluded)	4	3	53	0
+2026-06-16T00:55:18Z	pallets/flask	py-native	Python	//src/...	2	2	9	0
+2026-06-16T01:22:33Z	pmndrs/zustand	ts-gazelle-js	TypeScript	//src/...	1	2	5	124

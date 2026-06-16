@@ -1,0 +1,11 @@
+ .bazelignore                         |    1 +
+ .bazelrc                             |   11 +
+ BUILD.bazel                          |   20 +
+ EXPECTATIONS.json                    |   14 +
+ MODULE.bazel                         |   42 +
+ MODULE.bazel.lock                    | 1680 ++++++++++++++++++++++++++++++++++
+ bazel-bin                            |    1 +
+ bazel-out                            |    1 +
+ bazel-pmndrs__zustand__ts-gazelle-js |    1 +
+ bazel-testlogs                       |    1 +
+ 10 files changed, 1772 insertions(+)

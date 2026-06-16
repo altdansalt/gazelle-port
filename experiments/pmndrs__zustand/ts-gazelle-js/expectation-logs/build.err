@@ -1,0 +1,7 @@
+INFO: Invocation ID: 17d1260e-336c-4cfc-9f0d-3c5027b8a66d
+WARNING: Target pattern parsing failed.
+ERROR: Skipping '//src/...': no targets found beneath 'src'
+ERROR: no targets found beneath 'src'
+INFO: Elapsed time: 0.282s
+INFO: 0 processes.
+ERROR: Build did NOT complete successfully

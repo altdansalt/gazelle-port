@@ -5,14 +5,21 @@ Hypotheses live at the bottom until confirmed/refuted.
 
 ## Summary scoreboard
 
-| Language | Experiments | Best tier reached | Notes |
-|----------|-------------|-------------------|-------|
-| Go       | 1 (auto)    | 3 (build 100%, 7/8 checks)        | testify: tier-4 blocked by Go-version skew (F3) |
-| Python   | 0           | –                 | pending |
-| TS/JS    | 0           | –                 | pending |
-| Proto    | 0           | –                 | pending |
+| Language | Experiments | Best tier | Notes |
+|----------|-------------|-----------|-------|
+| **Go**   | 7 (Strategy A) | **4** (5 of 6 repos) | echo/gin/bubbletea/fzf/kratos → tier 4; testify → 3 (F3 version skew). Go is *solved*. |
+| **Python** | 1 (Strategy A) | **2** | flask: library builds via rules_python + gazelle; needs lock+manifest+resolve (F4). |
+| **TS/JS** | 1 (Strategy A) | **1** | zustand: the gazelle plugin's own native extractor won't build (F5). |
+| Rust / C / C++ | 0 | – | phase 2 (gazelle_rust / gazelle_cc / rules_foreign_cc) |
+| Proto    | 0           | –         | (kratos has proto subdirs; not isolated yet) |
 
 Tiers: 0 nothing · 1 deps/gazelle run · 2 `//...` builds · 3 tests discovered · 4 tests pass.
+
+> **Headline so far:** Gazelle's per-ecosystem maturity is starkly tiered. Go reaches a
+> clean tier 4 with ~5–15 line seeds. Python reaches tier 2 (build) but full test wiring
+> exceeds "minor edits". TS can't even *run* the generator today (native-build hurdle).
+> This directly answers "what's achievable now": **Go ≫ Python > TS**, with Rust/C/C++ and
+> foreign_cc under test in phase 2.
 
 ## Confirmed findings
 
@@ -49,7 +56,35 @@ and the gap is usually upstream version debt, not Gazelle.
 > Methodological note: this is why the harness scores *tiers*, not pass/fail. Tier 3 with
 > a clean diagnosis is a success for our research question.
 
+### F4 — Python reaches tier 2 (build) with rules_python + gazelle; tests need more (MEDIUM)
+**Evidence:** `pallets/flask` (Strategy A). Worker reached tier 2 for `//src/...`: generated
+`requirements.lock` (`uv export`), created the `gazelle_python.yaml` manifest
+(`bazel run //:gazelle_python_manifest.update`), and added `# gazelle:resolve` directives
+for imports gazelle can't map (`_typeshed.wsgi` under `TYPE_CHECKING`). The library
+(`py_library` at `//src/flask`, `/json`, `/sansio`) builds. **But** flask's tests live in
+`tests/` with cross-package app fixtures (`blueprintapp`, relative imports) gazelle can't
+resolve without substantial hand directives, so test tiers were (correctly) scoped out /
+made informational. So the realistic Python ceiling here is **tier 2**, and the "minor
+edits" are heavier than Go: a pinned lock + a manifest + per-import resolve directives.
+
+### F5 — TS/JS Gazelle can't even *run* today: the plugin's native extractor won't build (MEDIUM)
+**Evidence:** `pmndrs/zustand` (Strategy A, `aspect_gazelle_js`). `bazel mod graph` resolved
+(tier 1 partial) but `bazel run //:gazelle` failed: the JS/TS gazelle ships a **native
+(Rust/cgo) TypeScript import-extractor** that must compile, and its toolchain (LLVM/rustlib)
+wouldn't build in this hermetic env. The worker spent its entire 25-min budget yak-shaving
+the *plugin's own build* and never generated a BUILD file → **tier 1**, worker timeout
+(exit 124). Implication: TS-via-Gazelle's first hurdle isn't your repo, it's standing up
+the generator. Phase 2 will see if `microsoft/TypeScript` hits the same wall (expected).
+
 ## Failure modes observed
+
+### FM3 — Harness bug (FIXED): `git ls-files | head -N` SIGPIPE under `pipefail`
+Lost 2 experiments (gitleaks, kratos's 2nd approach): `head` closes the pipe at N lines,
+`git` gets SIGPIPE (141), `pipefail` propagates it, `set -e` aborts the experiment. Racy
+(buffering-dependent) so it hit only repos with >N files, intermittently. Fixed by
+`|| true` on the substitution in `run-experiment.sh` and `ralph-loop.sh`. *Lesson logged
+because the loop must be deterministic; a flaky truncation silently dropped results.*
+
 
 ### FM1 — Bazel sandbox has no package-relative CWD ⇒ filesystem-assertion tests fail
 testify `//assert:assert_test`: `TestFileExists/TestDirExists/TestNoFileExists/

@@ -64,7 +64,7 @@ cp "$APPROACH" "$EXPDIR/approach.json"
 # 3. JUDGE → EXPECTATIONS.json  (Opus, one-shot)
 ############################################
 echo ">> judge (Opus) writing expectations ..." >&2
-ROOTLS="$(cd "$WT" && git ls-files | head -400)"
+ROOTLS="$(cd "$WT" && git ls-files | head -400 || true)"  # || true: head closes pipe → git SIGPIPE under pipefail
 JUDGE_INPUT="$(jq -n --arg full "$FULL" --arg scope "$SCOPE" \
   --argjson approach "$(cat "$APPROACH")" --arg ls "$ROOTLS" \
   '{repo:$full, scope:$scope, approach:$approach, file_listing:$ls}')"

@@ -1,0 +1,9 @@
+INFO: Invocation ID: db337642-ce40-4d70-be12-cdcc6952e675
+INFO: Analyzed 4 targets (0 packages loaded, 0 targets configured).
+INFO: Found 4 targets and 0 test targets...
+Target //src/flask:flask_bin up-to-date:
+  bazel-bin/src/flask/flask_bin
+INFO: Elapsed time: 0.358s, Critical Path: 0.00s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action
+ERROR: No test targets were found, yet testing was requested

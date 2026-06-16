@@ -1,0 +1,69 @@
+{
+  "tier_reached": 1,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "gazelle",
+      "tier": 1,
+      "cmd": "bazel run //:gazelle",
+      "exit": 1,
+      "pass": false,
+      "reason": "exit 1 != 0"
+    },
+    {
+      "id": "have-targets",
+      "tier": 1,
+      "cmd": "bazel query '//src/...'",
+      "exit": 7,
+      "pass": false,
+      "reason": "exit 7 != 0"
+    },
+    {
+      "id": "have-ts-project",
+      "tier": 2,
+      "cmd": "bazel query 'kind(\"ts_project rule\", //src/...)'",
+      "exit": 7,
+      "pass": false,
+      "reason": "exit 7 != 0"
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //src/...",
+      "exit": 1,
+      "pass": false,
+      "reason": "exit 1 != 0"
+    },
+    {
+      "id": "have-tests",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\".*_test rule\", //tests/...)'",
+      "exit": 7,
+      "pass": false,
+      "reason": "exit 7 != 0"
+    },
+    {
+      "id": "test",
+      "tier": 4,
+      "cmd": "bazel test //tests/... --test_output=errors",
+      "exit": 1,
+      "pass": false,
+      "reason": "exit 1 != 0"
+    }
+  ],
+  "passed": 1,
+  "total": 7,
+  "repo": "pmndrs/zustand",
+  "approach_id": "ts-gazelle-js",
+  "scope": "//src/...",
+  "predicted_tier": 2,
+  "extra_edited_files": 5,
+  "worker_exit": 124
+}

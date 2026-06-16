@@ -1,0 +1,16 @@
+```json
+{
+  "repo": "pmndrs/zustand",
+  "approach_id": "ts-gazelle-js",
+  "scope": "//src/...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
+    {"id":"have-targets","tier":1,"cmd":"bazel query '//src/...'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"have-ts-project","tier":2,"cmd":"bazel query 'kind(\"ts_project rule\", //src/...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"build","tier":2,"cmd":"bazel build //src/...","expect":{"exit":0}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\".*_test rule\", //tests/...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"test","tier":4,"cmd":"bazel test //tests/... --test_output=errors","expect":{"exit":0}}
+  ]
+}
+```

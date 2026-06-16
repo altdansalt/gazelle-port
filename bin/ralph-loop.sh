@@ -36,7 +36,7 @@ for FULL in "${LIST[@]}"; do
   fi
 
   # gather context for the experimenter
-  LS="$(cd "$CLONE" && git ls-files | head -500)"
+  LS="$(cd "$CLONE" && git ls-files | head -500 || true)"  # || true: SIGPIPE-safe under pipefail
   README="$(cd "$CLONE" && for f in README.md README.rst README readme.md; do [[ -f $f ]] && head -c 4000 "$f" && break; done)"
   META="$(jq -c --arg f "$FULL" '.[] | select(.full_name==$f)' data/candidates.json)"
   BCR="$(cat "$ROOT/data/bcr-versions.json")"

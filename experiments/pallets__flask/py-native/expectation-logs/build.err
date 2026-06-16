@@ -1,0 +1,8 @@
+INFO: Invocation ID: d8e0d59f-d92c-4c2b-a124-ce74c1335ebd
+INFO: Analyzed 4 targets (35 packages loaded, 2393 targets configured).
+INFO: Found 4 targets...
+Target //src/flask:flask_bin up-to-date:
+  bazel-bin/src/flask/flask_bin
+INFO: Elapsed time: 1.209s, Critical Path: 0.02s
+INFO: 1 process: 11 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action
