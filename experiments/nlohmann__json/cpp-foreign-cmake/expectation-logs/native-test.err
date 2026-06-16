@@ -1,0 +1,9 @@
+INFO: Invocation ID: 213e1900-0bb4-4738-a0e8-6d943df28677
+INFO: Analyzed target //:nlohmann_json (0 packages loaded, 0 targets configured).
+INFO: Found 1 target and 0 test targets...
+Target //:nlohmann_json up-to-date:
+  bazel-bin/nlohmann_json/include
+INFO: Elapsed time: 0.273s, Critical Path: 0.00s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action
+ERROR: No test targets were found, yet testing was requested

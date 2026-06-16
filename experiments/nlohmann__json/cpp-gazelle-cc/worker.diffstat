@@ -1,0 +1,18 @@
+ .bazelrc                                          |  8 ++
+ BUILD.bazel                                       | 92 ++++-------------------
+ EXPECTATIONS.json                                 | 13 ++++
+ MODULE.bazel                                      | 13 +++-
+ bazel-bin                                         |  1 +
+ bazel-nlohmann__json__cpp-gazelle-cc              |  1 +
+ bazel-out                                         |  1 +
+ bazel-testlogs                                    |  1 +
+ include/nlohmann/BUILD.bazel                      | 13 ++++
+ include/nlohmann/detail/BUILD.bazel               | 20 +++++
+ include/nlohmann/detail/conversions/BUILD.bazel   | 11 +++
+ include/nlohmann/detail/input/BUILD.bazel         | 14 ++++
+ include/nlohmann/detail/iterators/BUILD.bazel     | 14 ++++
+ include/nlohmann/detail/meta/BUILD.bazel          | 16 ++++
+ include/nlohmann/detail/meta/call_std/BUILD.bazel | 10 +++
+ include/nlohmann/detail/output/BUILD.bazel        | 11 +++
+ include/nlohmann/thirdparty/hedley/BUILD.bazel    | 10 +++
+ 17 files changed, 167 insertions(+), 82 deletions(-)

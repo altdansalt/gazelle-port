@@ -15,3 +15,10 @@ ts	repo	approach	lang	scope	tier	predicted	extra_files	worker_exit
 2026-06-16T03:04:11Z	ggml-org/llama.cpp	cpp-foreign-cmake	Cpp	//:llama_cpp	3	2	4	0
 2026-06-16T03:22:13Z	ggml-org/llama.cpp	cpp-gazelle-cc	Cpp	//common/...	4	1	7	0
 2026-06-16T03:48:38Z	microsoft/TypeScript	ts-gazelle-js	TypeScript	//src/...	0	1	8	124
+2026-06-16T03:59:30Z	madler/zlib	cc-gazelle	Cpp	//:all	3	?	?	?
+2026-06-16T04:01:18Z	madler/zlib	cc-foreign-cmake	Cpp	//:zlib	3	?	?	?
+2026-06-16T04:05:10Z	nlohmann/json	cpp-gazelle-cc	Cpp	//include/...	3	2	13	0
+2026-06-16T04:06:46Z	nlohmann/json	cpp-foreign-cmake	Cpp	//:nlohmann_json	3	2	4	0
+2026-06-16T04:18:52Z	neovim/neovim	cmake-foreign-wrap	Cpp	//:nvim	2	1	4	0
+2026-06-16T04:42:13Z	neovim/neovim	cpp-gazelle-src	Cpp	src/nvim/...	1	0	433	0
+2026-06-16T05:11:41Z	tokio-rs/bytes	rust-gazelle	Rust	//...	1	2	9	124

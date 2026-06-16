@@ -1,0 +1,34 @@
+All expectations are satisfied. Here's the final report:
+
+---
+
+## Final Report
+
+**Tier reached: Tier 3 (all build tiers pass; tier 4 informational only)**
+
+### Expectations status
+
+| ID | Tier | Result |
+|----|------|--------|
+| `modgraph` | 1 | PASS — `rules_foreign_cc@0.15.1` present in graph |
+| `deps-resolve` | 1 | PASS — 30+ deps returned |
+| `build` | 2 | PASS — `bazel-bin/nlohmann_json/include` produced |
+| `foreign-target-exists` | 3 | PASS — `//:nlohmann_json` is a `cmake rule` |
+| `outputs-exist` | 3 | PASS — `bazel-out/k8-fastbuild/bin/nlohmann_json/include` |
+| `native-test` | 4 | N/A (informational) — exit 4 "no test targets found", as expected |
+
+### Edits made
+
+**None.** The seeded files (`MODULE.bazel`, `BUILD.bazel`, `.bazelrc`) were already correct out of the box:
+
+- `MODULE.bazel`: `rules_foreign_cc@0.15.1` + supporting deps properly declared.
+- `BUILD.bazel`: `cmake()` rule with `JSON_BuildTests=OFF`, `JSON_Install=ON`, `out_headers_only=True` — the right shape for this header-only library.
+- `.bazelrc`: bzlmod enabled, CC toolchain resolution on, shared caches configured.
+
+### What was excluded
+
+Nothing. The target builds fully as written.
+
+### Tier-4 note
+
+As documented in `EXPECTATIONS.json`, the tier-4 test check has `allow_nonzero: true`. The `cmake()` wrapper exposes only the installed headers, not the project's GoogleTest suite — that suite is CMake/ctest-driven and is intentionally excluded (`JSON_BuildTests=OFF`). The honest cap is tier 3.

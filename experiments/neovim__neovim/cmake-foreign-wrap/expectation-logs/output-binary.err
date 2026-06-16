@@ -1,0 +1,6 @@
+INFO: Invocation ID: 5939043d-7b7a-4be4-b8aa-e613b8b7e768
+INFO: Analyzed target //:nvim (0 packages loaded, 0 targets configured).
+INFO: Found 1 target...
+INFO: Elapsed time: 0.469s, Critical Path: 0.00s
+INFO: 0 processes.
+INFO: Build completed successfully, 0 total actions

@@ -1,0 +1,15 @@
+```json
+{
+  "repo": "madler/zlib",
+  "approach_id": "cc-gazelle",
+  "scope": "//:all",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
+    {"id":"build","tier":2,"cmd":"bazel build //:all","expect":{"exit":0}},
+    {"id":"have-cc-lib","tier":3,"cmd":"bazel query 'kind(\"cc_library rule\", //:all)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\".*_test rule\", //:all)'","expect":{"allow_nonzero":true,"note":"The zlib root directory has no native cc_test targets. Real test sources (test/example.c, test/infcover.c, test/minigzip.c) live in test/ which is gazelle:excluded and is driven by CMake/configure, not Bazel. gazelle_cc will not generate cc_test rules at the root, so this is informational only; honest ceiling for this approach is tier-2 (root library builds)."}},
+    {"id":"test","tier":4,"cmd":"bazel test //:all --test_output=errors","expect":{"allow_nonzero":true,"note":"No native Bazel test targets exist in scope //:all (tests are excluded and CMake/configure-driven). A bazel test over //:all with no test targets is informational and must not be counted as a native-suite pass. Do not accept a worker-authored smoke test here."}}
+  ]
+}
+```

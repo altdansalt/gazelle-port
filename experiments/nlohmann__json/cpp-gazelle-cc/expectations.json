@@ -1,0 +1,13 @@
+{
+  "repo": "nlohmann/json",
+  "approach_id": "cpp-gazelle-cc",
+  "scope": "//include/...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
+    {"id":"build","tier":2,"cmd":"bazel build //include/...","expect":{"exit":0}},
+    {"id":"have-cc-libraries","tier":3,"cmd":"bazel query 'kind(\"cc_library rule\", //include/...)'","expect":{"exit":0,"stdout_min_lines":1,"note":"Header-only library: tier-3 asserts gazelle_cc generated cc_library targets exist in the include tree, not test rules."},"allow_nonzero":false},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\".*_test rule\", //include/...)'","expect":{"exit":0,"allow_nonzero":true,"note":"The //include/... scope contains ONLY public headers; all real test files live under tests/ which is gazelle-excluded and out of scope. No native tests are expected in scope, so this is informational only."}},
+    {"id":"test","tier":4,"cmd":"bazel test //include/... --test_output=errors","expect":{"exit":0,"allow_nonzero":true,"note":"No native tests exist within //include/... (header-only public headers; repo's real tests are under tests/, excluded and out of scope). A worker-authored smoke test must NOT count as a native-suite pass. Honest ceiling for this approach is tier-2 (build) plus tier-3 cc_library structure; this step is informational."}}
+  ]
+}

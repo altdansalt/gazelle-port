@@ -1,0 +1,9 @@
+INFO: Invocation ID: 47bff10c-8d76-4353-acd1-3670576833fe
+INFO: Analyzed target //:nvim (94 packages loaded, 13836 targets configured).
+INFO: Found 1 target...
+Target //:nvim up-to-date:
+  bazel-bin/nvim/include
+  bazel-bin/nvim/bin/nvim
+INFO: Elapsed time: 3.706s, Critical Path: 0.17s
+INFO: 1 process: 9 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action

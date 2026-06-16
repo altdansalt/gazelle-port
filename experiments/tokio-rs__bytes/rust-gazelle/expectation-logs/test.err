@@ -1,0 +1,33 @@
+INFO: Invocation ID: 0c544a75-6fbf-470a-b1dd-424f220586a7
+ERROR: /home/exedev/gazel-port/.cache/worktrees/tokio-rs__bytes__rust-gazelle/benches/BUILD.bazel:13:13: Compiling Rust rlib bytes_mut (1 file) failed: (Exit 1): process_wrapper failed: error executing Rustc command (from rust_library rule target //benches:bytes_mut) bazel-out/k8-opt-exec/bin/external/rules_rust+/util/process_wrapper/process_wrapper --subst 'pwd=${pwd}' --subst 'exec_root=${exec_root}' --subst 'output_base=${output_base}' -- ... (remaining 22 arguments skipped)
+
+Use --sandbox_debug to see verbose messages from the sandbox and retain the sandbox build root for debugging
+error[E0432]: unresolved import `bytes`
+ --> benches/bytes_mut.rs:6:5
+  |
+6 | use bytes::{BufMut, BytesMut};
+  |     ^^^^^ use of undeclared crate or module `bytes`
+
+error[E0554]: `#![feature]` may not be used on the stable release channel
+ --> benches/bytes_mut.rs:1:1
+  |
+1 | #![feature(test)]
+  | ^^^^^^^^^^^^^^^^^
+
+warning: unused import: `test::Bencher`
+ --> benches/bytes_mut.rs:7:5
+  |
+7 | use test::Bencher;
+  |     ^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+error: aborting due to 2 previous errors; 1 warning emitted
+
+Some errors have detailed explanations: E0432, E0554.
+For more information about an error, try `rustc --explain E0432`.
+Use --verbose_failures to see the command lines of failed build steps.
+INFO: Elapsed time: 0.850s, Critical Path: 0.13s
+INFO: 3 processes: 3 internal.
+ERROR: Build did NOT complete successfully
+ERROR: No test targets were found, yet testing was requested

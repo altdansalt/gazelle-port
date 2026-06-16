@@ -1,0 +1,69 @@
+{
+  "tier_reached": 2,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "deps-resolve",
+      "tier": 1,
+      "cmd": "bazel mod deps //:nvim",
+      "exit": 2,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "target-exists",
+      "tier": 1,
+      "cmd": "bazel query '//:nvim'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "target-is-cmake",
+      "tier": 1,
+      "cmd": "bazel query 'kind(\"cmake.*rule\", //:nvim)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //:nvim",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "output-binary",
+      "tier": 3,
+      "cmd": "bazel cquery '//:nvim' --output=files",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "native-tests",
+      "tier": 4,
+      "cmd": "bazel test //:nvim --test_output=errors",
+      "exit": 4,
+      "pass": true,
+      "reason": ""
+    }
+  ],
+  "passed": 7,
+  "total": 7,
+  "repo": "neovim/neovim",
+  "approach_id": "cmake-foreign-wrap",
+  "scope": "//:nvim",
+  "predicted_tier": 1,
+  "extra_edited_files": 4,
+  "worker_exit": 0
+}

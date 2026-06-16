@@ -1,0 +1,9 @@
+//include/nlohmann:nlohmann
+//include/nlohmann/detail:detail
+//include/nlohmann/detail/conversions:conversions
+//include/nlohmann/detail/input:input
+//include/nlohmann/detail/iterators:iterators
+//include/nlohmann/detail/meta:meta
+//include/nlohmann/detail/meta/call_std:call_std
+//include/nlohmann/detail/output:output
+//include/nlohmann/thirdparty/hedley:hedley

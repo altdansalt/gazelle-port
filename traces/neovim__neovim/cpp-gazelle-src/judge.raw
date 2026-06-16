@@ -1,0 +1,15 @@
+```json
+{
+  "repo": "neovim/neovim",
+  "approach_id": "cpp-gazelle-src",
+  "scope": "src/nvim/...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
+    {"id":"build","tier":2,"cmd":"bazel build //src/nvim/...","expect":{"exit":0}},
+    {"id":"have-cc-targets","tier":3,"cmd":"bazel query 'kind(\"cc_library rule\", //src/nvim/...)'","expect":{"exit":0,"stdout_min_lines":1,"note":"gazelle_cc should emit cc_library targets from the include graph; proving structure even if build fails. Not a test query."}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\".*_test rule\", //src/nvim/...)'","expect":{"exit":0,"allow_nonzero":true,"note":"Neovim's own unit/functional tests are Lua (busted) and Lua-bridge C tests driven by CMake/luajit, not native cc_test rules; gazelle_cc will not generate test targets. No native Bazel tests exist in this scope, so tier-3 test discovery is informational only."}},
+    {"id":"test","tier":4,"cmd":"bazel test //src/nvim/... --test_output=errors","expect":{"exit":0,"allow_nonzero":true,"note":"No native cc_test targets in scope (tests are Lua/busted run outside Bazel, and require generated headers + bundled deps libuv/luajit/treesitter that this source-native attempt does not model). Tier-4 cannot be honestly earned; informational only."}}
+  ]
+}
+```

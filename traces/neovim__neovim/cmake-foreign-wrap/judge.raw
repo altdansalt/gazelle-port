@@ -1,0 +1,16 @@
+```json
+{
+  "repo": "neovim/neovim",
+  "approach_id": "cmake-foreign-wrap",
+  "scope": "//:nvim",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0,"stdout_regex":"rules_foreign_cc"}},
+    {"id":"deps-resolve","tier":1,"cmd":"bazel mod deps //:nvim","expect":{"exit":0,"allow_nonzero":true,"note":"Informational: resolve repo deps for the foreign-cc wrapping target."}},
+    {"id":"target-exists","tier":1,"cmd":"bazel query '//:nvim'","expect":{"exit":0,"stdout_regex":"//:nvim"}},
+    {"id":"target-is-cmake","tier":1,"cmd":"bazel query 'kind(\"cmake.*rule\", //:nvim)'","expect":{"exit":0,"stdout_regex":"//:nvim","allow_nonzero":true,"note":"rules_foreign_cc cmake() expands to a macro; the underlying rule kind name may vary. Informational confirmation of structure."}},
+    {"id":"build","tier":2,"cmd":"bazel build //:nvim","expect":{"exit":0,"note":"Core success: the single coarse cmake() wrapping target builds Neovim's own CMake tree. High risk: code-gen needs host Lua, and bundled deps (libuv/luajit/lpeg/treesitter/unibilium/utf8proc) are fetched by the separate cmake.deps subproject and are NOT provided to this wrapped build, so this may require host-installed deps or fail (predicted_tier=1)."}},
+    {"id":"output-binary","tier":3,"cmd":"bazel cquery '//:nvim' --output=files","expect":{"exit":0,"stdout_regex":"nvim","allow_nonzero":true,"note":"B-foreign has no fine-grained graph and no kind(..._test) targets. This asserts the foreign build's declared output (out_binaries=[nvim]) exists. Informational since it depends on tier-2 building."}},
+    {"id":"native-tests","tier":4,"cmd":"bazel test //:nvim --test_output=errors","expect":{"exit":0,"allow_nonzero":true,"note":"No Bazel-wired test target exists. Neovim's own test suite is the busted/functional/unit suite driven by cmake/RunTests.cmake (needs the built nvim binary + Lua test runner + runtime), which is not exposed as a bazel test target in this coarse foreign wrap. No worker-authored smoke test should count here; honest expectations cap at tier-2 (build) / tier-3 (output exists). Tier-4 is informational only."}}
+  ]
+}
+```

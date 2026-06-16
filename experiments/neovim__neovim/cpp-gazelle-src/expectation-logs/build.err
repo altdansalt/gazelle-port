@@ -1,0 +1,12 @@
+INFO: Invocation ID: 2a1fb2a5-e680-4cd9-a200-485fc43e9a6e
+ERROR: /home/exedev/gazel-port/.cache/worktrees/neovim__neovim__cpp-gazelle-src/src/nvim/msgpack_rpc/BUILD.bazel:3:11: in cc_library rule //src/nvim/msgpack_rpc:msgpack_rpc: cycle in dependency graph:
+    //src/nvim/api/private:private (2657d681ff13e2be097f27e04b645f9a6bce2dc21c8af5e0c3ad0f75853ce8e8)
+    //src/nvim/api/private:private (dfb102eeb5358970fc6fd1b548206d578076e81b14bd935c2317c60cd4be5e3a)
+.-> //src/nvim/msgpack_rpc:msgpack_rpc (dfb102eeb5358970fc6fd1b548206d578076e81b14bd935c2317c60cd4be5e3a)
+|   //src/nvim/os:os (dfb102eeb5358970fc6fd1b548206d578076e81b14bd935c2317c60cd4be5e3a)
+`-- //src/nvim/msgpack_rpc:msgpack_rpc (dfb102eeb5358970fc6fd1b548206d578076e81b14bd935c2317c60cd4be5e3a)
+Target //src/nvim/lib:lib up-to-date (nothing to build)
+ERROR: Analysis of target '//src/nvim/api/private:private' failed; build aborted
+INFO: Elapsed time: 0.409s, Critical Path: 0.02s
+INFO: 1 process: 1 internal.
+ERROR: Build did NOT complete successfully

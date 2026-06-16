@@ -1,0 +1,7 @@
+INFO: Invocation ID: 0cc4844c-7517-44bf-9679-b258d712d352
+INFO: Analyzed 9 targets (0 packages loaded, 0 targets configured).
+INFO: Found 9 targets and 0 test targets...
+INFO: Elapsed time: 0.391s, Critical Path: 0.01s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action
+ERROR: No test targets were found, yet testing was requested

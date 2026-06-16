@@ -1,0 +1,13 @@
+{
+  "repo": "tokio-rs/bytes",
+  "approach_id": "rust-gazelle",
+  "scope": "//...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0,"stdout_regex":"rules_rust"}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
+    {"id":"build","tier":2,"cmd":"bazel build //...","expect":{"exit":0}},
+    {"id":"have-lib","tier":2,"cmd":"bazel query 'kind(\"rust_library\", //...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\"rust_test\", //...)'","expect":{"exit":0,"stdout_min_lines":1,"note":"Repo has 12 integration tests in tests/ (test_buf.rs, test_bytes.rs, etc.) plus a likely lib unit-test target; gazelle_rust should emit rust_test rules for these. Asserting at least one is discovered. serde/odd_alloc/vec_alloc tests are cfg/feature-gated and may be missing if features unmapped (anticipated risk)."}},
+    {"id":"test","tier":4,"cmd":"bazel test //... --test_output=errors","expect":{"exit":0,"allow_nonzero":true,"note":"Cargo feature flags (std/serde/extra-platforms), loom cfg-gated code, and doc tests in src/lib.rs are not run by rust_test and feature mapping by gazelle_rust 0.1.0 may be incomplete; some native integration tests (test_serde, odd/vec_alloc allocator-override tests) may fail to build or run. These are the repo's OWN tests, so we run them, but allow_nonzero given the maturity/feature risks. Predicted realistic tier is 2."}}
+  ]
+}

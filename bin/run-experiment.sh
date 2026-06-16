@@ -117,7 +117,7 @@ echo ">> scoring ..." >&2
 # enrich result.json with metadata
 TIER=$(jq -r '.tier_reached' "$EXPDIR/result.json" 2>/dev/null || echo 0)
 PRED=$(jq -r '.predicted_tier // empty' "$APPROACH")
-EDIT_FILES=$(cd "$WT" && git diff --cached --name-only | grep -vE '^(MODULE\.bazel|BUILD\.bazel|\.bazelrc|EXPECTATIONS\.json|MODULE\.bazel\.lock)$' | wc -l | tr -d ' ')
+EDIT_FILES=$(cd "$WT" && git diff --cached --name-only | { grep -vE '^(MODULE\.bazel|BUILD\.bazel|\.bazelrc|EXPECTATIONS\.json|MODULE\.bazel\.lock)$' || true; } | wc -l | tr -d ' ')
 jq --arg repo "$FULL" --arg aid "$AID" --arg scope "$SCOPE" --argjson pred "${PRED:-null}" \
    --argjson editfiles "$EDIT_FILES" --argjson wcode "$WCODE" \
    '. + {repo:$repo, approach_id:$aid, scope:$scope, predicted_tier:$pred,

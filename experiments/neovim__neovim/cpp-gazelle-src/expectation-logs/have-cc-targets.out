@@ -1,0 +1,13 @@
+//src/nvim:nvim
+//src/nvim/api:api
+//src/nvim/api/private:private
+//src/nvim/eval:eval
+//src/nvim/event:event
+//src/nvim/lib:lib
+//src/nvim/lua:lua
+//src/nvim/msgpack_rpc:msgpack_rpc
+//src/nvim/os:os
+//src/nvim/tui:tui
+//src/nvim/tui/termkey:termkey
+//src/nvim/viml/parser:parser
+//src/nvim/vterm:vterm

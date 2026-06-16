@@ -1,0 +1,358 @@
+diff --git a/.bazelrc b/.bazelrc
+new file mode 100644
+index 0000000..74cf9cb
+--- /dev/null
++++ b/.bazelrc
+@@ -0,0 +1,8 @@
++common --enable_bzlmod
++build --cxxopt=-std=c++11
++build --host_cxxopt=-std=c++11
++
++common --disk_cache=/home/exedev/gazel-port/.cache/bazel-disk
++common --repository_cache=/home/exedev/gazel-port/.cache/bazel-repo
++common --noshow_progress
++test --test_output=errors
+diff --git a/BUILD.bazel b/BUILD.bazel
+index de0ff71..516f798 100644
+--- a/BUILD.bazel
++++ b/BUILD.bazel
+@@ -1,80 +1,14 @@
+-load("@rules_cc//cc:cc_library.bzl", "cc_library")
+-load("@rules_license//rules:license.bzl", "license")
+-
+-package(
+-    default_applicable_licenses = [":license"],
+-)
+-
+-exports_files([
+-    "LICENSE.MIT",
+-])
+-
+-license(
+-    name = "license",
+-    license_kinds = ["@rules_license//licenses/spdx:MIT"],
+-    license_text = "LICENSE.MIT",
+-)
+-
+-cc_library(
+-    name = "json",
+-    hdrs = [
+-        "include/nlohmann/adl_serializer.hpp",
+-        "include/nlohmann/byte_container_with_subtype.hpp",
+-        "include/nlohmann/detail/abi_macros.hpp",
+-        "include/nlohmann/detail/conversions/from_json.hpp",
+-        "include/nlohmann/detail/conversions/to_chars.hpp",
+-        "include/nlohmann/detail/conversions/to_json.hpp",
+-        "include/nlohmann/detail/exceptions.hpp",
+-        "include/nlohmann/detail/hash.hpp",
+-        "include/nlohmann/detail/input/binary_reader.hpp",
+-        "include/nlohmann/detail/input/input_adapters.hpp",
+-        "include/nlohmann/detail/input/json_sax.hpp",
+-        "include/nlohmann/detail/input/lexer.hpp",
+-        "include/nlohmann/detail/input/parser.hpp",
+-        "include/nlohmann/detail/input/position_t.hpp",
+-        "include/nlohmann/detail/iterators/internal_iterator.hpp",
+-        "include/nlohmann/detail/iterators/iter_impl.hpp",
+-        "include/nlohmann/detail/iterators/iteration_proxy.hpp",
+-        "include/nlohmann/detail/iterators/iterator_traits.hpp",
+-        "include/nlohmann/detail/iterators/json_reverse_iterator.hpp",
+-        "include/nlohmann/detail/iterators/primitive_iterator.hpp",
+-        "include/nlohmann/detail/json_custom_base_class.hpp",
+-        "include/nlohmann/detail/json_pointer.hpp",
+-        "include/nlohmann/detail/json_ref.hpp",
+-        "include/nlohmann/detail/macro_scope.hpp",
+-        "include/nlohmann/detail/macro_unscope.hpp",
+-        "include/nlohmann/detail/meta/call_std/begin.hpp",
+-        "include/nlohmann/detail/meta/call_std/end.hpp",
+-        "include/nlohmann/detail/meta/cpp_future.hpp",
+-        "include/nlohmann/detail/meta/detected.hpp",
+-        "include/nlohmann/detail/meta/identity_tag.hpp",
+-        "include/nlohmann/detail/meta/is_sax.hpp",
+-        "include/nlohmann/detail/meta/std_fs.hpp",
+-        "include/nlohmann/detail/meta/type_traits.hpp",
+-        "include/nlohmann/detail/meta/void_t.hpp",
+-        "include/nlohmann/detail/output/binary_writer.hpp",
+-        "include/nlohmann/detail/output/output_adapters.hpp",
+-        "include/nlohmann/detail/output/serializer.hpp",
+-        "include/nlohmann/detail/string_concat.hpp",
+-        "include/nlohmann/detail/string_escape.hpp",
+-        "include/nlohmann/detail/string_utils.hpp",
+-        "include/nlohmann/detail/value_t.hpp",
+-        "include/nlohmann/json.hpp",
+-        "include/nlohmann/json_fwd.hpp",
+-        "include/nlohmann/ordered_map.hpp",
+-        "include/nlohmann/thirdparty/hedley/hedley.hpp",
+-        "include/nlohmann/thirdparty/hedley/hedley_undef.hpp",
+-    ],
+-    includes = ["include"],
+-    visibility = ["//visibility:public"],
+-    alwayslink = True,
+-)
+-
+-cc_library(
+-    name = "singleheader-json",
+-    hdrs = [
+-        "single_include/nlohmann/json.hpp",
+-    ],
+-    includes = ["single_include"],
+-    visibility = ["//visibility:public"],
++load("@gazelle//:def.bzl", "gazelle")
++
++# gazelle:exclude docs
++# gazelle:exclude tests
++# gazelle:exclude tools
++# gazelle:exclude benchmarks
++# gazelle:exclude cmake
++# gazelle:exclude single_include
++# gazelle:exclude src
++
++gazelle(
++    name = "gazelle",
++    gazelle = "@gazelle_cc//:gazelle_cc",
+ )
+diff --git a/EXPECTATIONS.json b/EXPECTATIONS.json
+new file mode 100644
+index 0000000..dc9ad50
+--- /dev/null
++++ b/EXPECTATIONS.json
+@@ -0,0 +1,13 @@
++{
++  "repo": "nlohmann/json",
++  "approach_id": "cpp-gazelle-cc",
++  "scope": "//include/...",
++  "expectations": [
++    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0}},
++    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
++    {"id":"build","tier":2,"cmd":"bazel build //include/...","expect":{"exit":0}},
++    {"id":"have-cc-libraries","tier":3,"cmd":"bazel query 'kind(\"cc_library rule\", //include/...)'","expect":{"exit":0,"stdout_min_lines":1,"note":"Header-only library: tier-3 asserts gazelle_cc generated cc_library targets exist in the include tree, not test rules."},"allow_nonzero":false},
++    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\".*_test rule\", //include/...)'","expect":{"exit":0,"allow_nonzero":true,"note":"The //include/... scope contains ONLY public headers; all real test files live under tests/ which is gazelle-excluded and out of scope. No native tests are expected in scope, so this is informational only."}},
++    {"id":"test","tier":4,"cmd":"bazel test //include/... --test_output=errors","expect":{"exit":0,"allow_nonzero":true,"note":"No native tests exist within //include/... (header-only public headers; repo's real tests are under tests/, excluded and out of scope). A worker-authored smoke test must NOT count as a native-suite pass. Honest ceiling for this approach is tier-2 (build) plus tier-3 cc_library structure; this step is informational."}}
++  ]
++}
+diff --git a/MODULE.bazel b/MODULE.bazel
+index 51754e7..8b36591 100644
+--- a/MODULE.bazel
++++ b/MODULE.bazel
+@@ -1,7 +1,14 @@
+ module(
+     name = "nlohmann_json",
+-    compatibility_level = 1,
++    version = "0.0.0",
+ )
+ 
+-bazel_dep(name = "rules_cc", version = "0.0.17")
+-bazel_dep(name = "rules_license", version = "1.0.0")
++bazel_dep(name = "rules_cc", version = "0.2.19")
++bazel_dep(name = "gazelle", version = "0.51.3")
++bazel_dep(name = "gazelle_cc", version = "0.6.0")
++bazel_dep(name = "platforms", version = "1.1.0")
++bazel_dep(name = "bazel_skylib", version = "1.9.0")
++
++# Hermetic-ish C/C++ toolchain registration is handled by rules_cc's
++# auto-detected toolchain; pin rules_cc for reproducibility.
++
+diff --git a/bazel-bin b/bazel-bin
+new file mode 120000
+index 0000000..ebdaaf9
+--- /dev/null
++++ b/bazel-bin
+@@ -0,0 +1 @@
++/home/exedev/.cache/bazel/_bazel_exedev/c6c501a7bcff2268f7876486d49e2e7b/execroot/_main/bazel-out/k8-fastbuild/bin
+\ No newline at end of file
+diff --git a/bazel-nlohmann__json__cpp-gazelle-cc b/bazel-nlohmann__json__cpp-gazelle-cc
+new file mode 120000
+index 0000000..4894c53
+--- /dev/null
++++ b/bazel-nlohmann__json__cpp-gazelle-cc
+@@ -0,0 +1 @@
++/home/exedev/.cache/bazel/_bazel_exedev/c6c501a7bcff2268f7876486d49e2e7b/execroot/_main
+\ No newline at end of file
+diff --git a/bazel-out b/bazel-out
+new file mode 120000
+index 0000000..3e80748
+--- /dev/null
++++ b/bazel-out
+@@ -0,0 +1 @@
++/home/exedev/.cache/bazel/_bazel_exedev/c6c501a7bcff2268f7876486d49e2e7b/execroot/_main/bazel-out
+\ No newline at end of file
+diff --git a/bazel-testlogs b/bazel-testlogs
+new file mode 120000
+index 0000000..e0179cb
+--- /dev/null
++++ b/bazel-testlogs
+@@ -0,0 +1 @@
++/home/exedev/.cache/bazel/_bazel_exedev/c6c501a7bcff2268f7876486d49e2e7b/execroot/_main/bazel-out/k8-fastbuild/testlogs
+\ No newline at end of file
+diff --git a/include/nlohmann/BUILD.bazel b/include/nlohmann/BUILD.bazel
+new file mode 100644
+index 0000000..42fd24e
+--- /dev/null
++++ b/include/nlohmann/BUILD.bazel
+@@ -0,0 +1,13 @@
++load("@rules_cc//cc:defs.bzl", "cc_library")
++
++cc_library(
++    name = "nlohmann",
++    hdrs = [
++        "adl_serializer.hpp",
++        "byte_container_with_subtype.hpp",
++        "json.hpp",
++        "json_fwd.hpp",
++        "ordered_map.hpp",
++    ],
++    visibility = ["//visibility:public"],
++)
+diff --git a/include/nlohmann/detail/BUILD.bazel b/include/nlohmann/detail/BUILD.bazel
+new file mode 100644
+index 0000000..132f054
+--- /dev/null
++++ b/include/nlohmann/detail/BUILD.bazel
+@@ -0,0 +1,20 @@
++load("@rules_cc//cc:defs.bzl", "cc_library")
++
++cc_library(
++    name = "detail",
++    hdrs = [
++        "abi_macros.hpp",
++        "exceptions.hpp",
++        "hash.hpp",
++        "json_custom_base_class.hpp",
++        "json_pointer.hpp",
++        "json_ref.hpp",
++        "macro_scope.hpp",
++        "macro_unscope.hpp",
++        "string_concat.hpp",
++        "string_escape.hpp",
++        "string_utils.hpp",
++        "value_t.hpp",
++    ],
++    visibility = ["//visibility:public"],
++)
+diff --git a/include/nlohmann/detail/conversions/BUILD.bazel b/include/nlohmann/detail/conversions/BUILD.bazel
+new file mode 100644
+index 0000000..0f4db31
+--- /dev/null
++++ b/include/nlohmann/detail/conversions/BUILD.bazel
+@@ -0,0 +1,11 @@
++load("@rules_cc//cc:defs.bzl", "cc_library")
++
++cc_library(
++    name = "conversions",
++    hdrs = [
++        "from_json.hpp",
++        "to_chars.hpp",
++        "to_json.hpp",
++    ],
++    visibility = ["//visibility:public"],
++)
+diff --git a/include/nlohmann/detail/input/BUILD.bazel b/include/nlohmann/detail/input/BUILD.bazel
+new file mode 100644
+index 0000000..8dbdecd
+--- /dev/null
++++ b/include/nlohmann/detail/input/BUILD.bazel
+@@ -0,0 +1,14 @@
++load("@rules_cc//cc:defs.bzl", "cc_library")
++
++cc_library(
++    name = "input",
++    hdrs = [
++        "binary_reader.hpp",
++        "input_adapters.hpp",
++        "json_sax.hpp",
++        "lexer.hpp",
++        "parser.hpp",
++        "position_t.hpp",
++    ],
++    visibility = ["//visibility:public"],
++)
+diff --git a/include/nlohmann/detail/iterators/BUILD.bazel b/include/nlohmann/detail/iterators/BUILD.bazel
+new file mode 100644
+index 0000000..1623a5a
+--- /dev/null
++++ b/include/nlohmann/detail/iterators/BUILD.bazel
+@@ -0,0 +1,14 @@
++load("@rules_cc//cc:defs.bzl", "cc_library")
++
++cc_library(
++    name = "iterators",
++    hdrs = [
++        "internal_iterator.hpp",
++        "iter_impl.hpp",
++        "iteration_proxy.hpp",
++        "iterator_traits.hpp",
++        "json_reverse_iterator.hpp",
++        "primitive_iterator.hpp",
++    ],
++    visibility = ["//visibility:public"],
++)
+diff --git a/include/nlohmann/detail/meta/BUILD.bazel b/include/nlohmann/detail/meta/BUILD.bazel
+new file mode 100644
+index 0000000..df91aa2
+--- /dev/null
++++ b/include/nlohmann/detail/meta/BUILD.bazel
+@@ -0,0 +1,16 @@
++load("@rules_cc//cc:defs.bzl", "cc_library")
++
++cc_library(
++    name = "meta",
++    hdrs = [
++        "cpp_future.hpp",
++        "detected.hpp",
++        "identity_tag.hpp",
++        "is_sax.hpp",
++        "logic.hpp",
++        "std_fs.hpp",
++        "type_traits.hpp",
++        "void_t.hpp",
++    ],
++    visibility = ["//visibility:public"],
++)
+diff --git a/include/nlohmann/detail/meta/call_std/BUILD.bazel b/include/nlohmann/detail/meta/call_std/BUILD.bazel
+new file mode 100644
+index 0000000..8556fb8
+--- /dev/null
++++ b/include/nlohmann/detail/meta/call_std/BUILD.bazel
+@@ -0,0 +1,10 @@
++load("@rules_cc//cc:defs.bzl", "cc_library")
++
++cc_library(
++    name = "call_std",
++    hdrs = [
++        "begin.hpp",
++        "end.hpp",
++    ],
++    visibility = ["//visibility:public"],
++)
+diff --git a/include/nlohmann/detail/output/BUILD.bazel b/include/nlohmann/detail/output/BUILD.bazel
+new file mode 100644
+index 0000000..b650b07
+--- /dev/null
++++ b/include/nlohmann/detail/output/BUILD.bazel
+@@ -0,0 +1,11 @@
++load("@rules_cc//cc:defs.bzl", "cc_library")
++
++cc_library(
++    name = "output",
++    hdrs = [
++        "binary_writer.hpp",
++        "output_adapters.hpp",
++        "serializer.hpp",
++    ],
++    visibility = ["//visibility:public"],
++)
+diff --git a/include/nlohmann/thirdparty/hedley/BUILD.bazel b/include/nlohmann/thirdparty/hedley/BUILD.bazel
+new file mode 100644
+index 0000000..43338d0
+--- /dev/null
++++ b/include/nlohmann/thirdparty/hedley/BUILD.bazel
+@@ -0,0 +1,10 @@
++load("@rules_cc//cc:defs.bzl", "cc_library")
++
++cc_library(
++    name = "hedley",
++    hdrs = [
++        "hedley.hpp",
++        "hedley_undef.hpp",
++    ],
++    visibility = ["//visibility:public"],
++)

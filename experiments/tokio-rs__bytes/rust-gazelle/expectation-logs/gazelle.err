@@ -1,0 +1,33 @@
+INFO: Invocation ID: 7c9a26d7-0005-419c-83c7-131f51c7c7a3
+INFO: Analyzed target //:gazelle (754 packages loaded, 33308 targets configured, 200 aspect applications).
+INFO: Found 1 target...
+Target //:gazelle up-to-date:
+  bazel-bin/gazelle-runner.bash
+  bazel-bin/gazelle
+INFO: Elapsed time: 232.441s, Critical Path: 59.74s
+INFO: 440 processes: 1817 action cache hit, 46 internal, 394 linux-sandbox.
+INFO: Build completed successfully, 440 total actions
+INFO: Running command line: bazel-bin/gazelle
+gazelle: /home/exedev/gazel-port/.cache/worktrees/tokio-rs__bytes__rust-gazelle/BUILD.bazel: unknown directive: gazelle:rust_crates_index
+gazelle: @bytes//benches:buf: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//benches:bytes_mut: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//src/buf:vec_deque: no match for io
+gazelle: @bytes//src/buf:vec_deque: no match for io
+gazelle: @bytes//src/buf:vec_deque: no match for io
+gazelle: @bytes//tests:test_buf_mut: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_buf_mut: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_bytes: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_bytes_odd_alloc: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_bytes_vec_alloc: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_chain: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_debug: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_iter: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_limit: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_reader: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_serde: no match for serde_test
+gazelle: @bytes//tests:test_serde: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_serde: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_serde: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_serde: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_take: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]
+gazelle: @bytes//tests:test_take: multiple matches found for bytes: [@bytes//benches:bytes, @bytes//src:bytes]

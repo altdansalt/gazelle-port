@@ -1,0 +1,10 @@
+INFO: Invocation ID: dce7d7fc-bdeb-40eb-95a3-d42178b3da9b
+INFO: Analyzed target //:nvim (0 packages loaded, 0 targets configured).
+INFO: Found 1 target and 0 test targets...
+Target //:nvim up-to-date:
+  bazel-bin/nvim/include
+  bazel-bin/nvim/bin/nvim
+INFO: Elapsed time: 0.505s, Critical Path: 0.00s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action
+ERROR: No test targets were found, yet testing was requested

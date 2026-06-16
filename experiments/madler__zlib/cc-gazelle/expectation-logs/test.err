@@ -1,0 +1,7 @@
+INFO: Invocation ID: f0e1ce20-81a7-40ed-8d6b-d658813d6e28
+INFO: Analyzed 3 targets (0 packages loaded, 0 targets configured).
+INFO: Found 3 targets and 0 test targets...
+INFO: Elapsed time: 0.260s, Critical Path: 0.00s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action
+ERROR: No test targets were found, yet testing was requested

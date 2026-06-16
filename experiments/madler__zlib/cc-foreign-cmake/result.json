@@ -1,0 +1,55 @@
+{
+  "tier_reached": 3,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "deps-resolve",
+      "tier": 1,
+      "cmd": "bazel query 'deps(//:zlib, 1)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //:zlib",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-target",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"cmake rule\", //:all)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "outputs-exist",
+      "tier": 3,
+      "cmd": "bazel cquery --output=files //:zlib",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "test",
+      "tier": 4,
+      "cmd": "bazel test //:zlib --test_output=errors",
+      "exit": 4,
+      "pass": true,
+      "reason": ""
+    }
+  ],
+  "passed": 6,
+  "total": 6
+}

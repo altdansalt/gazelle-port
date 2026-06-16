@@ -1,0 +1,6 @@
+INFO: Invocation ID: a9e5959f-6a50-4edb-92ee-9b564ef1be6f
+INFO: Analyzed 9 targets (11 packages loaded, 59 targets configured).
+INFO: Found 9 targets...
+INFO: Elapsed time: 0.491s, Critical Path: 0.00s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action

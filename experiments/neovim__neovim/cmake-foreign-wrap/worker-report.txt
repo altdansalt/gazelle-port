@@ -1,0 +1,37 @@
+All tiers 1-3 pass. Here is the final report:
+
+---
+
+## Final Report
+
+**Tier reached: Tier 3** (`output-binary` — the built `nvim` binary is declared as an output and exists at `bazel-out/k8-fastbuild/bin/nvim/bin/nvim`)
+
+### Edits made
+
+**`MODULE.bazel`** — Fixed `use_repo(foreign_cc, ..., "ninja_build")` → `"ninja_build_src"`. The rules_foreign_cc 0.15.1 extension generates repo `ninja_build_src`, not `ninja_build`. The error message even suggested the correct name.
+
+**`BUILD.bazel`** — Removed the invalid `binaries = ["nvim"]` attribute from the `cmake()` call. The `cmake` rule has `out_binaries` (which was already present) but no `binaries` attribute; having both caused a query/build failure.
+
+### Host deps installed (needed for the sandbox PATH `/bin:/usr/bin:/usr/local/bin`)
+
+The `--incompatible_strict_action_env` strips the env but keeps `/bin`, `/usr/bin`, `/usr/local/bin` in PATH, so system-installed tools are visible. The bundled `cmake.deps` subproject is a separate CMake project not wired in this coarse wrap, so all deps must come from the host:
+
+| Package | Why |
+|---|---|
+| `luajit` (apt) | Code generation; CMake `find_program(luajit)` found at `/bin/luajit` |
+| `lua-luv-dev` (apt) | `FindLuv.cmake` needs `luv/luv.h` + `libluv` |
+| `lua-lpeg` + `lua-lpeg-dev` (apt) | `FindLpeg.cmake` |
+| `libtree-sitter-dev` (apt) | Trigger to install headers; actual used version below |
+| `libutf8proc-dev` (apt) | Trigger; actual version below |
+| tree-sitter @ commit `519d511` built from source → `/usr/local` | System pkg (0.20.8) missing `TSParseState`, `TSLanguageMetadata`, `TSParseOptions`, `ts_parser_parse_with_options` — APIs added post-0.24.7 (this commit is 0.27-dev) |
+| utf8proc 2.11.3 built from source → `/usr/local` | System pkg (2.9.0) missing `ambiguous_width` field in `utf8proc_property_t` |
+| `libluajit-5.1-dev` (apt) | `FindLuajit.cmake` needs headers |
+| `libunibilium-dev` (apt) | `FindUnibilium.cmake` |
+
+### What was excluded
+
+Nothing excluded — the build succeeded without exclusions.
+
+### Tier 4 (native-tests)
+
+The expectations note this as informational only: neovim has no Bazel-wired `*_test` target. The test suite is driven by `cmake/RunTests.cmake` via the built nvim binary + Lua test runner, not a `bazel test` target. Tier 4 is unreachable without authoring a smoke test (which the rules prohibit). Honest result: **stopped at Tier 3**.

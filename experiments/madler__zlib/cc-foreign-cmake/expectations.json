@@ -1,0 +1,13 @@
+{
+  "repo": "madler/zlib",
+  "approach_id": "cc-foreign-cmake",
+  "scope": "//:zlib",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0,"stdout_regex":"rules_foreign_cc"}},
+    {"id":"deps-resolve","tier":1,"cmd":"bazel query 'deps(//:zlib, 1)'","expect":{"exit":0}},
+    {"id":"build","tier":2,"cmd":"bazel build //:zlib","expect":{"exit":0}},
+    {"id":"have-target","tier":3,"cmd":"bazel query 'kind(\"cmake rule\", //:all)'","expect":{"exit":0,"stdout_regex":"//:zlib"}},
+    {"id":"outputs-exist","tier":3,"cmd":"bazel cquery --output=files //:zlib","expect":{"exit":0,"stdout_regex":"libz\\.a"}},
+    {"id":"test","tier":4,"cmd":"bazel test //:zlib --test_output=errors","expect":{"allow_nonzero":true},"note":"B-foreign rules_foreign_cc cmake wrapping: zlib's own tests (test/example.c, test/infcover.c, test/minigzip.c) are driven via the upstream CMake/CTest harness and are not wired as Bazel test targets in this approach's BUILD.bazel. There is no native Bazel test target in scope, so honest expectations cap at tier-3 (the wrapping cmake target builds and produces libz.a). This step is informational only."}
+  ]
+}

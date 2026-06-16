@@ -1,0 +1,2 @@
+bazel-out/k8-fastbuild/bin/nvim/include
+bazel-out/k8-fastbuild/bin/nvim/bin/nvim

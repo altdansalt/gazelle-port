@@ -1,0 +1,13 @@
+//src:bytes_mut_test
+//tests:test_buf
+//tests:test_buf_mut
+//tests:test_bytes
+//tests:test_bytes_odd_alloc
+//tests:test_bytes_vec_alloc
+//tests:test_chain
+//tests:test_debug
+//tests:test_iter
+//tests:test_limit
+//tests:test_reader
+//tests:test_serde
+//tests:test_take

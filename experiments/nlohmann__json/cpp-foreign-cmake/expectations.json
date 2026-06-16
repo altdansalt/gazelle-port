@@ -1,0 +1,13 @@
+{
+  "repo": "nlohmann/json",
+  "approach_id": "cpp-foreign-cmake",
+  "scope": "//:nlohmann_json",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0,"stdout_regex":"rules_foreign_cc"}},
+    {"id":"deps-resolve","tier":1,"cmd":"bazel query 'deps(//:nlohmann_json, 1)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"build","tier":2,"cmd":"bazel build //:nlohmann_json","expect":{"exit":0}},
+    {"id":"foreign-target-exists","tier":3,"cmd":"bazel query 'kind(\"cmake rule\", //:nlohmann_json)'","expect":{"exit":0,"stdout_regex":"//:nlohmann_json"}},
+    {"id":"outputs-exist","tier":3,"cmd":"bazel cquery --output=files //:nlohmann_json","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"native-test","tier":4,"cmd":"bazel test //:nlohmann_json --test_output=errors","expect":{"allow_nonzero":true},"note":"B-foreign header-only wrap (out_headers_only, JSON_BuildTests=OFF): no Bazel-wired test target exists for the cmake() wrapper. The project's own GoogleTest suite lives under tests/ and is driven by CMake/ctest, not exposed as a Bazel test rule by this approach. Honest cap is tier-3 (foreign target builds and installs headers). Tier-4 is informational only and must not be counted as a native-suite pass."}
+  ]
+}

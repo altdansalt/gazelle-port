@@ -1,0 +1,32 @@
+All expectations pass. The tier 4 test step exits non-zero (exit 4 = no test targets) but the expectation has `"allow_nonzero": true`, so it's explicitly informational.
+
+---
+
+## Final Report
+
+**Tier reached: 3 (build + cmake target + libz.a output)**
+
+### What passed
+
+| ID | Tier | Result |
+|----|------|--------|
+| `modgraph` | 1 | `rules_foreign_cc@0.15.1` present in graph |
+| `deps-resolve` | 1 | All deps resolve cleanly |
+| `build` | 2 | `bazel build //:zlib` exits 0, produces `bazel-bin/zlib/lib/libz.a` |
+| `have-target` | 3 | `//:zlib` is a `cmake` rule |
+| `outputs-exist` | 3 | `libz.a` present in cquery `--output=files` |
+| `test` | 4 | Exit 4 (no Bazel test targets) — `allow_nonzero: true`, informational |
+
+### Edits made
+
+**None.** The seeded `BUILD.bazel` and `MODULE.bazel` were already correct:
+- `MODULE.bazel`: declares `rules_foreign_cc@0.15.1`, `rules_cc@0.2.19`, `platforms@1.1.0`, `bazel_skylib@1.9.0`
+- `BUILD.bazel`: `cmake` target with `lib_source = ":all_srcs"`, `out_static_libs = ["libz.a"]`, `ZLIB_BUILD_EXAMPLES: "OFF"`, `BUILD_SHARED_LIBS: "OFF"`
+
+### What was excluded
+
+Nothing. The whole zlib CMake build succeeds cleanly in one pass.
+
+### Tier 4 note
+
+Honest cap at tier 3 as expected. Zlib's tests (`test/example.c`, `test/infcover.c`) are driven by CTest within the CMake build, not wired as Bazel `cc_test` targets. The `cmake` rule runs the CMake build but doesn't expose CTest results as Bazel test targets. Per the expectation's own note, this is by design for the `cc-foreign-cmake` approach.

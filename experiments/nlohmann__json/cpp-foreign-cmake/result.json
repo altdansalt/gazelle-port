@@ -1,0 +1,61 @@
+{
+  "tier_reached": 3,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "deps-resolve",
+      "tier": 1,
+      "cmd": "bazel query 'deps(//:nlohmann_json, 1)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //:nlohmann_json",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "foreign-target-exists",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"cmake rule\", //:nlohmann_json)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "outputs-exist",
+      "tier": 3,
+      "cmd": "bazel cquery --output=files //:nlohmann_json",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "native-test",
+      "tier": 4,
+      "cmd": "bazel test //:nlohmann_json --test_output=errors",
+      "exit": 4,
+      "pass": true,
+      "reason": ""
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "repo": "nlohmann/json",
+  "approach_id": "cpp-foreign-cmake",
+  "scope": "//:nlohmann_json",
+  "predicted_tier": 2,
+  "extra_edited_files": 4,
+  "worker_exit": 0
+}

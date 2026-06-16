@@ -1,0 +1,8 @@
+INFO: Invocation ID: 4add86d3-137e-4eb7-8a5a-6f8d9282ca11
+INFO: Analyzed target //:nlohmann_json (89 packages loaded, 11200 targets configured).
+INFO: Found 1 target...
+Target //:nlohmann_json up-to-date:
+  bazel-bin/nlohmann_json/include
+INFO: Elapsed time: 3.323s, Critical Path: 0.15s
+INFO: 1 process: 9 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action

@@ -1,0 +1,30 @@
+All expectations pass. Exit code 4 for the test step is expected and `allow_nonzero: true` covers it.
+
+---
+
+## Final Report
+
+**Tier reached: Tier 3 (build + cc_library structure verified)**
+
+### Edits made
+
+1. **`BUILD.bazel`** (root):
+   - Removed the broken `load("@gazelle_cc//:def.bzl", "DEFAULT_LANGUAGES")` import — `gazelle_cc` doesn't expose a `def.bzl`; the `gazelle` rule comes from `@gazelle//:def.bzl` (already present).
+   - Removed the unused `DEFAULT_LANGUAGES` reference.
+   - Added `# gazelle:exclude src` to prevent gazelle_cc from processing the `src/` directory (only `include/` is in scope).
+
+2. No changes to `MODULE.bazel`, `.bazelrc`, or any source files.
+
+### What Gazelle generated
+
+9 `cc_library` targets across the `include/` tree:
+- `//include/nlohmann:nlohmann` (top-level headers: `json.hpp`, `json_fwd.hpp`, etc.)
+- 8 sub-libraries under `detail/` and `thirdparty/hedley/`
+
+### Tier 4 (tests) status
+
+Not applicable. `//include/...` contains only public headers; no `_test` targets exist there. The repo's real tests are under `tests/` which is gazelle-excluded and out of scope. Exit code 4 ("no test targets") is expected and covered by `allow_nonzero: true` in the expectation.
+
+### Biggest blocker
+
+None — all expectations passed. The only stumbling block was the incorrect `@gazelle_cc//:def.bzl` import in the seed `BUILD.bazel`, which was a one-line fix.

@@ -1,0 +1,184 @@
+diff --git a/.bazelrc b/.bazelrc
+new file mode 100644
+index 0000000..d8444c0
+--- /dev/null
++++ b/.bazelrc
+@@ -0,0 +1,7 @@
++common --enable_bzlmod
++build --incompatible_enable_cc_toolchain_resolution
++
++common --disk_cache=/home/exedev/gazel-port/.cache/bazel-disk
++common --repository_cache=/home/exedev/gazel-port/.cache/bazel-repo
++common --noshow_progress
++test --test_output=errors
+diff --git a/BUILD.bazel b/BUILD.bazel
+index de0ff71..b4787f2 100644
+--- a/BUILD.bazel
++++ b/BUILD.bazel
+@@ -1,80 +1,21 @@
+-load("@rules_cc//cc:cc_library.bzl", "cc_library")
+-load("@rules_license//rules:license.bzl", "license")
++load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
+ 
+-package(
+-    default_applicable_licenses = [":license"],
++filegroup(
++    name = "all_srcs",
++    srcs = glob(
++        ["**"],
++        exclude = ["bazel-*/**", "BUILD.bazel", "MODULE.bazel"],
++    ),
+ )
+ 
+-exports_files([
+-    "LICENSE.MIT",
+-])
+-
+-license(
+-    name = "license",
+-    license_kinds = ["@rules_license//licenses/spdx:MIT"],
+-    license_text = "LICENSE.MIT",
+-)
+-
+-cc_library(
+-    name = "json",
+-    hdrs = [
+-        "include/nlohmann/adl_serializer.hpp",
+-        "include/nlohmann/byte_container_with_subtype.hpp",
+-        "include/nlohmann/detail/abi_macros.hpp",
+-        "include/nlohmann/detail/conversions/from_json.hpp",
+-        "include/nlohmann/detail/conversions/to_chars.hpp",
+-        "include/nlohmann/detail/conversions/to_json.hpp",
+-        "include/nlohmann/detail/exceptions.hpp",
+-        "include/nlohmann/detail/hash.hpp",
+-        "include/nlohmann/detail/input/binary_reader.hpp",
+-        "include/nlohmann/detail/input/input_adapters.hpp",
+-        "include/nlohmann/detail/input/json_sax.hpp",
+-        "include/nlohmann/detail/input/lexer.hpp",
+-        "include/nlohmann/detail/input/parser.hpp",
+-        "include/nlohmann/detail/input/position_t.hpp",
+-        "include/nlohmann/detail/iterators/internal_iterator.hpp",
+-        "include/nlohmann/detail/iterators/iter_impl.hpp",
+-        "include/nlohmann/detail/iterators/iteration_proxy.hpp",
+-        "include/nlohmann/detail/iterators/iterator_traits.hpp",
+-        "include/nlohmann/detail/iterators/json_reverse_iterator.hpp",
+-        "include/nlohmann/detail/iterators/primitive_iterator.hpp",
+-        "include/nlohmann/detail/json_custom_base_class.hpp",
+-        "include/nlohmann/detail/json_pointer.hpp",
+-        "include/nlohmann/detail/json_ref.hpp",
+-        "include/nlohmann/detail/macro_scope.hpp",
+-        "include/nlohmann/detail/macro_unscope.hpp",
+-        "include/nlohmann/detail/meta/call_std/begin.hpp",
+-        "include/nlohmann/detail/meta/call_std/end.hpp",
+-        "include/nlohmann/detail/meta/cpp_future.hpp",
+-        "include/nlohmann/detail/meta/detected.hpp",
+-        "include/nlohmann/detail/meta/identity_tag.hpp",
+-        "include/nlohmann/detail/meta/is_sax.hpp",
+-        "include/nlohmann/detail/meta/std_fs.hpp",
+-        "include/nlohmann/detail/meta/type_traits.hpp",
+-        "include/nlohmann/detail/meta/void_t.hpp",
+-        "include/nlohmann/detail/output/binary_writer.hpp",
+-        "include/nlohmann/detail/output/output_adapters.hpp",
+-        "include/nlohmann/detail/output/serializer.hpp",
+-        "include/nlohmann/detail/string_concat.hpp",
+-        "include/nlohmann/detail/string_escape.hpp",
+-        "include/nlohmann/detail/string_utils.hpp",
+-        "include/nlohmann/detail/value_t.hpp",
+-        "include/nlohmann/json.hpp",
+-        "include/nlohmann/json_fwd.hpp",
+-        "include/nlohmann/ordered_map.hpp",
+-        "include/nlohmann/thirdparty/hedley/hedley.hpp",
+-        "include/nlohmann/thirdparty/hedley/hedley_undef.hpp",
+-    ],
+-    includes = ["include"],
++cmake(
++    name = "nlohmann_json",
++    cache_entries = {
++        "JSON_BuildTests": "OFF",
++        "JSON_Install": "ON",
++    },
++    lib_source = ":all_srcs",
++    out_headers_only = True,
+     visibility = ["//visibility:public"],
+-    alwayslink = True,
+ )
+ 
+-cc_library(
+-    name = "singleheader-json",
+-    hdrs = [
+-        "single_include/nlohmann/json.hpp",
+-    ],
+-    includes = ["single_include"],
+-    visibility = ["//visibility:public"],
+-)
+diff --git a/EXPECTATIONS.json b/EXPECTATIONS.json
+new file mode 100644
+index 0000000..9dbf7e0
+--- /dev/null
++++ b/EXPECTATIONS.json
+@@ -0,0 +1,13 @@
++{
++  "repo": "nlohmann/json",
++  "approach_id": "cpp-foreign-cmake",
++  "scope": "//:nlohmann_json",
++  "expectations": [
++    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0,"stdout_regex":"rules_foreign_cc"}},
++    {"id":"deps-resolve","tier":1,"cmd":"bazel query 'deps(//:nlohmann_json, 1)'","expect":{"exit":0,"stdout_min_lines":1}},
++    {"id":"build","tier":2,"cmd":"bazel build //:nlohmann_json","expect":{"exit":0}},
++    {"id":"foreign-target-exists","tier":3,"cmd":"bazel query 'kind(\"cmake rule\", //:nlohmann_json)'","expect":{"exit":0,"stdout_regex":"//:nlohmann_json"}},
++    {"id":"outputs-exist","tier":3,"cmd":"bazel cquery --output=files //:nlohmann_json","expect":{"exit":0,"stdout_min_lines":1}},
++    {"id":"native-test","tier":4,"cmd":"bazel test //:nlohmann_json --test_output=errors","expect":{"allow_nonzero":true},"note":"B-foreign header-only wrap (out_headers_only, JSON_BuildTests=OFF): no Bazel-wired test target exists for the cmake() wrapper. The project's own GoogleTest suite lives under tests/ and is driven by CMake/ctest, not exposed as a Bazel test rule by this approach. Honest cap is tier-3 (foreign target builds and installs headers). Tier-4 is informational only and must not be counted as a native-suite pass."}
++  ]
++}
+diff --git a/MODULE.bazel b/MODULE.bazel
+index 51754e7..318405a 100644
+--- a/MODULE.bazel
++++ b/MODULE.bazel
+@@ -1,7 +1,12 @@
+ module(
+     name = "nlohmann_json",
+-    compatibility_level = 1,
++    version = "0.0.0",
+ )
+ 
+-bazel_dep(name = "rules_cc", version = "0.0.17")
+-bazel_dep(name = "rules_license", version = "1.0.0")
++bazel_dep(name = "rules_foreign_cc", version = "0.15.1")
++bazel_dep(name = "rules_cc", version = "0.2.19")
++bazel_dep(name = "platforms", version = "1.1.0")
++bazel_dep(name = "bazel_skylib", version = "1.9.0")
++
++foreign_cc_deps = use_extension("@rules_foreign_cc//foreign_cc:extensions.bzl", "tools")
++
+diff --git a/bazel-bin b/bazel-bin
+new file mode 120000
+index 0000000..5d779d6
+--- /dev/null
++++ b/bazel-bin
+@@ -0,0 +1 @@
++/home/exedev/.cache/bazel/_bazel_exedev/496a352c7d145e80ec9027059481a6ef/execroot/_main/bazel-out/k8-fastbuild/bin
+\ No newline at end of file
+diff --git a/bazel-nlohmann__json__cpp-foreign-cmake b/bazel-nlohmann__json__cpp-foreign-cmake
+new file mode 120000
+index 0000000..2402989
+--- /dev/null
++++ b/bazel-nlohmann__json__cpp-foreign-cmake
+@@ -0,0 +1 @@
++/home/exedev/.cache/bazel/_bazel_exedev/496a352c7d145e80ec9027059481a6ef/execroot/_main
+\ No newline at end of file
+diff --git a/bazel-out b/bazel-out
+new file mode 120000
+index 0000000..5b23dc9
+--- /dev/null
++++ b/bazel-out
+@@ -0,0 +1 @@
++/home/exedev/.cache/bazel/_bazel_exedev/496a352c7d145e80ec9027059481a6ef/execroot/_main/bazel-out
+\ No newline at end of file
+diff --git a/bazel-testlogs b/bazel-testlogs
+new file mode 120000
+index 0000000..07cd004
+--- /dev/null
++++ b/bazel-testlogs
+@@ -0,0 +1 @@
++/home/exedev/.cache/bazel/_bazel_exedev/496a352c7d145e80ec9027059481a6ef/execroot/_main/bazel-out/k8-fastbuild/testlogs
+\ No newline at end of file

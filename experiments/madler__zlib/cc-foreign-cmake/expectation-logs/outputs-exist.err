@@ -1,0 +1,6 @@
+INFO: Invocation ID: 84227a19-7e26-44af-b5a1-ab3f2ff8b0ad
+INFO: Analyzed target //:zlib (0 packages loaded, 0 targets configured).
+INFO: Found 1 target...
+INFO: Elapsed time: 0.296s, Critical Path: 0.00s
+INFO: 0 processes.
+INFO: Build completed successfully, 0 total actions

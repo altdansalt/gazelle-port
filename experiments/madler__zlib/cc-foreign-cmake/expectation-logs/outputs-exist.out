@@ -1,0 +1,2 @@
+bazel-out/k8-fastbuild/bin/zlib/include
+bazel-out/k8-fastbuild/bin/zlib/lib/libz.a

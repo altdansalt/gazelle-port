@@ -1,0 +1,9 @@
+INFO: Invocation ID: 8968e660-f429-4452-bf65-56f123242354
+INFO: Analyzed target //:zlib (89 packages loaded, 10269 targets configured).
+INFO: Found 1 target...
+Target //:zlib up-to-date:
+  bazel-bin/zlib/include
+  bazel-bin/zlib/lib/libz.a
+INFO: Elapsed time: 3.766s, Critical Path: 0.17s
+INFO: 1 process: 9 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action

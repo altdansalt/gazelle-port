@@ -1,0 +1,15 @@
+ .bazelrc                            |    8 +
+ BUILD.bazel                         |   15 +
+ EXPECTATIONS.json                   |   13 +
+ MODULE.bazel                        |   27 +
+ MODULE.bazel.lock                   | 2215 +++++++++++++++++++++++++++++++++++
+ bazel-bin                           |    1 +
+ bazel-out                           |    1 +
+ bazel-testlogs                      |    1 +
+ bazel-tokio-rs__bytes__rust-gazelle |    1 +
+ benches/BUILD.bazel                 |   16 +
+ src/BUILD.bazel                     |   31 +
+ src/buf/BUILD.bazel                 |   58 +
+ src/fmt/BUILD.bazel                 |   16 +
+ tests/BUILD.bazel                   |   61 +
+ 14 files changed, 2464 insertions(+)

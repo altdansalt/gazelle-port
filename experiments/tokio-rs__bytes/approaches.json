@@ -1,0 +1,29 @@
+{
+  "repo": "tokio-rs/bytes",
+  "approaches": [
+    {
+      "id": "rust-gazelle",
+      "language": "Rust",
+      "strategy": "A-gazelle",
+      "ruleset": "gazelle_rust",
+      "scope": "//...",
+      "rationale": "Single-crate Rust library (bytes) with a clean src/ + tests/ + benches/ layout and a Cargo.toml/Cargo.lock; gazelle_rust + rules_rust with crate_universe is the source-native port.",
+      "module_bazel": "module(\n    name = \"bytes\",\n    version = \"0.0.0\",\n)\n\nbazel_dep(name = \"rules_rust\", version = \"0.70.0\")\nbazel_dep(name = \"gazelle_rust\", version = \"0.1.0\")\nbazel_dep(name = \"gazelle\", version = \"0.51.3\")\nbazel_dep(name = \"bazel_skylib\", version = \"1.9.0\")\nbazel_dep(name = \"platforms\", version = \"1.1.0\")\n\nrust = use_extension(\"@rules_rust//rust:extensions.bzl\", \"rust\")\nrust.toolchain(\n    edition = \"2021\",\n    versions = [\"1.85.0\"],\n)\nuse_repo(rust, \"rust_toolchains\")\nregister_toolchains(\"@rust_toolchains//:all\")\n\ncrate = use_extension(\"@rules_rust//crate_universe:extensions.bzl\", \"crate\")\ncrate.from_cargo(\n    name = \"crates\",\n    cargo_lockfile = \"//:Cargo.lock\",\n    manifests = [\"//:Cargo.toml\"],\n)\nuse_repo(crate, \"crates\")\n",
+      "root_build": "load(\"@gazelle//:def.bzl\", \"gazelle\", \"gazelle_binary\")\n\n# gazelle:rust_crates_index crates\n\ngazelle_binary(\n    name = \"gazelle_bin\",\n    languages = [\n        \"@gazelle_rust//:rust\",\n    ],\n)\n\ngazelle(\n    name = \"gazelle\",\n    gazelle = \":gazelle_bin\",\n)\n",
+      "bazelrc": "common --enable_bzlmod\nbuild --incompatible_strict_action_env\ntest --test_output=errors\n",
+      "setup_commands": [
+        "bazel run //:gazelle",
+        "bazel build //...",
+        "bazel test //..."
+      ],
+      "anticipated_risks": [
+        "Cargo feature flags (std/serde/extra-platforms) not mapped to crate features by gazelle",
+        "loom cfg-gated test code",
+        "doc tests in src/lib.rs not run by rust_test",
+        "benches require nightly/criterion deps",
+        "gazelle_rust 0.1.0 maturity"
+      ],
+      "predicted_tier": 2
+    }
+  ]
+}

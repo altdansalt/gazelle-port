@@ -1,0 +1,10 @@
+INFO: Invocation ID: de5f7882-992c-4832-9b94-b20a4b3e4d5d
+INFO: Analyzed target //:zlib (0 packages loaded, 0 targets configured).
+INFO: Found 1 target and 0 test targets...
+Target //:zlib up-to-date:
+  bazel-bin/zlib/include
+  bazel-bin/zlib/lib/libz.a
+INFO: Elapsed time: 0.259s, Critical Path: 0.00s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action
+ERROR: No test targets were found, yet testing was requested

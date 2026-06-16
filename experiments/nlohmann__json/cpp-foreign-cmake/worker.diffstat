@@ -1,0 +1,9 @@
+ .bazelrc                                |  7 +++
+ BUILD.bazel                             | 89 ++++++---------------------------
+ EXPECTATIONS.json                       | 13 +++++
+ MODULE.bazel                            | 11 ++--
+ bazel-bin                               |  1 +
+ bazel-nlohmann__json__cpp-foreign-cmake |  1 +
+ bazel-out                               |  1 +
+ bazel-testlogs                          |  1 +
+ 8 files changed, 47 insertions(+), 77 deletions(-)

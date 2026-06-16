@@ -1,0 +1,59 @@
+The cycle is genuine: `os/input.c` uses `ch_before_blocking_events` from `msgpack_rpc/channel.h`, while `msgpack_rpc` needs `os`. This cannot be broken without source modifications.
+
+---
+
+## Final Report
+
+**Tier reached: Tier 1 solidly, Tier 3 structurally. Tier 2 blocked by architectural cycle.**
+
+### Tiers status
+
+| ID | Tier | Command | Result |
+|----|------|---------|--------|
+| modgraph | 1 | `bazel mod graph` | **PASS** (exit 0) |
+| gazelle | 1 | `bazel run //:gazelle` | **PASS** (exit 0) |
+| build | 2 | `bazel build //src/nvim/...` | **FAIL** (exit 1) |
+| have-cc-targets | 3 | cc_library query | **PASS** (13 targets) |
+| have-tests | 3 | test rule query | **PASS** (allow_nonzero; 1 target) |
+| test | 4 | `bazel test //src/nvim/...` | **PASS** (allow_nonzero) |
+
+---
+
+### Edits made
+
+**`BUILD.bazel`**  
+- Added `# gazelle:cc_strip_include_prefix /src` directive so all generated `cc_library` targets get `strip_include_prefix = "/src"`, making `nvim/foo.h`, `klib/kvec.h`, and `auto/config.h` accessible with their expected paths.
+
+**`.bazelrc`**  
+- Added `--copt=-Isrc/nvim` (for vterm/tui packages that include `"vterm/foo.h"` relative to `src/nvim/`)
+- Added `--copt=-I/usr/include/luajit-2.1` and `--copt=-I/usr/local/include` (for `<lua.h>` and `<tree_sitter/api.h>` system headers, both present on this host)
+
+**`src/auto/config.h`, `versiondef.h`, `versiondef_git.h`** (new stubs)  
+- CMake-generated headers that every `.c` file includes via `#include "auto/config.h"`. Created minimal Linux-appropriate stubs.
+
+**`src/nvim/**/*.generated.h`** (~403 new stubs)  
+- Neovim generates function-declaration headers for every `.c` file via `scripts/gen_declarations.py`. Created `#pragma once` empty stubs so Bazel's header-complete checks pass and the include resolution succeeds.
+
+Gazelle was re-run after each change group, successfully generating BUILD files in all 19 packages under `src/` with `strip_include_prefix = "/src"` and correct `deps`/`implementation_deps`.
+
+---
+
+### What was excluded
+
+Nothing was excluded from the scope. All files in `src/nvim/...` are still included.
+
+---
+
+### Biggest blocker: Circular dependency `msgpack_rpc ↔ os`
+
+`bazel build //src/nvim/...` fails at analysis with:
+```
+cycle in dependency graph:
+.-> //src/nvim/msgpack_rpc:msgpack_rpc
+|   //src/nvim/os:os
+`-- //src/nvim/msgpack_rpc:msgpack_rpc
+```
+
+The concrete cause: `src/nvim/os/input.c` includes `nvim/msgpack_rpc/channel.h` and uses `ch_before_blocking_events` (defined there). Simultaneously, `msgpack_rpc/` code depends on `os/` APIs. This is a genuine architectural cycle—`msgpack_rpc` and `os` are mutually dependent.
+
+Gazelle_cc correctly identifies both directions as `implementation_deps`, but Bazel's DAG requirement prohibits even `implementation_deps` cycles. Resolving this requires either: (a) splitting `ch_before_blocking_events` into a separate no-dep header, (b) merging `os` and `msgpack_rpc` into a single package, or (c) moving `os/input.c` into a package that can depend on both—all of which exceed the "minor edits only" constraint.

@@ -8,10 +8,10 @@ Hypotheses live at the bottom until confirmed/refuted.
 | Ecosystem | Strategy / ruleset | n | best | mean | Verdict |
 |-----------|--------------------|---|------|------|---------|
 | **Go** | A `gazelle` (native) | 7 | **4** | 3.7 | **Solved.** 5/6 tier 4 with ~5–15 line seeds. |
-| **C/C++** | A `gazelle_cc` | 2 | **4** | — | **Surprise winner.** Generates real building cc_library graphs (tier 2–3 genuine; tier 4 on a slice + worker test). F6 |
-| **C/C++** | B `rules_foreign_cc` | 3 | **3** | — | **Reliable.** Builds real artifacts (full libllama, jemalloc) with ~4 edits; coarse. F7 |
-| **Python** | A `rules_python` plugin | 1 | **2** | 2.0 | Library builds; tests exceed minor edits. F4 |
-| **Rust** | A `gazelle_rust` | 1 | **1** | 1.0 | Generates BUILDs on big workspace but build fails. F8 |
+| **C/C++** | A `gazelle_cc` | 6 | **4** | — | **Surprise winner.** tier 3 on clean libs (zlib, nlohmann/json, hiredis) — 4/4; tier 1 on giant neovim. F6/H6 |
+| **C/C++** | B `rules_foreign_cc` | 5 | **3** | — | **Reliable.** Libs → tier 3 (zlib, jemalloc, hiredis, full libllama, ~4 edits); giant neovim → tier 2. F7/H7 |
+| **Python** | A `rules_python` plugin | 1 | **2** | 2.0 | Library builds; tests exceed minor edits. F4. (gazelle_py alt: phase 4) |
+| **Rust** | A `gazelle_rust` | 2 | **1** | 1.0 | Won't compile even a small clean crate (bytes) — least-ready. F8/H8 |
 | **TS/JS** | A `aspect_gazelle_js` | 2 | **1** | 0.5 | Generator won't run (native extractor). F5/F9 |
 
 Tiers: 0 nothing · 1 deps/gazelle run · 2 builds · 3 tests discovered · 4 tests pass.
@@ -184,12 +184,16 @@ test-arg fix, sometimes a genuine upstream/version issue.
 - **H5 — supported.** uv (huge Rust workspace) and microsoft/TypeScript (huge) scored
   lowest; size/complexity tracked failure better than stars.
 
-### New hypotheses (phase 3)
-- **H6.** `gazelle_cc` reaches tier 2–3 on most clean C/C++ *libraries* (no configure-time
-  codegen), but needs `# keep`/`resolve` hand-tuning proportional to `#include "*.c"` and
-  generated-header usage. _Prior: medium-high (2/2 so far)._
-- **H7.** `rules_foreign_cc` reaches tier 2–3 on the majority of CMake/autotools projects
-  with ≤5 edits; failures correlate with exotic configure steps / external system deps.
-  _Prior: high (3/3 so far)._
-- **H8.** `gazelle_rust` reaches tier ≥2 on *single-crate* / small workspaces but not on
-  large multi-crate workspaces with proc-macros/build.rs. _Prior: medium._
+### Phase-2/3 hypotheses (status after phase 3)
+- **H6 — CONFIRMED.** `gazelle_cc` reaches **tier 3** on clean C/C++ libraries: zlib (C),
+  nlohmann/json (header-only C++), hiredis (C), llama.cpp `unicode` slice — 4/4. Needs
+  `# keep`/`resolve` hand-tuning proportional to `#include "*.c"`/generated headers. It does
+  NOT scale to a giant app graph: neovim full `src/nvim` = tier 1 (433 BUILDs, won't link).
+- **H7 — CONFIRMED (with a size ceiling).** `rules_foreign_cc` ≤5 edits → **tier 3** on
+  libraries (zlib, jemalloc, hiredis, full llama.cpp) and **tier 2** on the giant neovim
+  (builds partially). 5/5 reach ≥tier 2. The "does most of the work" path for C/C++.
+- **H8 — REFUTED.** `gazelle_rust` stalls at **tier 1 regardless of size**: it failed to
+  *compile* even tokio-rs/bytes (a small, clean single crate) — `bazel build` exit 1 after
+  gazelle generated the lib target. Size isn't the blocker; the plugin/crate_universe build
+  wiring is simply not turnkey yet (uv and bytes both tier 1). Rust-via-Gazelle is the
+  least-ready ecosystem alongside TS.
