@@ -1,0 +1,8 @@
+INFO: Invocation ID: 3563610d-e704-4b1c-9e7b-a92a1fe4b9cb
+INFO: Analyzed target //:bubbletea (0 packages loaded, 0 targets configured).
+INFO: Found 1 target...
+Target //:bubbletea up-to-date:
+  bazel-bin/bubbletea.x
+INFO: Elapsed time: 0.400s, Critical Path: 0.00s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action

@@ -1,0 +1,6 @@
+//:gin_test
+//binding:binding_test
+//ginS:ginS_test
+//internal/bytesconv:bytesconv_test
+//internal/fs:fs_test
+//render:render_test

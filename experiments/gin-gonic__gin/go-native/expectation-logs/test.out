@@ -1,0 +1,9 @@
+//:gin_test                                                     (cached) PASSED in 0.5s
+//binding:binding_test                                          (cached) PASSED in 0.2s
+//ginS:ginS_test                                                (cached) PASSED in 0.1s
+//internal/bytesconv:bytesconv_test                             (cached) PASSED in 0.0s
+//internal/fs:fs_test                                           (cached) PASSED in 0.1s
+//render:render_test                                            (cached) PASSED in 0.2s
+
+Executed 0 out of 6 tests: 6 tests pass.
+There were tests whose specified size is too big. Use the --test_verbose_timeout_warnings command line option to see which ones these are.

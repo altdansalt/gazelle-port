@@ -1,0 +1,16 @@
+```json
+{
+  "repo": "pallets/flask",
+  "approach_id": "py-native",
+  "scope": "//src/...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0,"stdout_regex":"rules_python"}},
+    {"id":"pip-hub","tier":1,"cmd":"bazel query '@pip//...' 2>/dev/null","expect":{"allow_nonzero":true}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
+    {"id":"build","tier":2,"cmd":"bazel build //src/...","expect":{"exit":0}},
+    {"id":"have-pylib","tier":2,"cmd":"bazel query 'kind(\"py_library rule\", //src/...)'","expect":{"exit":0,"stdout_min_lines":1,"stdout_regex":"//src/flask"}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\"py_test rule\", //src/...)'","expect":{"exit":0,"allow_nonzero":true}},
+    {"id":"test","tier":4,"cmd":"bazel test //src/... --test_output=errors","expect":{"exit":0,"allow_nonzero":true}}
+  ]
+}
+```

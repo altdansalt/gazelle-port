@@ -1,0 +1,4 @@
+//src:src_test
+//src/algo:algo_test
+//src/tui:tui_test
+//src/util:util_test

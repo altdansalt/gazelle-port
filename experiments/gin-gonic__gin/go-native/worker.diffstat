@@ -1,0 +1,17 @@
+ .bazelrc                          |   7 +
+ BUILD.bazel                       |  90 +++++
+ EXPECTATIONS.json                 |  13 +
+ MODULE.bazel                      |  14 +
+ MODULE.bazel.lock                 | 822 ++++++++++++++++++++++++++++++++++++++
+ bazel-bin                         |   1 +
+ bazel-gin-gonic__gin__go-native   |   1 +
+ bazel-out                         |   1 +
+ bazel-testlogs                    |   1 +
+ binding/BUILD.bazel               |  69 ++++
+ codec/json/BUILD.bazel            |  11 +
+ ginS/BUILD.bazel                  |  20 +
+ internal/bytesconv/BUILD.bazel    |  14 +
+ internal/fs/BUILD.bazel           |  18 +
+ render/BUILD.bazel                |  55 +++
+ testdata/protoexample/BUILD.bazel |  12 +
+ 16 files changed, 1149 insertions(+)

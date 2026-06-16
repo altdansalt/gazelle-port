@@ -1,0 +1,30 @@
+All expectations pass through tier 4 (tests passing).
+
+---
+
+## Final Report
+
+**Tier reached: Tier 4 — all tests pass**
+
+### Edits made
+
+**`MODULE.bazel`** (via `bazel mod tidy`):
+- Added `use_repo(go_deps, "com_github_stretchr_testify", "org_golang_x_net", "org_golang_x_time")` — these are direct deps from `go.mod` that the go_deps extension requires to be declared.
+
+**`BUILD.bazel`** (root):
+- Added a `filegroup(name = "fixture_files", srcs = glob(["_fixture/**"]), visibility = ["//visibility:public"])` — exposes fixture files for middleware tests that access `../_fixture/` relative to their package.
+- Added `data = glob(["_fixture/**"]) + ["go.mod"]` to `echo_test` — the root tests directly open `_fixture/images/walle.png` and `./go.mod` relative to the workspace-root CWD.
+
+**`echotest/BUILD.bazel`**:
+- Added `rundir = "."` to `echotest_test` — the `echotest/reader.go` uses `runtime.Caller` to find its source file path. In Bazel, trimpath strips the execroot prefix leaving workspace-relative paths like `echotest/reader_test.go`. With the default rundir (`echotest/`), this causes a double-prefix error (`echotest/echotest/testdata/test.json`). Setting `rundir = "."` makes the CWD the workspace root so `echotest/testdata/test.json` resolves correctly.
+
+**`middleware/BUILD.bazel`**:
+- Changed `data = glob(["testdata/**"])` to `data = glob(["testdata/**"]) + ["//:fixture_files"]` — the middleware tests use `os.DirFS("../")` and `../_fixture/...` to access fixture files one level up from the `middleware/` working directory.
+
+### Nothing excluded
+
+All packages build and all tests pass.
+
+### Biggest blocker (resolved)
+
+The `runtime.Caller`-based path discovery in `echotest/reader.go` is incompatible with Bazel's trimpath by default — it returns workspace-relative paths instead of absolute paths, making the resolved path wrong relative to the default package CWD. Fixed with `rundir = "."`.

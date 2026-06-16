@@ -1,0 +1,61 @@
+{
+  "tier_reached": 4,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "gazelle",
+      "tier": 1,
+      "cmd": "bazel run //:gazelle",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //...",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-go-libs",
+      "tier": 2,
+      "cmd": "bazel query 'kind(\"go_library\", //...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-tests",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"go_test\", //...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "test",
+      "tier": 4,
+      "cmd": "bazel test //... --test_output=errors",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "repo": "go-kratos/kratos",
+  "approach_id": "go-native-root",
+  "scope": "//... (root module only; contrib/* and cmd/* nested modules excluded)",
+  "predicted_tier": 3,
+  "extra_edited_files": 53,
+  "worker_exit": 0
+}

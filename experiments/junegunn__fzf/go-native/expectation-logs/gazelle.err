@@ -1,0 +1,10 @@
+INFO: Invocation ID: 7cf9e17a-cde9-401c-b94d-b89473ab46b3
+INFO: Analyzed target //:gazelle (144 packages loaded, 11727 targets configured).
+INFO: Found 1 target...
+Target //:gazelle up-to-date:
+  bazel-bin/gazelle-runner.bash
+  bazel-bin/gazelle
+INFO: Elapsed time: 7.478s, Critical Path: 0.80s
+INFO: 1 process: 82 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action
+INFO: Running command line: bazel-bin/gazelle

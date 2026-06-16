@@ -1,0 +1,77 @@
+{
+  "tier_reached": 4,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "gazelle",
+      "tier": 1,
+      "cmd": "bazel run //:gazelle",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-go-libs",
+      "tier": 1,
+      "cmd": "bazel query 'kind(\"go_library\", //...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //...",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "build-main",
+      "tier": 2,
+      "cmd": "bazel build //:fzf",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-tests",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"go_test\", //...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-algo-test",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"go_test\", //src/algo/...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "test",
+      "tier": 4,
+      "cmd": "bazel test //... --test_output=errors",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    }
+  ],
+  "passed": 8,
+  "total": 8,
+  "repo": "junegunn/fzf",
+  "approach_id": "go-native",
+  "scope": "//...",
+  "predicted_tier": 3,
+  "extra_edited_files": 9,
+  "worker_exit": 0
+}

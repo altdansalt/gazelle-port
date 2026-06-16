@@ -1,0 +1,15 @@
+{
+  "repo": "junegunn/fzf",
+  "approach_id": "go-native",
+  "scope": "//...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
+    {"id":"have-go-libs","tier":1,"cmd":"bazel query 'kind(\"go_library\", //...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"build","tier":2,"cmd":"bazel build //...","expect":{"exit":0}},
+    {"id":"build-main","tier":2,"cmd":"bazel build //:fzf","expect":{"exit":0,"allow_nonzero":true}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\"go_test\", //...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"have-algo-test","tier":3,"cmd":"bazel query 'kind(\"go_test\", //src/algo/...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"test","tier":4,"cmd":"bazel test //... --test_output=errors","expect":{"exit":0}}
+  ]
+}

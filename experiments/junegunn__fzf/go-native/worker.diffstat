@@ -1,0 +1,15 @@
+ .bazelrc                       |   8 +
+ BUILD.bazel                    |  33 ++
+ EXPECTATIONS.json              |  15 +
+ MODULE.bazel                   |  14 +
+ MODULE.bazel.lock              | 822 +++++++++++++++++++++++++++++++++++++++++
+ bazel-bin                      |   1 +
+ bazel-junegunn__fzf__go-native |   1 +
+ bazel-out                      |   1 +
+ bazel-testlogs                 |   1 +
+ src/BUILD.bazel                | 118 ++++++
+ src/algo/BUILD.bazel           |  27 ++
+ src/protector/BUILD.bazel      |  17 +
+ src/tui/BUILD.bazel            |  91 +++++
+ src/util/BUILD.bazel           |  99 +++++
+ 14 files changed, 1248 insertions(+)

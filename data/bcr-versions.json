@@ -10,5 +10,22 @@
   "protobuf": "35.1",
   "platforms": "1.1.0",
   "bazel_skylib": "1.9.0",
-  "rules_cc": "0.2.19"
+  "rules_cc": "0.2.19",
+  "rules_cc_autoconf": "0.12.1",
+  "rules_rust": "0.70.0",
+  "rules_foreign_cc": "0.15.1",
+  "rules_autoconf": "0.0.16",
+  "rules_kotlin": "2.3.20",
+  "rules_zig": "0.16.0",
+  "contrib_rules_jvm": "0.33.0",
+  "rules_swift_package_manager": "1.19.0",
+  "build_stack_rules_proto": "4.2.0",
+  "rules_ruby": "0.27.0",
+  "rules_haskell": "1.0",
+  "aspect_gazelle_js": "1.1.0",
+  "gazelle_cabal": "0.0.0",
+  "gazelle_cc": "0.6.0",
+  "gazelle_rust": "0.1.0",
+  "gazelle_ts": "0.5.0",
+  "swift_gazelle_plugin": "0.2.2"
 }

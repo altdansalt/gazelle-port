@@ -1,0 +1,8 @@
+INFO: Invocation ID: 499cc24e-8bcb-46cf-800e-1fe07e2a2f5f
+INFO: Analyzed target //:fzf (0 packages loaded, 0 targets configured).
+INFO: Found 1 target...
+Target //:fzf up-to-date:
+  bazel-bin/fzf_/fzf
+INFO: Elapsed time: 0.631s, Critical Path: 0.00s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action

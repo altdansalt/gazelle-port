@@ -1,0 +1,9 @@
+INFO: Invocation ID: abfe3781-e804-427f-8bc0-32f3987778d2
+INFO: Analyzed 97 targets (0 packages loaded, 0 targets configured).
+
+FLAKY: //selector/node/direct:direct_test (Summary)
+      /home/exedev/.cache/bazel/_bazel_exedev/1e0d46d0fa7e06059aae5dd534ae2ad8/execroot/_main/bazel-out/k8-fastbuild/testlogs/selector/node/direct/direct_test/test_attempts/attempt_1.log
+INFO: Found 53 targets and 44 test targets...
+INFO: Elapsed time: 0.377s, Critical Path: 0.03s
+INFO: 1 process: 44 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action

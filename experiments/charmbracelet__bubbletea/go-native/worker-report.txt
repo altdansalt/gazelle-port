@@ -1,0 +1,35 @@
+All expectations are satisfied. Here's the final report:
+
+---
+
+## Final Report
+
+**Tier reached: Tier 4 (all tests pass)**
+
+### Edits made
+
+1. **`MODULE.bazel`** — `bazel mod tidy` added the required `use_repo(go_deps, ...)` call with all direct Go dependencies. The seed file had `go_deps.from_file` but no `use_repo`, which caused the warning.
+
+2. **`BUILD.bazel`** — `bazel run //:gazelle` generated the `go_library` and `go_test` rules. The seed already had the right directives:
+   - `# gazelle:prefix charm.land/bubbletea/v2` — correct import path
+   - `# gazelle:exclude examples` — prevents examples/ from being scoped into `//...`
+   - `# gazelle:exclude tutorials` — same for tutorials/
+
+### Expectations results
+
+| ID | Tier | Result |
+|----|------|--------|
+| `modgraph` | 1 | ✅ exit 0 |
+| `gazelle` | 1 | ✅ exit 0 |
+| `have-root-lib` | 1 | ✅ `//:bubbletea` found |
+| `build` | 2 | ✅ exit 0 |
+| `root-lib-builds` | 2 | ✅ `//:bubbletea` builds |
+| `have-tests` | 3 | ✅ `//:bubbletea_test` found |
+| `no-examples-leak` | 3 | ✅ `//examples/...` returns exit 7 (nonzero allowed) |
+| `test` | 4 | ✅ 1/1 test passes |
+
+### What was excluded
+- `examples/` and `tutorials/` — excluded via gazelle directives in the seed `BUILD.bazel`. These directories contain standalone programs that would need their own per-subdirectory BUILD files and would likely bring in additional deps. The `no-examples-leak` expectation explicitly allows a nonzero exit for querying them, confirming this is the intended behavior.
+
+### Biggest blocker
+None — the port succeeded completely. The seed files were well-configured; the only missing pieces were the `use_repo` entries (fixed by `bazel mod tidy`) and the generated `go_library`/`go_test` rules (fixed by `bazel run //:gazelle`).

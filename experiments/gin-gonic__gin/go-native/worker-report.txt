@@ -1,0 +1,32 @@
+All 6 expectations pass. Here's the final report:
+
+---
+
+## Final Report
+
+**Tier reached: 4 (all tests pass)**
+
+### Edits made
+
+1. **`MODULE.bazel`** — ran `bazel mod tidy` to add the required `use_repo(go_deps, ...)` calls for the 15 direct Go dependencies from `go.mod`.
+
+2. **`BUILD.bazel` (root)** — four changes:
+   - Added `exports_files(glob(["testdata/**"]))` to make testdata files visible to sub-packages
+   - Added `# gazelle:exclude testdata/protoexample` directive to prevent Gazelle from regenerating the proto BUILD (which would use unavailable `@com_google_protobuf`)
+   - Added `data = glob(["testdata/**"] + ["*.go"])` to `gin_test` so that (a) static file serving tests find `gin.go`, (b) template tests find `testdata/template/*.tmpl`, (c) recovery tests can read source files for stack trace printing, and (d) directory listing tests find `gin.go`
+
+3. **`testdata/protoexample/BUILD.bazel`** — replaced the proto-compilation BUILD (which required `@com_google_protobuf`, not available in bzlmod without extra wiring) with a plain `go_library` rule over the pre-generated `test.pb.go`, listing only the two protobuf runtime deps it actually imports.
+
+4. **`ginS/BUILD.bazel`** — added `data = ["//:testdata/test_file.txt"]` so the static file serving tests in `ginS` can find the test fixture file.
+
+5. **`render/BUILD.bazel`** — added `data` pointing to `//:testdata/template/hello.tmpl` and `raw.tmpl` for the HTML template rendering tests.
+
+6. **`binding/BUILD.bazel`** — added `data = ["form.go"]` so `TestBindingFormFilesMultipart` can open the source file to construct a multipart upload.
+
+### Nothing excluded
+
+All packages build and test successfully — no exclusions were needed.
+
+### Biggest blocker encountered (and resolved)
+
+The proto package at `testdata/protoexample` referenced `@com_google_protobuf` (the old WORKSPACE name), which isn't exposed in bzlmod. The fix was to skip gazelle's proto generation for that directory and hand-write a minimal `go_library` over the already-generated `test.pb.go` — safe because the file is pre-generated and only needs the `google.golang.org/protobuf` runtime, which is already in the module graph.

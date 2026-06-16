@@ -1,0 +1,6 @@
+//:echo_test                                                    (cached) PASSED in 0.8s
+//echotest:echotest_test                                        (cached) PASSED in 0.0s
+//middleware:middleware_test                                    (cached) PASSED in 1.5s
+
+Executed 0 out of 3 tests: 3 tests pass.
+There were tests whose specified size is too big. Use the --test_verbose_timeout_warnings command line option to see which ones these are.

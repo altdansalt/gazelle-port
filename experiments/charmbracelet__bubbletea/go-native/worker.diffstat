@@ -1,0 +1,10 @@
+ .bazelrc                                  |   7 +
+ BUILD.bazel                               | 105 ++++
+ EXPECTATIONS.json                         |  15 +
+ MODULE.bazel                              |  14 +
+ MODULE.bazel.lock                         | 822 ++++++++++++++++++++++++++++++
+ bazel-bin                                 |   1 +
+ bazel-charmbracelet__bubbletea__go-native |   1 +
+ bazel-out                                 |   1 +
+ bazel-testlogs                            |   1 +
+ 9 files changed, 967 insertions(+)

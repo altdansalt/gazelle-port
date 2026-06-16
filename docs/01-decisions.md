@@ -57,3 +57,29 @@ and the agent trace per experiment.
 
 **Why.** Cheap isolation, parallel-safe, trivially diffable, easy to discard/retry —
 exactly the Ralph loop's "throwaway attempt" unit.
+
+## ADR-006: buildreg.exe.xyz is the source for the ruleset/plugin universe
+
+**Context.** Initial Gazelle-plugin knowledge was from memory (Go/proto/python/js) —
+too narrow. Project owner asked to exercise more than Go and pointed at
+`buildreg.exe.xyz` (an indexed view of the Bazel Central Registry, 1164 modules).
+
+**Decision.** Enumerate Gazelle plugins *and* foreign-build/language rulesets from
+`buildreg.exe.xyz/index.json` (snapshot in `.cache/buildreg/`), distilled into
+`docs/06-ruleset-catalog.md` + `data/bcr-versions.json`. The experimenter is fed this
+catalog so it picks a real, resolvable ruleset per language instead of guessing.
+
+**Why.** Authoritative, versioned, current. Surfaced the non-obvious levers:
+`gazelle_rust`, `gazelle_cc` (source-native C/C++!), `aspect_gazelle_js`, and the
+foreign-build path via `rules_foreign_cc`.
+
+## ADR-007: Two deliverable classes, scored separately
+
+**Context.** "Can a ruleset do most of the work?" — yes, but *which kind of result*?
+
+**Decision.** Distinguish **Strategy A (Gazelle, source-native, fine-grained Bazel graph)**
+from **Strategy B (rules_foreign_cc et al., wrap the project's own build, coarse target)**.
+Both count as "a working Bazel build+test," but we tag each experiment with its strategy
+and report them separately — a foreign_cc wrap of redis is a real but *different* win than
+a Gazelle port of a Go lib. **Why.** Honest answer to the research question needs the
+distinction; conflating them would overstate Gazelle's reach.

@@ -1,0 +1,6 @@
+INFO: Invocation ID: a3cc2def-e659-40f9-9838-a9b1aab68044
+INFO: Analyzed 12 targets (0 packages loaded, 0 targets configured).
+INFO: Found 8 targets and 4 test targets...
+INFO: Elapsed time: 0.522s, Critical Path: 0.00s
+INFO: 1 process: 4 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action

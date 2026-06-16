@@ -1,0 +1,6 @@
+INFO: Invocation ID: 1addb108-c62c-4b47-8a0f-35a77e003ce5
+INFO: Analyzed 3 targets (0 packages loaded, 0 targets configured).
+INFO: Found 2 targets and 1 test target...
+INFO: Elapsed time: 0.391s, Critical Path: 0.01s
+INFO: 1 process: 1 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action

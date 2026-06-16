@@ -1,2 +1,7 @@
 ts	repo	approach	lang	scope	tier	predicted	extra_files	worker_exit
 2026-06-16T00:05:02Z	stretchr/testify	go-native	Go	//...	3	4	13	0
+2026-06-16T00:18:54Z	labstack/echo	go-native	Go	//...	4	4	6	0
+2026-06-16T00:27:55Z	gin-gonic/gin	go-native	Go	//...	4	4	11	0
+2026-06-16T00:31:01Z	charmbracelet/bubbletea	go-native	Go	//...	4	4	4	0
+2026-06-16T00:34:06Z	junegunn/fzf	go-native	Go	//...	4	3	9	0
+2026-06-16T00:44:06Z	go-kratos/kratos	go-native-root	Go	//... (root module only; contrib/* and cmd/* nested modules excluded)	4	3	53	0

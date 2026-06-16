@@ -1,0 +1,49 @@
+//:kratos_test                                                  (cached) PASSED in 1.0s
+//config:config_test                                            (cached) PASSED in 0.1s
+//config/env:env_test                                           (cached) PASSED in 0.1s
+//config/file:file_test                                         (cached) PASSED in 0.1s
+//encoding:encoding_test                                        (cached) PASSED in 0.1s
+//encoding/form:form_test                                       (cached) PASSED in 0.0s
+//encoding/json:json_test                                       (cached) PASSED in 0.1s
+//encoding/proto:proto_test                                     (cached) PASSED in 0.0s
+//encoding/protojson:protojson_test                             (cached) PASSED in 0.0s
+//encoding/xml:xml_test                                         (cached) PASSED in 0.1s
+//encoding/yaml:yaml_test                                       (cached) PASSED in 0.1s
+//errors:errors_test                                            (cached) PASSED in 0.1s
+//internal/circuitbreaker:circuitbreaker_test                   (cached) PASSED in 0.1s
+//internal/context:context_test                                 (cached) PASSED in 0.2s
+//internal/endpoint:endpoint_test                               (cached) PASSED in 0.1s
+//internal/group:group_test                                     (cached) PASSED in 0.0s
+//internal/host:host_test                                       (cached) PASSED in 0.1s
+//internal/httputil:httputil_test                               (cached) PASSED in 0.0s
+//internal/matcher:matcher_test                                 (cached) PASSED in 0.1s
+//internal/ratelimit:ratelimit_test                             (cached) PASSED in 0.1s
+//internal/subset:subset_test                                   (cached) PASSED in 0.1s
+//log:log_test                                                  (cached) PASSED in 0.1s
+//metadata:metadata_test                                        (cached) PASSED in 0.1s
+//middleware:middleware_test                                    (cached) PASSED in 0.1s
+//middleware/circuitbreaker:circuitbreaker_test                 (cached) PASSED in 0.1s
+//middleware/logging:logging_test                               (cached) PASSED in 0.0s
+//middleware/metadata:metadata_test                             (cached) PASSED in 0.0s
+//middleware/ratelimit:ratelimit_test                           (cached) PASSED in 0.0s
+//middleware/recovery:recovery_test                             (cached) PASSED in 0.0s
+//middleware/selector:selector_test                             (cached) PASSED in 0.1s
+//middleware/validate:validate_test                             (cached) PASSED in 0.1s
+//selector:selector_test                                        (cached) PASSED in 0.1s
+//selector/filter:filter_test                                   (cached) PASSED in 0.2s
+//selector/node/ewma:ewma_test                                  (cached) PASSED in 0.3s
+//selector/p2c:p2c_test                                         (cached) PASSED in 0.6s
+//selector/random:random_test                                   (cached) PASSED in 0.0s
+//selector/wrr:wrr_test                                         (cached) PASSED in 0.1s
+//transport:transport_test                                      (cached) PASSED in 0.1s
+//transport/grpc:grpc_test                                      (cached) PASSED in 1.4s
+//transport/grpc/resolver/direct:direct_test                    (cached) PASSED in 0.1s
+//transport/grpc/resolver/discovery:discovery_test              (cached) PASSED in 4.6s
+//transport/http:http_test                                      (cached) PASSED in 7.9s
+//transport/http/status:status_test                             (cached) PASSED in 0.0s
+//selector/node/direct:direct_test                           (1/2 cached) FLAKY, failed in 1 out of 2 in 0.2s
+  Stats over 2 runs: max = 0.2s, min = 0.1s, avg = 0.2s, dev = 0.0s
+  /home/exedev/.cache/bazel/_bazel_exedev/1e0d46d0fa7e06059aae5dd534ae2ad8/execroot/_main/bazel-out/k8-fastbuild/testlogs/selector/node/direct/direct_test/test_attempts/attempt_1.log
+
+Executed 0 out of 44 tests: 44 tests pass.
+There were tests whose specified size is too big. Use the --test_verbose_timeout_warnings command line option to see which ones these are.

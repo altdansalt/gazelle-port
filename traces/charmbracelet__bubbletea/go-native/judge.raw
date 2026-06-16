@@ -1,0 +1,17 @@
+```json
+{
+  "repo": "charmbracelet/bubbletea",
+  "approach_id": "go-native",
+  "scope": "//...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
+    {"id":"have-root-lib","tier":1,"cmd":"bazel query 'kind(\"go_library\", //:all)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"build","tier":2,"cmd":"bazel build //...","expect":{"exit":0}},
+    {"id":"root-lib-builds","tier":2,"cmd":"bazel build //:bubbletea","expect":{"allow_nonzero":true}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\"go_test\", //...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"no-examples-leak","tier":3,"cmd":"bazel query '//examples/...' ","expect":{"allow_nonzero":true}},
+    {"id":"test","tier":4,"cmd":"bazel test //... --test_output=errors","expect":{"exit":0}}
+  ]
+}
+```

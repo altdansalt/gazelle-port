@@ -1,0 +1,12 @@
+ .bazelrc                        |   8 +
+ BUILD.bazel                     |  84 ++++
+ EXPECTATIONS.json               |  14 +
+ MODULE.bazel                    |  14 +
+ MODULE.bazel.lock               | 822 ++++++++++++++++++++++++++++++++++++++++
+ bazel-bin                       |   1 +
+ bazel-labstack__echo__go-native |   1 +
+ bazel-out                       |   1 +
+ bazel-testlogs                  |   1 +
+ echotest/BUILD.bazel            |  35 ++
+ middleware/BUILD.bazel          |  85 +++++
+ 11 files changed, 1066 insertions(+)

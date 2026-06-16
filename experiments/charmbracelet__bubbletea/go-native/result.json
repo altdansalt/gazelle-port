@@ -1,0 +1,77 @@
+{
+  "tier_reached": 4,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "gazelle",
+      "tier": 1,
+      "cmd": "bazel run //:gazelle",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-root-lib",
+      "tier": 1,
+      "cmd": "bazel query 'kind(\"go_library\", //:all)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //...",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "root-lib-builds",
+      "tier": 2,
+      "cmd": "bazel build //:bubbletea",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-tests",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"go_test\", //...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "no-examples-leak",
+      "tier": 3,
+      "cmd": "bazel query '//examples/...' ",
+      "exit": 7,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "test",
+      "tier": 4,
+      "cmd": "bazel test //... --test_output=errors",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    }
+  ],
+  "passed": 8,
+  "total": 8,
+  "repo": "charmbracelet/bubbletea",
+  "approach_id": "go-native",
+  "scope": "//...",
+  "predicted_tier": 4,
+  "extra_edited_files": 4,
+  "worker_exit": 0
+}

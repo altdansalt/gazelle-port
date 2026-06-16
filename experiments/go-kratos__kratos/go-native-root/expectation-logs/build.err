@@ -1,0 +1,6 @@
+INFO: Invocation ID: ab7714e6-5637-4c97-b39c-4962e52afff4
+INFO: Analyzed 97 targets (211 packages loaded, 4883 targets configured).
+INFO: Found 97 targets...
+INFO: Elapsed time: 3.946s, Critical Path: 0.35s
+INFO: 1 process: 662 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action
