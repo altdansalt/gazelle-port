@@ -19,6 +19,10 @@ have already been placed in this worktree. The expectations you must satisfy are
   partial success is a valid, useful result.
 - **Use Gazelle.** Re-run `bazel run //:gazelle` after directive changes rather than
   editing generated BUILD files by hand.
+- **Do NOT author new test files to clear a tier (M1).** Wire up the repo's *existing*
+  tests. If there are no buildable native tests in scope, say so and stop at the build
+  tier — that's an honest, valuable result. Inventing a smoke test to make `bazel test`
+  green is gaming the score, not a real port.
 - **Hermetic.** Toolchains come from Bazel, not the host. Network is available for
   dependency fetches.
 

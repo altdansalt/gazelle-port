@@ -17,6 +17,14 @@ you do not run anything yourself.
 - Keep tests honest: tier-4 `bazel test` should target the scoped tests, with
   `--test_output=errors`. Do not assert specific test counts you can't know; assert that
   tests of the right kind exist (query) and that they pass (test exit 0).
+- **Tier 3/4 must reflect the REPO'S OWN tests, not tests the worker invents (M1).**
+  Identify real test files from the provided file listing (e.g. `*_test.go`, `test_*.py`,
+  `*_test.cpp`/`*_test.cc`, `*.test.ts`). If the scope contains real tests, write tier-3 to
+  assert *those* are discovered (reference the count/paths you saw) and tier-4 to run them.
+  If the scope has **no** real tests (or they need a server/network/runtime), set tier-3/4
+  `allow_nonzero: true` and say so in a `note` field — do NOT let a worker-authored smoke
+  test count as a native-suite pass. A truthful tier-2 ("builds; no native tests in scope")
+  beats a tier-4 earned by a test the worker wrote.
 - **Strategy matters (see approach.strategy):**
   - *A-gazelle:* the ladder above — gazelle runs, `//...` builds, `kind(..._test, …)`
     exist, tests pass. Use the language's test rule kind in the query.
