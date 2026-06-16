@@ -1,0 +1,77 @@
+{
+  "tier_reached": 3,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "gazelle",
+      "tier": 1,
+      "cmd": "bazel run //:gazelle",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //...",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-go-libs",
+      "tier": 2,
+      "cmd": "bazel query 'kind(\"go_library\", //...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-assert-lib",
+      "tier": 2,
+      "cmd": "bazel query 'kind(\"go_library\", //assert:all)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-tests",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"go_test\", //...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-assert-tests",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"go_test\", //assert:all)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "test",
+      "tier": 4,
+      "cmd": "bazel test //... --test_output=errors",
+      "exit": 3,
+      "pass": false,
+      "reason": "exit 3 != 0"
+    }
+  ],
+  "passed": 7,
+  "total": 8,
+  "repo": "stretchr/testify",
+  "approach_id": "go-native",
+  "scope": "//...",
+  "predicted_tier": 4,
+  "extra_edited_files": 13,
+  "worker_exit": 0
+}

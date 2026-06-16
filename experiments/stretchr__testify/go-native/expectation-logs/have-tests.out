@@ -1,0 +1,8 @@
+//:testify_test
+//assert:assert_test
+//assert/internal/unsafetests:unsafetests_test
+//internal/difflib:difflib_test
+//internal/spew:spew_test
+//mock:mock_test
+//require:require_test
+//suite:suite_test

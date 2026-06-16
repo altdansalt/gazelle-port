@@ -125,5 +125,14 @@ jq --arg repo "$FULL" --arg aid "$AID" --arg scope "$SCOPE" --argjson pred "${PR
    "$EXPDIR/result.json" > "$EXPDIR/result.json.tmp" && mv "$EXPDIR/result.json.tmp" "$EXPDIR/result.json"
 
 echo "════ $FULL / $AID → tier $TIER (predicted ${PRED:-?}, extra files edited $EDIT_FILES) ════" >&2
+
+# DISK HYGIENE (critical: 25G disk). Reclaim this workspace's output base — build
+# outputs are disposable now that we've scored + captured the diff. The shared
+# repository_cache / disk_cache (under .cache/) persist to speed later repos.
+( cd "$WT" && bazel clean --expunge >/dev/null 2>&1 ) || true
 # tidy: drop the heavy worktree, keep records
 git -C "$CLONE" worktree remove --force "$WT" 2>/dev/null || true
+rm -rf "$WT" 2>/dev/null || true
+# drop the shallow clone too (re-cloned on demand; keeps disk flat across a big batch)
+[[ "${KEEP_CLONES:-0}" == "1" ]] || rm -rf "$CLONE" 2>/dev/null || true
+df -h /home 2>/dev/null | tail -1 | awk '{print "   disk free: "$4" ("$5" used)"}' >&2

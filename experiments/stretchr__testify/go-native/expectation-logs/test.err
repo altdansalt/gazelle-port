@@ -1,0 +1,10 @@
+INFO: Invocation ID: db3d28fd-becb-4dcb-9ec6-0c203f29176f
+INFO: Analyzed 20 targets (0 packages loaded, 0 targets configured).
+FAIL: //suite:suite_test (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/221c8cc3066f1d8203a32e28edcb74ef/execroot/_main/bazel-out/k8-fastbuild/testlogs/suite/suite_test/test.log)
+INFO: From Testing //suite:suite_test:
+FAIL: //assert:assert_test (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/221c8cc3066f1d8203a32e28edcb74ef/execroot/_main/bazel-out/k8-fastbuild/testlogs/assert/assert_test/test.log)
+INFO: From Testing //assert:assert_test:
+INFO: Found 12 targets and 8 test targets...
+INFO: Elapsed time: 3.454s, Critical Path: 3.07s
+INFO: 3 processes: 9 action cache hit, 1 internal, 2 linux-sandbox.
+INFO: Build completed, 2 tests FAILED, 3 total actions

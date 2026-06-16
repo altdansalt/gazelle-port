@@ -7,7 +7,7 @@ Hypotheses live at the bottom until confirmed/refuted.
 
 | Language | Experiments | Best tier reached | Notes |
 |----------|-------------|-------------------|-------|
-| Go       | 1 (manual)  | 3 (build 100%, 6/8 test targets) | stretchr/testify |
+| Go       | 1 (auto)    | 3 (build 100%, 7/8 checks)        | testify: tier-4 blocked by Go-version skew (F3) |
 | Python   | 0           | –                 | pending |
 | TS/JS    | 0           | –                 | pending |
 | Proto    | 0           | –                 | pending |
@@ -31,6 +31,23 @@ then fails: `go.work requires go >= 1.24.12` (gazelle's *own* build tools). `1.2
 Lesson: **pin a recent stable Go SDK (≥ gazelle's floor, currently 1.24.12), independent
 of the repo's declared minimum** — Go is backward compatible. Now encoded in the
 experimenter prompt and seed.
+
+### F3 — The binding tier-4 constraint is often *Go-version skew*, not Bazel (HIGH, important)
+**Evidence:** `stretchr/testify` automated run (worker = Sonnet 4.6). The worker reached
+tier 3 and diagnosed the exact tier-4 blocker: **Go 1.21 changed `panic(nil)` semantics**
+— `recover()` now returns `*runtime.PanicNilError{}` instead of `nil` — and testify's own
+tests assert `msg == nil` after `panic(nil)`; its `suite` tests call `testing.RunTests`
+internally in ways whose failures now propagate to the binary exit code.
+**The general principle:** Gazelle's toolchain forces a *modern* Go SDK (≥1.24.12, F2),
+but a mature repo's tests may be written for *old* Go semantics that its own CI preserves
+by pinning an ancient `go` directive. Building hermetically with a modern SDK surfaces
+latent, pre-existing version incompatibilities. So the realistic ceiling for "Gazelle +
+minor edits" on such repos is **tier 3 + most of tier 4**, with a tail of tests that fail
+for reasons *unrelated to Bazel/Gazelle* — they'd fail under `go test` on a modern Go too.
+This reframes "amenability": **build/structure amenability ≫ full-test-pass amenability**,
+and the gap is usually upstream version debt, not Gazelle.
+> Methodological note: this is why the harness scores *tiers*, not pass/fail. Tier 3 with
+> a clean diagnosis is a success for our research question.
 
 ## Failure modes observed
 

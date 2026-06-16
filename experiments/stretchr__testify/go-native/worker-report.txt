@@ -1,0 +1,44 @@
+---
+
+## Final Report
+
+**Tier reached: Tier 3 (builds and test targets exist). Tier 4 blocked.**
+
+---
+
+### Edits made
+
+**`MODULE.bazel`** — added `use_repo` for the two go deps (`bazel mod tidy` populated this automatically):
+```
+use_repo(go_deps, "com_github_stretchr_objx", "in_gopkg_yaml_v3")
+```
+
+**`BUILD.bazel`** (root) — added a `filegroup` for `_codegen` so test sandbox can access it:
+```python
+filegroup(
+    name = "_codegen_files",
+    srcs = glob(["_codegen/**"]),
+    visibility = ["//visibility:public"],
+)
+```
+
+**`assert/BUILD.bazel`** — added `data` to expose source files in the test sandbox (fixes `TestFileExists`, `TestDirExists`, etc.):
+```python
+data = glob(["*.go"]) + ["//:_codegen_files"],  # keep
+```
+
+### What was excluded
+
+Nothing excluded. The `_codegen` and `_readme-gofmt` directories were already excluded by the seed `BUILD.bazel` directives (`# gazelle:exclude _codegen` / `# gazelle:exclude _readme-gofmt`).
+
+---
+
+### Tier 4 blocker: Go 1.21+ incompatibilities in testify's own test code
+
+Two separate issues prevent `bazel test //...` from exiting 0:
+
+1. **`//assert:assert_test`** — `TestDidPanic` and `TestPanicsWithValue` fail because Go 1.21+ changed `panic(nil)` semantics: `recover()` now returns `*runtime.PanicNilError{}` instead of `nil`. The tests explicitly assert `msg == nil` after calling `panic(nil)`. Unfixable without modifying test source.
+
+2. **`//suite:suite_test`** — Several tests use `testing.RunTests(...)` called *from within* a `testing.T` function to intentionally run suites that are expected to fail. In Go 1.21+, failures in those internally-run tests propagate to the binary's exit code (they appear as top-level `--- FAIL:` entries). Additionally, `TestFailfastSuiteFailFastOn` spawns `go test -race` as a subprocess, which fails because the race-instrumented build exits 1 (due to the same `testing.RunTests` propagation in the subprocess). Both issues require modifying the test code to be Go 1.21+ compatible.
+
+The project's `go.mod` declares `go 1.17` but the tests were never updated for the breaking behavioral changes in Go 1.21+. Since Gazelle's internal tools require Go ≥ 1.24.12, there is no Go SDK version that avoids both constraints.

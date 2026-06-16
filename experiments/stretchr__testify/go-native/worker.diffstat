@@ -1,13 +1,14 @@
- .bazelrc                                |   3 +
- BUILD.bazel                             |  21 +
- MODULE.bazel                            |  18 +
+ .bazelrc                                |   7 +
+ BUILD.bazel                             |  28 ++
+ EXPECTATIONS.json                       |  15 +
+ MODULE.bazel                            |   9 +
  MODULE.bazel.lock                       | 822 ++++++++++++++++++++++++++++++++
- assert/BUILD.bazel                      |  35 ++
+ assert/BUILD.bazel                      |  36 ++
  assert/internal/unsafetests/BUILD.bazel |  14 +
  assert/yaml/BUILD.bazel                 |   9 +
  bazel-bin                               |   1 +
  bazel-out                               |   1 +
- bazel-stretchr__testify__manual         |   1 +
+ bazel-stretchr__testify__go-native      |   1 +
  bazel-testlogs                          |   1 +
  http/BUILD.bazel                        |  13 +
  internal/difflib/BUILD.bazel            |  14 +
@@ -15,4 +16,4 @@
  mock/BUILD.bazel                        |  27 ++
  require/BUILD.bazel                     |  25 +
  suite/BUILD.bazel                       |  30 ++
- 17 files changed, 1067 insertions(+)
+ 18 files changed, 1085 insertions(+)
