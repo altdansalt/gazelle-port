@@ -17,6 +17,15 @@ you do not run anything yourself.
 - Keep tests honest: tier-4 `bazel test` should target the scoped tests, with
   `--test_output=errors`. Do not assert specific test counts you can't know; assert that
   tests of the right kind exist (query) and that they pass (test exit 0).
+- **Strategy matters (see approach.strategy):**
+  - *A-gazelle:* the ladder above — gazelle runs, `//...` builds, `kind(..._test, …)`
+    exist, tests pass. Use the language's test rule kind in the query.
+  - *B-foreign* (`rules_foreign_cc`): there is no fine-grained graph. tier-1 = deps
+    resolve / config; tier-2 = the **wrapping target builds** (`bazel build <target>`);
+    tier-3 = a query confirms the foreign target/outputs exist; tier-4 = the project's
+    own test target runs via Bazel (`bazel test`/`bazel run` a test wrapper) if one is
+    wired — otherwise cap honest expectations at tier-2/3 and say so. Do NOT use
+    `kind("..._test")` queries for foreign builds.
 
 ## Predicate vocabulary (`expect` object)
 - `"exit": 0`              — required exit code
