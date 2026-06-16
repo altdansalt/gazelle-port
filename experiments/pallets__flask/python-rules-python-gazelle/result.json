@@ -1,0 +1,69 @@
+{
+  "tier_reached": 3,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "manifest",
+      "tier": 1,
+      "cmd": "bazel run //:gazelle_python_manifest.update",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "gazelle",
+      "tier": 1,
+      "cmd": "bazel run //:gazelle",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //src/... //tests/...",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-lib",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"py_library rule\", //src/...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "have-tests",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"py_test rule\", //tests/...)'",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "test",
+      "tier": 4,
+      "cmd": "bazel test //tests/... --test_output=errors",
+      "exit": 3,
+      "pass": false,
+      "reason": "exit 3 != 0"
+    }
+  ],
+  "passed": 6,
+  "total": 7,
+  "repo": "pallets/flask",
+  "approach_id": "python-rules-python-gazelle",
+  "scope": "//...",
+  "predicted_tier": 3,
+  "extra_edited_files": 22,
+  "worker_exit": 124
+}

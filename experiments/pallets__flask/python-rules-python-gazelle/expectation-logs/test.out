@@ -1,0 +1,420 @@
+==================== Test output for //tests:test_appctx:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/230/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_appctx.runfiles/_main/tests/_test_appctx_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/230/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_appctx.runfiles/_main/tests/_test_appctx_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/230/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_appctx.runfiles/_main/tests/_test_appctx_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/230/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_appctx.runfiles/_main/tests/test_appctx.py", line 5, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/230/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_appctx.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/230/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_appctx.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_async:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/229/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_async.runfiles/_main/tests/_test_async_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/229/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_async.runfiles/_main/tests/_test_async_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/229/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_async.runfiles/_main/tests/_test_async_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/229/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_async.runfiles/_main/tests/test_async.py", line 5, in <module>
+    from flask import Blueprint
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/229/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_async.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/229/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_async.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_instance_config:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/232/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_instance_config.runfiles/_main/tests/_test_instance_config_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/232/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_instance_config.runfiles/_main/tests/_test_instance_config_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/232/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_instance_config.runfiles/_main/tests/_test_instance_config_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/232/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_instance_config.runfiles/_main/tests/test_instance_config.py", line 17, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/232/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_instance_config.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/232/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_instance_config.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_json:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/234/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_json.runfiles/_main/tests/_test_json_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/234/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_json.runfiles/_main/tests/_test_json_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/234/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_json.runfiles/_main/tests/_test_json_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/234/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_json.runfiles/_main/tests/test_json.py", line 9, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/234/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_json.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/234/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_json.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_json_tag:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/236/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_json_tag.runfiles/_main/tests/_test_json_tag_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/236/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_json_tag.runfiles/_main/tests/_test_json_tag_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/236/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_json_tag.runfiles/_main/tests/_test_json_tag_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/236/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_json_tag.runfiles/_main/tests/test_json_tag.py", line 8, in <module>
+    from flask.json.tag import JSONTag
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/236/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_json_tag.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/236/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_json_tag.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_blueprints:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/238/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_blueprints.runfiles/_main/tests/_test_blueprints_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/238/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_blueprints.runfiles/_main/tests/_test_blueprints_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/238/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_blueprints.runfiles/_main/tests/_test_blueprints_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/238/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_blueprints.runfiles/_main/tests/test_blueprints.py", line 6, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/238/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_blueprints.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/238/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_blueprints.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_basic:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/240/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_basic.runfiles/_main/tests/_test_basic_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/240/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_basic.runfiles/_main/tests/_test_basic_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/240/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_basic.runfiles/_main/tests/_test_basic_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/240/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_basic.runfiles/_main/tests/test_basic.py", line 22, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/240/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_basic.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/240/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_basic.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_config:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/242/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_config.runfiles/_main/tests/_test_config_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/242/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_config.runfiles/_main/tests/_test_config_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/242/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_config.runfiles/_main/tests/_test_config_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/242/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_config.runfiles/_main/tests/test_config.py", line 6, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/242/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_config.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/242/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_config.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_cli:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/244/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_cli.runfiles/_main/tests/_test_cli_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/244/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_cli.runfiles/_main/tests/_test_cli_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/244/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_cli.runfiles/_main/tests/_test_cli_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/244/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_cli.runfiles/_main/tests/test_cli.py", line 26, in <module>
+    from flask import Blueprint
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/244/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_cli.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/244/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_cli.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_converters:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/246/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_converters.runfiles/_main/tests/_test_converters_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/246/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_converters.runfiles/_main/tests/_test_converters_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/246/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_converters.runfiles/_main/tests/_test_converters_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/246/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_converters.runfiles/_main/tests/test_converters.py", line 3, in <module>
+    from flask import request
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/246/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_converters.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/246/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_converters.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_logging:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/250/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_logging.runfiles/_main/tests/_test_logging_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/250/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_logging.runfiles/_main/tests/_test_logging_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/250/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_logging.runfiles/_main/tests/_test_logging_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/250/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_logging.runfiles/_main/tests/test_logging.py", line 7, in <module>
+    from flask.logging import default_handler
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/250/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_logging.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/250/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_logging.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_helpers:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/249/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_helpers.runfiles/_main/tests/_test_helpers_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/249/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_helpers.runfiles/_main/tests/_test_helpers_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/249/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_helpers.runfiles/_main/tests/_test_helpers_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/249/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_helpers.runfiles/_main/tests/test_helpers.py", line 7, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/249/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_helpers.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/249/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_helpers.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_regression:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/252/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_regression.runfiles/_main/tests/_test_regression_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/252/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_regression.runfiles/_main/tests/_test_regression_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/252/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_regression.runfiles/_main/tests/_test_regression_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/252/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_regression.runfiles/_main/tests/test_regression.py", line 1, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/252/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_regression.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/252/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_regression.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_signals:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/254/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_signals.runfiles/_main/tests/_test_signals_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/254/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_signals.runfiles/_main/tests/_test_signals_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/254/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_signals.runfiles/_main/tests/_test_signals_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/254/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_signals.runfiles/_main/tests/test_signals.py", line 1, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/254/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_signals.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/254/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_signals.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_subclassing:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/256/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_subclassing.runfiles/_main/tests/_test_subclassing_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/256/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_subclassing.runfiles/_main/tests/_test_subclassing_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/256/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_subclassing.runfiles/_main/tests/_test_subclassing_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/256/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_subclassing.runfiles/_main/tests/test_subclassing.py", line 3, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/256/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_subclassing.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/256/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_subclassing.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_request:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/260/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_request.runfiles/_main/tests/_test_request_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/260/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_request.runfiles/_main/tests/_test_request_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/260/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_request.runfiles/_main/tests/_test_request_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/260/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_request.runfiles/_main/tests/test_request.py", line 3, in <module>
+    from flask import Flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/260/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_request.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/260/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_request.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_session_interface:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/262/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_session_interface.runfiles/_main/tests/_test_session_interface_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/262/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_session_interface.runfiles/_main/tests/_test_session_interface_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/262/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_session_interface.runfiles/_main/tests/_test_session_interface_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/262/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_session_interface.runfiles/_main/tests/test_session_interface.py", line 1, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/262/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_session_interface.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/262/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_session_interface.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_reqctx:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/258/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_reqctx.runfiles/_main/tests/_test_reqctx_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/258/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_reqctx.runfiles/_main/tests/_test_reqctx_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/258/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_reqctx.runfiles/_main/tests/_test_reqctx_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/258/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_reqctx.runfiles/_main/tests/test_reqctx.py", line 9, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/258/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_reqctx.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/258/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_reqctx.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_testing:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/266/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_testing.runfiles/_main/tests/_test_testing_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/266/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_testing.runfiles/_main/tests/_test_testing_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/266/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_testing.runfiles/_main/tests/_test_testing_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/266/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_testing.runfiles/_main/tests/test_testing.py", line 6, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/266/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_testing.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/266/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_testing.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_templating:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/264/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_templating.runfiles/_main/tests/_test_templating_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/264/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_templating.runfiles/_main/tests/_test_templating_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/264/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_templating.runfiles/_main/tests/_test_templating_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/264/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_templating.runfiles/_main/tests/test_templating.py", line 10, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/264/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_templating.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/264/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_templating.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_user_error_handler:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/269/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_user_error_handler.runfiles/_main/tests/_test_user_error_handler_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/269/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_user_error_handler.runfiles/_main/tests/_test_user_error_handler_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/269/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_user_error_handler.runfiles/_main/tests/_test_user_error_handler_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/269/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_user_error_handler.runfiles/_main/tests/test_user_error_handler.py", line 7, in <module>
+    import flask
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/269/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_user_error_handler.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/269/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_user_error_handler.runfiles/_main/src/flask/__init__.py)
+================================================================================
+==================== Test output for //tests:test_views:
+Traceback (most recent call last):
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/270/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_views.runfiles/_main/tests/_test_views_stage2_bootstrap.py", line 541, in <module>
+    main()
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/270/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_views.runfiles/_main/tests/_test_views_stage2_bootstrap.py", line 535, in main
+    _run_py_path(main_filename, args=sys.argv[1:])
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/270/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_views.runfiles/_main/tests/_test_views_stage2_bootstrap.py", line 323, in _run_py_path
+    runpy.run_path(main_filename, run_name="__main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/270/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_views.runfiles/_main/tests/test_views.py", line 4, in <module>
+    import flask.views
+  File "/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/270/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_views.runfiles/_main/src/flask/__init__.py", line 1, in <module>
+    from . import json as json
+ImportError: cannot import name 'json' from partially initialized module 'flask' (most likely due to a circular import) (/home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/sandbox/linux-sandbox/270/execroot/_main/bazel-out/k8-fastbuild/bin/tests/test_views.runfiles/_main/src/flask/__init__.py)
+================================================================================
+//tests:test_appctx                                                      FAILED in 1.3s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_appctx/test.log
+//tests:test_async                                                       FAILED in 1.4s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_async/test.log
+//tests:test_basic                                                       FAILED in 1.5s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_basic/test.log
+//tests:test_blueprints                                                  FAILED in 1.6s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_blueprints/test.log
+//tests:test_cli                                                         FAILED in 1.4s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_cli/test.log
+//tests:test_config                                                      FAILED in 1.2s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_config/test.log
+//tests:test_converters                                                  FAILED in 0.9s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_converters/test.log
+//tests:test_helpers                                                     FAILED in 1.5s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_helpers/test.log
+//tests:test_instance_config                                             FAILED in 1.2s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_instance_config/test.log
+//tests:test_json                                                        FAILED in 1.5s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_json/test.log
+//tests:test_json_tag                                                    FAILED in 1.3s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_json_tag/test.log
+//tests:test_logging                                                     FAILED in 1.2s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_logging/test.log
+//tests:test_regression                                                  FAILED in 0.3s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_regression/test.log
+//tests:test_reqctx                                                      FAILED in 1.5s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_reqctx/test.log
+//tests:test_request                                                     FAILED in 0.3s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_request/test.log
+//tests:test_session_interface                                           FAILED in 0.4s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_session_interface/test.log
+//tests:test_signals                                                     FAILED in 0.3s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_signals/test.log
+//tests:test_subclassing                                                 FAILED in 0.3s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_subclassing/test.log
+//tests:test_templating                                                  FAILED in 1.6s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_templating/test.log
+//tests:test_testing                                                     FAILED in 1.3s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_testing/test.log
+//tests:test_user_error_handler                                          FAILED in 1.5s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_user_error_handler/test.log
+//tests:test_views                                                       FAILED in 1.4s
+  /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_views/test.log
+
+Executed 22 out of 22 tests: 22 fail locally.

@@ -1,0 +1,18 @@
+//examples/internal/integration/openapiv3:openapiv3_test              NO STATUS
+//internal/descriptor:descriptor_test                                 NO STATUS
+//protoc-gen-openapiv2/internal/genopenapi:genopenapi_test            NO STATUS
+//runtime:runtime_test                                                NO STATUS
+//examples/internal/integration:integration_test                FAILED TO BUILD
+//internal/casing:casing_test                                            PASSED in 0.1s
+//internal/codegenerator:codegenerator_test                              PASSED in 0.0s
+//internal/httprule:httprule_test                                        PASSED in 0.1s
+//openapiv3-merge:openapiv3-merge_test                                   PASSED in 0.1s
+//openapiv3-merge/internal/merge:merge_test                              PASSED in 0.1s
+//protoc-gen-grpc-gateway/internal/gengateway:gengateway_test            PASSED in 0.1s
+//protoc-gen-openapiv2:protoc-gen-openapiv2_test                         PASSED in 0.0s
+//protoc-gen-openapiv3:protoc-gen-openapiv3_test                         PASSED in 0.0s
+//protoc-gen-openapiv3/internal/genopenapi:genopenapi_test               PASSED in 0.1s
+//utilities:utilities_test                                               PASSED in 0.0s
+
+Executed 10 out of 15 tests: 10 tests pass, 1 fails to build, and 4 were skipped.
+There were tests whose specified size is too big. Use the --test_verbose_timeout_warnings command line option to see which ones these are.

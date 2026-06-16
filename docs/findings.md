@@ -10,7 +10,10 @@ Hypotheses live at the bottom until confirmed/refuted.
 | **Go** | A `gazelle` (native) | 7 | **4** | 3.7 | **Solved.** 5/6 tier 4 with ~5–15 line seeds. |
 | **C/C++** | A `gazelle_cc` | 6 | **4** | — | **Surprise winner.** tier 3 on clean libs (zlib, nlohmann/json, hiredis) — 4/4; tier 1 on giant neovim. F6/H6 |
 | **C/C++** | B `rules_foreign_cc` | 5 | **3** | — | **Reliable.** Libs → tier 3 (zlib, jemalloc, hiredis, full libllama, ~4 edits); giant neovim → tier 2. F7/H7 |
-| **Python** | A `rules_python` plugin | 1 | **2** | 2.0 | Library builds; tests exceed minor edits. F4. (gazelle_py alt: phase 4) |
+| **Python** | A `rules_python` plugin | 2 | **3** | — | flask: builds + tests discovered (pure-Go plugin). F4. |
+| **Python** | A `gazelle_py` (cgo/Rust) | 1 | **1** | — | Plugin's own Go+Rust binary won't link (PIC). F10. Use rules_python instead. |
+| **Proto** | A native `gazelle` | 1 | **1** | — | grpc-gateway: gazelle ran; protoc codegen wiring exceeds seed. F11. |
+| **Java** | A `contrib_rules_jvm` | 1 | **1** | — | gson: gazelle ran; Maven+build didn't converge. F11. |
 | **Rust** | A `gazelle_rust` | 2 | **1** | 1.0 | Won't compile even a small clean crate (bytes) — least-ready. F8/H8 |
 | **TS/JS** | A `aspect_gazelle_js` | 2 | **1** | 0.5 | Generator won't run (native extractor). F5/F9 |
 
@@ -18,12 +21,17 @@ Tiers: 0 nothing · 1 deps/gazelle run · 2 builds · 3 tests discovered · 4 te
 Full per-experiment table: `data/results.tsv` / `bin/rollup.sh`.
 
 > **Headline answer to "what's achievable now":**
-> **Go ≫ C/C++ > Python > Rust > TS** for *Gazelle* (source-native, fine-grained).
+> **Go ≫ C/C++ > Python > {Rust, TS, Java, Proto-app}** for *Gazelle* (source-native).
 > Separately, **`rules_foreign_cc` reliably gets CMake/Make C/C++ giants to a building
-> Bazel target with ~4 edits** (Strategy B) — it genuinely "does most of the work," but
-> the deliverable is one coarse wrapping target, not a native graph. The night's biggest
-> surprise: **`gazelle_cc` is far more capable than its ★42 suggests** — on clean C
-> libraries it produced a fine-grained, *buildable* C++ graph and out-performed foreign_cc.
+> Bazel target with ~4 edits** (Strategy B) — genuinely "does most of the work," but the
+> deliverable is one coarse wrapping target, not a native graph.
+>
+> **The deepest cross-cutting result (F10):** a Gazelle plugin's *implementation
+> architecture* predicts hermetic-build success better than its target language.
+> **Pure-Go plugins (Go, proto, rules_python) just work; plugins with a native cgo/Rust
+> import-extractor (gazelle_py, gazelle_ts, aspect_gazelle_js) stall at tier 0–1 failing
+> to build themselves** (PIC link errors), regardless of the repo. Biggest pleasant
+> surprise: **`gazelle_cc`** (pure Go) reached tier 3 on every clean C/C++ library tried.
 
 ## Confirmed findings
 
@@ -124,6 +132,28 @@ Lost 2 experiments (gitleaks, kratos's 2nd approach): `head` closes the pipe at 
 (buffering-dependent) so it hit only repos with >N files, intermittently. Fixed by
 `|| true` on the substitution in `run-experiment.sh` and `ralph-loop.sh`. *Lesson logged
 because the loop must be deterministic; a flaky truncation silently dropped results.*
+
+### F10 — The "native cgo/Rust import-extractor" plugin family fails to build itself (HIGH, cross-cutting)
+**Evidence:** `gazelle_py` (perplexityai) on flask → **tier 1**, while rules_python's
+**pure-Go** plugin hit **tier 3** on the *same* repo. gazelle_py builds a Go
+`gazelle_binary` that links a **Rust staticlib (ruff's parser) via cgo**; the link fails:
+`ld.lld: error: relocation R_X86_64_64 ... 'type:.eq.sync/atomic.Pointer[...]'; recompile
+with -fPIC` — Go objects linked against the Rust archive under lld aren't position-independent.
+This is the **same failure class as TS** (`aspect_gazelle_js`/`gazelle_ts`, F5/F9), which
+also ship Rust/cgo extractors. **Generalization:** a Gazelle plugin's *implementation
+architecture* predicts hermetic-build success more than its language does. **Pure-Go
+plugins (Go, proto, rules_python) build and run cleanly; cgo+Rust-extractor plugins
+(gazelle_py, gazelle_ts, aspect_gazelle_js) stall at tier 0–1 on a toolchain link error**,
+independent of the target repo. The fix is upstream in the plugin (PIC/linkmode), not a
+"minor edit" to the repo. → For Python today, prefer rules_python's plugin over gazelle_py.
+
+### F11 — Proto & Java via Gazelle: generator runs, build stalls (MEDIUM)
+**Evidence:** `grpc-ecosystem/grpc-gateway` (native proto gazelle) → tier 1 (55 BUILDs
+generated, build failed — needs protoc plugin/codegen wiring beyond minor edits);
+`google/gson` (contrib_rules_jvm java gazelle) → tier 1 (gazelle ran; Maven resolution via
+rules_jvm_external + java target build didn't converge in budget). Both: Strategy A *runs*
+but reaching tier 2 needs more than the seed. Proto's "production" reputation is for the
+*proto_library* slice inside an already-Bazel Go repo, not for a protoc-codegen-heavy app.
 
 ## Methodology caveats
 

@@ -1,0 +1,7 @@
+INFO: Invocation ID: f3cebdea-7f62-461e-a3a9-b92a18643bc6
+WARNING: Target pattern parsing failed.
+ERROR: Skipping '//gson/...': no targets found beneath 'gson'
+ERROR: no targets found beneath 'gson'
+INFO: Elapsed time: 0.431s
+INFO: 0 processes.
+ERROR: Build did NOT complete successfully

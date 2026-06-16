@@ -1,0 +1,61 @@
+{
+  "tier_reached": 1,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "gazelle",
+      "tier": 1,
+      "cmd": "bazel run //:gazelle",
+      "exit": 1,
+      "pass": false,
+      "reason": "exit 1 != 0"
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //gson/...",
+      "exit": 1,
+      "pass": false,
+      "reason": "exit 1 != 0"
+    },
+    {
+      "id": "have-lib",
+      "tier": 2,
+      "cmd": "bazel query 'kind(\"java_library rule\", //gson/...)'",
+      "exit": 7,
+      "pass": false,
+      "reason": "exit 7 != 0"
+    },
+    {
+      "id": "have-tests",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"java_test rule\", //gson/...)'",
+      "exit": 7,
+      "pass": false,
+      "reason": "exit 7 != 0"
+    },
+    {
+      "id": "test",
+      "tier": 4,
+      "cmd": "bazel test //gson/... --test_output=errors",
+      "exit": 1,
+      "pass": true,
+      "reason": ""
+    }
+  ],
+  "passed": 2,
+  "total": 6,
+  "repo": "google/gson",
+  "approach_id": "java-gazelle-core",
+  "scope": "//gson/...",
+  "predicted_tier": 2,
+  "extra_edited_files": 4,
+  "worker_exit": 124
+}

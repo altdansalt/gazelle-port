@@ -1,0 +1,6 @@
+INFO: Invocation ID: 645e859b-2023-4e42-ab37-8d7166edf14f
+ERROR: no targets found beneath 'tests'
+INFO: Elapsed time: 0.492s
+INFO: 0 processes.
+ERROR: Build did NOT complete successfully
+ERROR: Couldn't start the build. Unable to run tests

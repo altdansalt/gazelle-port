@@ -1,0 +1,241 @@
+INFO: Invocation ID: 2c2ce7c1-8ec4-4463-84a5-ae2aa0e8ab40
+INFO: Analyzed target //:gazelle (451 packages loaded, 25529 targets configured, 9 aspect applications).
+INFO: Found 1 target...
+Target //:gazelle up-to-date:
+  bazel-bin/gazelle-runner.bash
+  bazel-bin/gazelle
+INFO: Elapsed time: 13.484s, Critical Path: 0.17s
+INFO: 1 process: 1196 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action
+INFO: Running command line: bazel-bin/gazelle
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/private/maven/resolver.go:110[0m[36m >[0m [1mnot loading maven dependencies[0m [36merror=[0m[31m[1m"open /home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/maven_install.json: no such file or directory"[0m[0m [36m_c=[0mmaven-resolver
+INFO GrpcServer - Set of classes in /home/exedev/.cache/bazel/_bazel_exedev/ad882c760ed0455123090e98bf1a628b/execroot/_main/bazel-out/k8-fastbuild/bin/gazelle.runfiles/_main/gson/src/main/java has no package
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:90: error: ';' expected
+    record LocalRecord(int i) {
+                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:90: error: ';' expected
+    record LocalRecord(int i) {
+                            ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:94: error: ';' expected
+      public int i() {
+                  ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:108: error: ';' expected
+    record LocalRecord(int i) {}
+                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:108: error: ';' expected
+    record LocalRecord(int i) {}
+                            ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:118: error: ';' expected
+    record LocalRecord(int i) {}
+                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:118: error: ';' expected
+    record LocalRecord(int i) {}
+                            ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:126: error: ';' expected
+    record LocalRecord(Integer a, Integer b) {}
+                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:126: error: ';' expected
+    record LocalRecord(Integer a, Integer b) {}
+                                         ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:126: error: not a statement
+    record LocalRecord(Integer a, Integer b) {}
+                                          ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:126: error: ';' expected
+    record LocalRecord(Integer a, Integer b) {}
+                                           ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:135: error: ';' expected
+    record LocalRecord(String s) {
+                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:135: error: ';' expected
+    record LocalRecord(String s) {
+                               ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:136: error: not a statement
+      LocalRecord {
+      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:136: error: ';' expected
+      LocalRecord {
+                 ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:149: error: ';' expected
+    record LocalRecord(String s) {
+                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:149: error: ';' expected
+    record LocalRecord(String s) {
+                               ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:154: error: <identifier> expected
+      LocalRecord {
+                 ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:174: error: ';' expected
+    record LocalRecord(String s) {
+                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:174: error: ';' expected
+    record LocalRecord(String s) {
+                               ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:177: error: ';' expected
+      public String s() {
+                     ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:188: error: ';' expected
+    record LocalRecord(String s) {
+                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:188: error: ';' expected
+    record LocalRecord(String s) {
+                               ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:194: error: ';' expected
+      public String s() {
+                     ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:210: error: ';' expected
+    record EmptyRecord() {}
+                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:222: error: ';' expected
+    record LocalRecord(int i) {}
+                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:222: error: ';' expected
+    record LocalRecord(int i) {}
+                            ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:297: error: ';' expected
+    record LocalRecord(String s, int i) {}
+                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:297: error: <identifier> expected
+    record LocalRecord(String s, int i) {}
+                                ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:297: error: ';' expected
+    record LocalRecord(String s, int i) {}
+                                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:359: error: ';' expected
+    record RecordWithExpose(@Expose int a, int b) {}
+                           ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:359: error: <identifier> expected
+    record RecordWithExpose(@Expose int a, int b) {}
+                                          ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:359: error: ';' expected
+    record RecordWithExpose(@Expose int a, int b) {}
+                                                ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:368: error: ';' expected
+    record LocalRecord(int a, int b, double c) {}
+                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:368: error: <identifier> expected
+    record LocalRecord(int a, int b, double c) {}
+                             ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:368: error: <identifier> expected
+    record LocalRecord(int a, int b, double c) {}
+                                    ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:368: error: ';' expected
+    record LocalRecord(int a, int b, double c) {}
+                                             ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:391: error: ';' expected
+    record Adapter() implements JsonSerializer<String>, JsonDeserializer<String> {
+                  ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:391: error: not a statement
+    record Adapter() implements JsonSerializer<String>, JsonDeserializer<String> {
+                                              ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:391: error: ';' expected
+    record Adapter() implements JsonSerializer<String>, JsonDeserializer<String> {
+                                                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:391: error: not a statement
+    record Adapter() implements JsonSerializer<String>, JsonDeserializer<String> {
+                                                                        ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:391: error: ';' expected
+    record Adapter() implements JsonSerializer<String>, JsonDeserializer<String> {
+                                                                                ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:393: error: ';' expected
+      public String deserialize(
+                               ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:394: error: ';' expected
+          JsonElement json, Type typeOfT, JsonDeserializationContext context) {
+                                ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:394: error: not a statement
+          JsonElement json, Type typeOfT, JsonDeserializationContext context) {
+                                 ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:394: error: ';' expected
+          JsonElement json, Type typeOfT, JsonDeserializationContext context) {
+                                        ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:394: error: ';' expected
+          JsonElement json, Type typeOfT, JsonDeserializationContext context) {
+                                                                            ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:399: error: ';' expected
+      public JsonElement serialize(String src, Type typeOfSrc, JsonSerializationContext context) {
+                                  ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:399: error: ';' expected
+      public JsonElement serialize(String src, Type typeOfSrc, JsonSerializationContext context) {
+                                                   ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:399: error: not a statement
+      public JsonElement serialize(String src, Type typeOfSrc, JsonSerializationContext context) {
+                                                    ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:399: error: ';' expected
+      public JsonElement serialize(String src, Type typeOfSrc, JsonSerializationContext context) {
+                                                             ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:399: error: ';' expected
+      public JsonElement serialize(String src, Type typeOfSrc, JsonSerializationContext context) {
+                                                                                               ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:403: error: ';' expected
+    record LocalRecord(@JsonAdapter(Adapter.class) String s) {}
+                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:403: error: ';' expected
+    record LocalRecord(@JsonAdapter(Adapter.class) String s) {}
+                                                           ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:412: error: ';' expected
+    record Allowed(int a) {}
+                  ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:412: error: ';' expected
+    record Allowed(int a) {}
+                        ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:413: error: ';' expected
+    record Blocked(int b) {}
+                  ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:413: error: ';' expected
+    record Blocked(int b) {}
+                        ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:472: error: ';' expected
+    record LocalRecord(int i) {}
+                      ^
+/home/exedev/gazel-port/.cache/worktrees/google__gson__java-gazelle-core/gson/src/test/java/com/google/gson/functional/Java17RecordTest.java:472: error: ';' expected
+    record LocalRecord(int i) {}
+                            ^
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["CanIgnoreReturnValue"] [36mfrom rule=[0m@gson//gson/src/main/java/com/google/gson/internal/bind [36mpackage=[0mcom.google.errorprone.annotations
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["CanIgnoreReturnValue"] [36mfrom rule=[0m@gson//gson/src/main/java/com/google/gson/internal [36mpackage=[0mcom.google.errorprone.annotations
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["CanIgnoreReturnValue"] [36mfrom rule=[0m@gson//gson/src/main/java/com/google/gson/stream [36mpackage=[0mcom.google.errorprone.annotations
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["CanIgnoreReturnValue","InlineMe"] [36mfrom rule=[0m@gson//gson/src/main/java/com/google/gson [36mpackage=[0mcom.google.errorprone.annotations
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Assert"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/common [36mpackage=[0morg.junit
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Objects","Splitter","Throwables"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/functional [36mpackage=[0mcom.google.common.base
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Truth"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/functional [36mpackage=[0mcom.google.common.truth
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["CanIgnoreReturnValue","Keep"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/functional [36mpackage=[0mcom.google.errorprone.annotations
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["After","Assert","Assume","AssumptionViolatedException","Before","Ignore","Test"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/functional [36mpackage=[0morg.junit
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["ThrowingRunnable"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/functional [36mpackage=[0morg.junit.function
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["RunWith"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/functional [36mpackage=[0morg.junit.runner
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["JUnit4"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/functional [36mpackage=[0morg.junit.runners
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Splitter"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/integration [36mpackage=[0mcom.google.common.base
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Truth"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/integration [36mpackage=[0mcom.google.common.truth
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Assert","Before","Test"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/integration [36mpackage=[0morg.junit
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Truth"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal/bind/util [36mpackage=[0mcom.google.common.truth
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Assert","Test"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal/bind/util [36mpackage=[0morg.junit
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Truth"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal/bind [36mpackage=[0mcom.google.common.truth
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Assert","Before","Test"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal/bind [36mpackage=[0morg.junit
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Truth"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal/reflect [36mpackage=[0mcom.google.common.truth
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Test"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal/reflect [36mpackage=[0morg.junit
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Truth"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal/sql [36mpackage=[0mcom.google.common.truth
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["DefaultTypeAdaptersTest"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal/sql [36mpackage=[0mcom.google.gson.functional
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["After","Before","Test"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal/sql [36mpackage=[0morg.junit
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["MapTestSuiteBuilder","TestStringMapGenerator"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal [36mpackage=[0mcom.google.common.collect.testing
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["CollectionFeature","CollectionSize","Feature","MapFeature"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal [36mpackage=[0mcom.google.common.collect.testing.features
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Truth"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal [36mpackage=[0mcom.google.common.truth
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Test","TestSuite"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal [36mpackage=[0mjunit.framework
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Assert","Test"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal [36mpackage=[0morg.junit
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["RunWith"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal [36mpackage=[0morg.junit.runner
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["AllTests"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/internal [36mpackage=[0morg.junit.runners
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Truth"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/metrics [36mpackage=[0mcom.google.common.truth
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Before","Ignore","Test"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/metrics [36mpackage=[0morg.junit
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Truth"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/reflect [36mpackage=[0mcom.google.common.truth
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Assert","Test"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/reflect [36mpackage=[0morg.junit
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Truth"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/stream [36mpackage=[0mcom.google.common.truth
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Assert","Assume","Ignore","Test"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/stream [36mpackage=[0morg.junit
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["RunWith"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/stream [36mpackage=[0morg.junit.runner
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Parameterized"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson/stream [36mpackage=[0morg.junit.runners
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["ListTestSuiteBuilder","MapTestSuiteBuilder","SampleElements","TestListGenerator","TestMapGenerator"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson [36mpackage=[0mcom.google.common.collect.testing
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["CollectionFeature","CollectionSize","ListFeature","MapFeature"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson [36mpackage=[0mcom.google.common.collect.testing.features
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["EqualsTester"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson [36mpackage=[0mcom.google.common.testing
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Truth"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson [36mpackage=[0mcom.google.common.truth
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Keep"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson [36mpackage=[0mcom.google.errorprone.annotations
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Test"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson [36mpackage=[0mjunit.framework
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["Assert","Before","Ignore","Test"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson [36mpackage=[0morg.junit
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["RunWith"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson [36mpackage=[0morg.junit.runner
+[90m1:07PM[0m [33mWRN[0m [1mexternal/contrib_rules_jvm+/java/gazelle/resolve.go:461[0m[36m >[0m [1mUnable to find package for import in any dependency[0m [36mclasses=[0m["AllTests","Parameterized","Parameterized","Parameterized"] [36mfrom rule=[0m@gson//gson/src/test/java/com/google/gson [36mpackage=[0morg.junit.runners
+[90m1:07PM[0m [31mFTL[0m [1mexternal/contrib_rules_jvm+/java/gazelle/lang.go:275[0m[36m >[0m [1mthe java extension encountered errors that will create invalid build files[0m

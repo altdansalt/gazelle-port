@@ -1,0 +1,50 @@
+INFO: Invocation ID: 2a0db1b0-96ab-46cb-a0f5-7b3f7abd6f21
+INFO: Analyzed 24 targets (0 packages loaded, 0 targets configured).
+FAIL: //tests:test_appctx (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_appctx/test.log)
+INFO: From Testing //tests:test_appctx:
+FAIL: //tests:test_async (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_async/test.log)
+INFO: From Testing //tests:test_async:
+FAIL: //tests:test_instance_config (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_instance_config/test.log)
+INFO: From Testing //tests:test_instance_config:
+FAIL: //tests:test_json (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_json/test.log)
+INFO: From Testing //tests:test_json:
+FAIL: //tests:test_json_tag (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_json_tag/test.log)
+INFO: From Testing //tests:test_json_tag:
+FAIL: //tests:test_blueprints (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_blueprints/test.log)
+INFO: From Testing //tests:test_blueprints:
+FAIL: //tests:test_basic (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_basic/test.log)
+INFO: From Testing //tests:test_basic:
+FAIL: //tests:test_config (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_config/test.log)
+INFO: From Testing //tests:test_config:
+FAIL: //tests:test_cli (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_cli/test.log)
+INFO: From Testing //tests:test_cli:
+FAIL: //tests:test_converters (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_converters/test.log)
+INFO: From Testing //tests:test_converters:
+FAIL: //tests:test_logging (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_logging/test.log)
+INFO: From Testing //tests:test_logging:
+FAIL: //tests:test_helpers (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_helpers/test.log)
+INFO: From Testing //tests:test_helpers:
+FAIL: //tests:test_regression (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_regression/test.log)
+INFO: From Testing //tests:test_regression:
+FAIL: //tests:test_signals (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_signals/test.log)
+INFO: From Testing //tests:test_signals:
+FAIL: //tests:test_subclassing (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_subclassing/test.log)
+INFO: From Testing //tests:test_subclassing:
+FAIL: //tests:test_request (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_request/test.log)
+INFO: From Testing //tests:test_request:
+FAIL: //tests:test_session_interface (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_session_interface/test.log)
+INFO: From Testing //tests:test_session_interface:
+FAIL: //tests:test_reqctx (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_reqctx/test.log)
+INFO: From Testing //tests:test_reqctx:
+FAIL: //tests:test_testing (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_testing/test.log)
+INFO: From Testing //tests:test_testing:
+FAIL: //tests:test_templating (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_templating/test.log)
+INFO: From Testing //tests:test_templating:
+FAIL: //tests:test_user_error_handler (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_user_error_handler/test.log)
+INFO: From Testing //tests:test_user_error_handler:
+FAIL: //tests:test_views (Exit 1) (see /home/exedev/.cache/bazel/_bazel_exedev/4b3d7d751e30ff3b5241c6e287ed616b/execroot/_main/bazel-out/k8-fastbuild/testlogs/tests/test_views/test.log)
+INFO: From Testing //tests:test_views:
+INFO: Found 2 targets and 22 test targets...
+INFO: Elapsed time: 14.429s, Critical Path: 1.80s
+INFO: 23 processes: 1 internal, 44 linux-sandbox.
+INFO: Build completed, 22 tests FAILED, 23 total actions

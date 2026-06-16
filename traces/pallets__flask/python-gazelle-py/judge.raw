@@ -1,0 +1,15 @@
+```json
+{
+  "repo": "pallets/flask",
+  "approach_id": "python-gazelle-py",
+  "scope": "//...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0,"stdout_regex":"rules_python"}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
+    {"id":"build","tier":2,"cmd":"bazel build //...","expect":{"exit":0}},
+    {"id":"have-lib","tier":2,"cmd":"bazel query 'kind(\"py_library rule\", //src/...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\"py_test rule\", //tests/...)'","expect":{"exit":0,"stdout_min_lines":1,"note":"The repo has ~24 real test files under tests/ (test_*.py) plus example suites under examples/tutorial/tests and examples/javascript/tests (excluded by gazelle directive). Tier-3 asserts gazelle generated native py_test targets for the root tests/ tree. Type_check/ files are not pytest tests; test_apps/ are fixtures, not tests."}},
+    {"id":"test","tier":4,"cmd":"bazel test //tests/... --test_output=errors","expect":{"exit":0,"allow_nonzero":true,"note":"Flask's tests rely on shared conftest fixtures, data deps (templates/static/sql), and fixture apps with deliberately shadowing modules (test_apps/cliapp/inner1/inner2/flask.py). Passing under Bazel requires correct data deps, pip-resolved native wheels (markupsafe), and conftest wiring; full green is uncertain, so this is informational. A non-passing tier-4 still leaves an honest tier-3 (native tests discovered) as the earned result."}}
+  ]
+}
+```

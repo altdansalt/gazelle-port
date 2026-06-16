@@ -1,0 +1,11 @@
+ .bazelrc                                |    9 +
+ BUILD.bazel                             |   16 +
+ EXPECTATIONS.json                       |   13 +
+ MODULE.bazel                            |   25 +
+ MODULE.bazel.lock                       | 1563 +++++++++++++++++++++++++++++++
+ bazel-bin                               |    1 +
+ bazel-out                               |    1 +
+ bazel-pallets__flask__python-gazelle-py |    1 +
+ bazel-testlogs                          |    1 +
+ requirements.lock                       |   35 +
+ 10 files changed, 1665 insertions(+)

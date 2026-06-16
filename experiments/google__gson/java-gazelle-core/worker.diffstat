@@ -1,0 +1,10 @@
+ .bazelrc                              |   11 +
+ BUILD.bazel                           |   23 +
+ EXPECTATIONS.json                     |   13 +
+ MODULE.bazel                          |   31 +
+ MODULE.bazel.lock                     | 1218 +++++++++++++++++++++++++++++++++
+ bazel-bin                             |    1 +
+ bazel-google__gson__java-gazelle-core |    1 +
+ bazel-out                             |    1 +
+ bazel-testlogs                        |    1 +
+ 9 files changed, 1300 insertions(+)

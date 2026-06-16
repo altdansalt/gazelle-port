@@ -1,0 +1,120 @@
+INFO: Invocation ID: 9348e1a3-93bd-4ffc-8518-dd2298d64464
+INFO: Analyzed 155 targets (354 packages loaded, 9088 targets configured, 43 aspect applications).
+INFO: From Compiling upb/wire/decode.c [for tool]:
+In function 'upb_Decoder_DecodeMessageSetItem',
+    inlined from '_upb_Decoder_DecodeFieldData' at external/protobuf+/upb/wire/decode.c:1088:16,
+    inlined from '_upb_Decoder_DecodeFieldNoFast' at external/protobuf+/upb/wire/decode.c:1115:9,
+    inlined from '_upb_Decoder_DecodeField' at external/protobuf+/upb/wire/decode.c:1170:10,
+    inlined from '_upb_Decoder_DecodeMessage' at external/protobuf+/upb/wire/decode.c:1181:11:
+external/protobuf+/upb/wire/decode.c:742:11: warning: '*(const char **)((char *)&sv + offsetof(upb_StringView, data))' may be used uninitialized [-Wmaybe-uninitialized]
+  742 |           upb_Decoder_AddMessageSetItem(d, msg, layout, type_id, sv.data,
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  743 |                                         sv.size);
+      |                                         ~~~~~~~~
+external/protobuf+/upb/wire/decode.c: In function '_upb_Decoder_DecodeMessage':
+external/protobuf+/upb/wire/decode.c:732:24: note: '*(const char **)((char *)&sv + offsetof(upb_StringView, data))' was declared here
+  732 |         upb_StringView sv;
+      |                        ^~
+In function 'upb_Decoder_DecodeMessageSetItem',
+    inlined from '_upb_Decoder_DecodeFieldData' at external/protobuf+/upb/wire/decode.c:1088:16,
+    inlined from '_upb_Decoder_DecodeFieldNoFast' at external/protobuf+/upb/wire/decode.c:1115:9,
+    inlined from '_upb_Decoder_DecodeField' at external/protobuf+/upb/wire/decode.c:1170:10,
+    inlined from '_upb_Decoder_DecodeMessage' at external/protobuf+/upb/wire/decode.c:1181:11:
+external/protobuf+/upb/wire/decode.c:742:11: warning: '*(size_t *)((char *)&sv + offsetof(upb_StringView, size))' may be used uninitialized [-Wmaybe-uninitialized]
+  742 |           upb_Decoder_AddMessageSetItem(d, msg, layout, type_id, sv.data,
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  743 |                                         sv.size);
+      |                                         ~~~~~~~~
+external/protobuf+/upb/wire/decode.c: In function '_upb_Decoder_DecodeMessage':
+external/protobuf+/upb/wire/decode.c:732:24: note: '*(size_t *)((char *)&sv + offsetof(upb_StringView, size))' was declared here
+  732 |         upb_StringView sv;
+      |                        ^~
+In file included from /usr/include/string.h:548,
+                 from external/protobuf+/upb/mem/internal/arena.h:13,
+                 from external/protobuf+/upb/mem/arena.h:28,
+                 from external/protobuf+/upb/wire/decode.h:16,
+                 from external/protobuf+/upb/wire/decode.c:8:
+In function 'memcpy',
+    inlined from '_upb_Decoder_DecodeFixedPacked' at external/protobuf+/upb/wire/decode.c:296:5,
+    inlined from '_upb_Decoder_DecodeToArray' at external/protobuf+/upb/wire/decode.c:442:14,
+    inlined from '_upb_Decoder_DecodeKnownField' at external/protobuf+/upb/wire/decode.c:1006:14,
+    inlined from '_upb_Decoder_DecodeFieldData' at external/protobuf+/upb/wire/decode.c:1081:12,
+    inlined from '_upb_Decoder_DecodeFieldNoFast' at external/protobuf+/upb/wire/decode.c:1115:9,
+    inlined from '_upb_Decoder_DecodeField' at external/protobuf+/upb/wire/decode.c:1170:10,
+    inlined from '_upb_Decoder_DecodeMessage' at external/protobuf+/upb/wire/decode.c:1181:11:
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:29:10: warning: '*(const char **)((char *)&sv + offsetof(upb_StringView, data))' may be used uninitialized [-Wmaybe-uninitialized]
+   29 |   return __builtin___memcpy_chk (__dest, __src, __len,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   30 |                                  __glibc_objsize0 (__dest));
+      |                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+external/protobuf+/upb/wire/decode.c: In function '_upb_Decoder_DecodeMessage':
+external/protobuf+/upb/wire/decode.c:281:18: note: '*(const char **)((char *)&sv + offsetof(upb_StringView, data))' was declared here
+  281 |   upb_StringView sv;
+      |                  ^~
+In function 'memcpy',
+    inlined from '_upb_Decoder_DecodeFixedPacked' at external/protobuf+/upb/wire/decode.c:296:5,
+    inlined from '_upb_Decoder_DecodeToArray' at external/protobuf+/upb/wire/decode.c:442:14,
+    inlined from '_upb_Decoder_DecodeKnownField' at external/protobuf+/upb/wire/decode.c:1006:14,
+    inlined from '_upb_Decoder_DecodeFieldData' at external/protobuf+/upb/wire/decode.c:1081:12,
+    inlined from '_upb_Decoder_DecodeFieldNoFast' at external/protobuf+/upb/wire/decode.c:1115:9,
+    inlined from '_upb_Decoder_DecodeField' at external/protobuf+/upb/wire/decode.c:1170:10,
+    inlined from '_upb_Decoder_DecodeMessage' at external/protobuf+/upb/wire/decode.c:1181:11:
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:29:10: warning: '*(size_t *)((char *)&sv + offsetof(upb_StringView, size))' may be used uninitialized [-Wmaybe-uninitialized]
+   29 |   return __builtin___memcpy_chk (__dest, __src, __len,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   30 |                                  __glibc_objsize0 (__dest));
+      |                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+external/protobuf+/upb/wire/decode.c: In function '_upb_Decoder_DecodeMessage':
+external/protobuf+/upb/wire/decode.c:281:18: note: '*(size_t *)((char *)&sv + offsetof(upb_StringView, size))' was declared here
+  281 |   upb_StringView sv;
+      |                  ^~
+In function '_upb_Decoder_DecodeUnknownField',
+    inlined from '_upb_Decoder_DecodeFieldData' at external/protobuf+/upb/wire/decode.c:1085:16,
+    inlined from '_upb_Decoder_DecodeFieldNoFast' at external/protobuf+/upb/wire/decode.c:1115:9,
+    inlined from '_upb_Decoder_DecodeField' at external/protobuf+/upb/wire/decode.c:1170:10,
+    inlined from '_upb_Decoder_DecodeMessage' at external/protobuf+/upb/wire/decode.c:1181:11:
+external/protobuf+/upb/wire/decode.c:1040:8: warning: 'sv.data' may be used uninitialized [-Wmaybe-uninitialized]
+ 1040 |     if (sv.data != d->input.buffer_start) {
+      |        ^
+external/protobuf+/upb/wire/decode.c: In function '_upb_Decoder_DecodeMessage':
+external/protobuf+/upb/wire/decode.c:1035:18: note: 'sv.data' was declared here
+ 1035 |   upb_StringView sv;
+      |                  ^~
+In file included from external/protobuf+/upb/message/internal/message.h:31,
+                 from external/protobuf+/upb/message/message.h:22,
+                 from external/protobuf+/upb/wire/decode.h:17:
+In function '_upb_Message_AddUnknown_dont_copy_me__upb_internal_use_only',
+    inlined from '_upb_Decoder_DecodeUnknownField' at external/protobuf+/upb/wire/decode.c:1049:8,
+    inlined from '_upb_Decoder_DecodeFieldData' at external/protobuf+/upb/wire/decode.c:1085:16,
+    inlined from '_upb_Decoder_DecodeFieldNoFast' at external/protobuf+/upb/wire/decode.c:1115:9,
+    inlined from '_upb_Decoder_DecodeField' at external/protobuf+/upb/wire/decode.c:1170:10,
+    inlined from '_upb_Decoder_DecodeMessage' at external/protobuf+/upb/wire/decode.c:1181:11:
+external/protobuf+/upb/message/internal/message.h:217:22: warning: 'sv.size' may be used uninitialized [-Wmaybe-uninitialized]
+  217 |   return UPB_PRIVATE(_upb_Message_AddUnknownSlowPath)(
+      |                      ^
+external/protobuf+/upb/port/def.inc:406:24: note: in definition of macro 'UPB_PRIVATE'
+  406 | #define UPB_PRIVATE(x) x##_dont_copy_me__upb_internal_use_only
+      |                        ^
+external/protobuf+/upb/wire/decode.c: In function '_upb_Decoder_DecodeMessage':
+external/protobuf+/upb/wire/decode.c:1035:18: note: 'sv.size' was declared here
+ 1035 |   upb_StringView sv;
+      |                  ^~
+ERROR: /home/exedev/gazel-port/.cache/worktrees/grpc-ecosystem__grpc-gateway__go-gazelle/examples/internal/proto/examplepb/BUILD.bazel:171:11: GoCompilePkg examples/internal/proto/examplepb/examplepb.a failed: (Exit 1): builder failed: error executing GoCompilePkg command (from go_library rule target //examples/internal/proto/examplepb:examplepb) bazel-out/k8-opt-exec/bin/external/rules_go++go_sdk+main___download_0_linux_amd64/builder_reset/builder compilepkg -sdk external/rules_go++go_sdk+main___download_0_linux_amd64 -goroot ... (remaining 135 arguments skipped)
+
+Use --sandbox_debug to see verbose messages from the sandbox and retain the sandbox build root for debugging
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:29:32: undefined: EnumWithSingleValueServiceEchoRequest
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:29:98: undefined: EnumWithSingleValueServiceEchoResponse
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:40:74: undefined: EnumWithSingleValueServiceEchoRequest
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:40:140: undefined: EnumWithSingleValueServiceEchoResponse
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:42:13: undefined: EnumWithSingleValueServiceEchoResponse
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:54:25: undefined: EnumWithSingleValueServiceEchoRequest
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:54:66: undefined: EnumWithSingleValueServiceEchoResponse
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:64:77: undefined: EnumWithSingleValueServiceEchoRequest
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:64:118: undefined: EnumWithSingleValueServiceEchoResponse
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:88:12: undefined: EnumWithSingleValueServiceEchoRequest
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:88:12: too many errors
+compilepkg: error running subcommand external/rules_go++go_sdk+main___download_0_linux_amd64/pkg/tool/linux_amd64/compile: exit status 2
+Use --verbose_failures to see the command lines of failed build steps.
+INFO: Elapsed time: 28.678s, Critical Path: 10.72s
+INFO: 149 processes: 786 action cache hit, 14 internal, 135 linux-sandbox.
+ERROR: Build did NOT complete successfully

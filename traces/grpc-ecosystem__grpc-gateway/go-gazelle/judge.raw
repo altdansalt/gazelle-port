@@ -1,0 +1,16 @@
+```json
+{
+  "repo": "grpc-ecosystem/grpc-gateway",
+  "approach_id": "go-gazelle",
+  "scope": "//...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
+    {"id":"build","tier":2,"cmd":"bazel build //...","expect":{"exit":0}},
+    {"id":"have-go-libs","tier":2,"cmd":"bazel query 'kind(\"go_library rule\", //...)' --output=label 2>/dev/null | head","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\"go_test rule\", //...)' --output=label 2>/dev/null","expect":{"exit":0,"stdout_min_lines":1,"note":"Repo has real Go tests under examples/internal/integration (client_test.go, integration_test.go, main_test.go) and examples/internal/integration/openapiv3 (*_test.go), plus runtime/ and utilities/ tests in the full module. gazelle should generate go_test targets for these. We assert at least one real go_test is discovered."}},
+    {"id":"have-integration-tests","tier":3,"cmd":"bazel query 'kind(\"go_test rule\", //examples/internal/integration/...)' --output=label 2>/dev/null","expect":{"exit":0,"allow_nonzero":true,"note":"Informational: confirms the repo's own integration test targets exist. These integration tests spin up grpc/gateway servers and may need a runtime, so they are not required for scoring and are excluded from the gating tier-4."}},
+    {"id":"test","tier":4,"cmd":"bazel test //... --test_output=errors --build_tests_only","expect":{"exit":0,"allow_nonzero":true,"note":"Many of the repo's own tests (examples/internal/integration/*) require a live grpc server / gateway at runtime and bind network ports, so a clean //... test pass is not guaranteed in the harness sandbox. Marked informational. The honest ceiling for this approach is tier-3 (real go_test targets discovered) with a green tier-2 build; an unconditional green here would likely reflect server-dependent flakiness rather than a true native-suite pass."}}
+  ]
+}
+```

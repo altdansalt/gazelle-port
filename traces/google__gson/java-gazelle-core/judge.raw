@@ -1,0 +1,15 @@
+```json
+{
+  "repo": "google/gson",
+  "approach_id": "java-gazelle-core",
+  "scope": "//gson/...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
+    {"id":"build","tier":2,"cmd":"bazel build //gson/...","expect":{"exit":0}},
+    {"id":"have-lib","tier":2,"cmd":"bazel query 'kind(\"java_library rule\", //gson/...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\"java_test rule\", //gson/...)'","expect":{"exit":0,"stdout_min_lines":1,"note":"Repo has ~100 real *Test.java files under gson/src/test/java (e.g. GsonTest, JsonReaderTest, functional/*Test). With gazelle:java_test_mode suite these become java_test targets. Asserting >=1 is conservative since exact target count depends on suite-mode grouping; the integration test OSGiManifestIT and metrics/PerformanceTest may be excluded or fail at runtime."}},
+    {"id":"test","tier":4,"cmd":"bazel test //gson/... --test_output=errors","expect":{"exit":0,"allow_nonzero":true,"note":"Tier-4 runs the repo's own JUnit/Truth tests. Marked allow_nonzero because several real tests carry runtime/environment hazards noted in the approach: OSGiManifestIT needs an OSGi runtime, PerformanceTest (metrics) may be slow/flaky, Java17RecordTest/Java17ReflectionHelperTest require JDK17 features under a JDK11 toolchain, and GsonBuildConfigTest depends on the java-templates-generated GsonBuildConfig.java. A clean exit 0 is the goal; a nonzero here is recorded but does not invalidate the honest tier-2/3 result. Predicted realistic ceiling is tier 2."}}
+  ]
+}
+```

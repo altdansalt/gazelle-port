@@ -1,0 +1,16 @@
+```json
+{
+  "repo": "pallets/flask",
+  "approach_id": "python-rules-python-gazelle",
+  "scope": "//...",
+  "expectations": [
+    {"id":"modgraph","tier":1,"cmd":"bazel mod graph","expect":{"exit":0,"stdout_regex":"rules_python"}},
+    {"id":"manifest","tier":1,"cmd":"bazel run //:gazelle_python_manifest.update","expect":{"exit":0}},
+    {"id":"gazelle","tier":1,"cmd":"bazel run //:gazelle","expect":{"exit":0}},
+    {"id":"build","tier":2,"cmd":"bazel build //src/... //tests/...","expect":{"exit":0}},
+    {"id":"have-lib","tier":3,"cmd":"bazel query 'kind(\"py_library rule\", //src/...)'","expect":{"exit":0,"stdout_min_lines":1}},
+    {"id":"have-tests","tier":3,"cmd":"bazel query 'kind(\"py_test rule\", //tests/...)'","expect":{"exit":0,"stdout_min_lines":20,"note":"Repo has ~26 real pytest files under tests/ (test_basic.py, test_appctx.py, test_blueprints.py, test_cli.py, test_json.py, etc.). Gazelle package mode should generate py_test targets for these. examples/ and docs/ are gazelle:exclude'd, so they are out of scope."}},
+    {"id":"test","tier":4,"cmd":"bazel test //tests/... --test_output=errors","expect":{"exit":0,"note":"Runs Flask's own native pytest suite under tests/. Risks: test_apps fixtures with shadowing flask.py module names, data files (templates/static/.env) needing data attrs, conftest.py fixture sharing, and native markupsafe wheel from pip.parse. If data/import wiring is incomplete this may not reach 0; tier-2/3 remain the honest floor."}}
+  ]
+}
+```

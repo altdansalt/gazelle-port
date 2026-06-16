@@ -1,0 +1,20 @@
+INFO: Invocation ID: a8cfdace-a679-4f90-80bb-0938c745fbae
+INFO: Analyzed 15 targets (336 packages loaded, 14448 targets configured).
+ERROR: /home/exedev/gazel-port/.cache/worktrees/grpc-ecosystem__grpc-gateway__go-gazelle/examples/internal/proto/examplepb/BUILD.bazel:171:11: GoCompilePkg examples/internal/proto/examplepb/examplepb.a failed: (Exit 1): builder failed: error executing GoCompilePkg command (from go_library rule target //examples/internal/proto/examplepb:examplepb) bazel-out/k8-opt-exec/bin/external/rules_go++go_sdk+main___download_0_linux_amd64/builder_reset/builder compilepkg -sdk external/rules_go++go_sdk+main___download_0_linux_amd64 -goroot ... (remaining 135 arguments skipped)
+
+Use --sandbox_debug to see verbose messages from the sandbox and retain the sandbox build root for debugging
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:29:32: undefined: EnumWithSingleValueServiceEchoRequest
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:29:98: undefined: EnumWithSingleValueServiceEchoResponse
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:40:74: undefined: EnumWithSingleValueServiceEchoRequest
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:40:140: undefined: EnumWithSingleValueServiceEchoResponse
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:42:13: undefined: EnumWithSingleValueServiceEchoResponse
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:54:25: undefined: EnumWithSingleValueServiceEchoRequest
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:54:66: undefined: EnumWithSingleValueServiceEchoResponse
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:64:77: undefined: EnumWithSingleValueServiceEchoRequest
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:64:118: undefined: EnumWithSingleValueServiceEchoResponse
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:88:12: undefined: EnumWithSingleValueServiceEchoRequest
+examples/internal/proto/examplepb/enum_with_single_value_grpc.pb.go:88:12: too many errors
+compilepkg: error running subcommand external/rules_go++go_sdk+main___download_0_linux_amd64/pkg/tool/linux_amd64/compile: exit status 2
+INFO: Elapsed time: 10.095s, Critical Path: 1.21s
+INFO: 17 processes: 384 action cache hit, 5 internal, 12 linux-sandbox.
+ERROR: Build did NOT complete successfully

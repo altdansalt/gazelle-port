@@ -1,0 +1,9 @@
+INFO: Invocation ID: 65c03244-b471-4f95-b43e-33883f313fcf
+INFO: Analyzed target //:gazelle_python_manifest.update (143 packages loaded, 11246 targets configured, 9 aspect applications).
+INFO: Found 1 target...
+Target //:gazelle_python_manifest.update up-to-date:
+  bazel-bin/gazelle_python_manifest.update
+INFO: Elapsed time: 5.887s, Critical Path: 0.10s
+INFO: 1 process: 74 action cache hit, 1 internal.
+INFO: Build completed successfully, 1 total action
+INFO: Running command line: bazel-bin/gazelle_python_manifest.update ./gazelle_python_manifest.generated_manifest ./gazelle_python.yaml

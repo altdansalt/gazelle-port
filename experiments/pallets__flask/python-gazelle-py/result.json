@@ -1,0 +1,61 @@
+{
+  "tier_reached": 1,
+  "expectations": [
+    {
+      "id": "modgraph",
+      "tier": 1,
+      "cmd": "bazel mod graph",
+      "exit": 0,
+      "pass": true,
+      "reason": ""
+    },
+    {
+      "id": "gazelle",
+      "tier": 1,
+      "cmd": "bazel run //:gazelle",
+      "exit": 1,
+      "pass": false,
+      "reason": "exit 1 != 0"
+    },
+    {
+      "id": "build",
+      "tier": 2,
+      "cmd": "bazel build //...",
+      "exit": 1,
+      "pass": false,
+      "reason": "exit 1 != 0"
+    },
+    {
+      "id": "have-lib",
+      "tier": 2,
+      "cmd": "bazel query 'kind(\"py_library rule\", //src/...)'",
+      "exit": 7,
+      "pass": false,
+      "reason": "exit 7 != 0"
+    },
+    {
+      "id": "have-tests",
+      "tier": 3,
+      "cmd": "bazel query 'kind(\"py_test rule\", //tests/...)'",
+      "exit": 7,
+      "pass": false,
+      "reason": "exit 7 != 0"
+    },
+    {
+      "id": "test",
+      "tier": 4,
+      "cmd": "bazel test //tests/... --test_output=errors",
+      "exit": 1,
+      "pass": true,
+      "reason": ""
+    }
+  ],
+  "passed": 2,
+  "total": 6,
+  "repo": "pallets/flask",
+  "approach_id": "python-gazelle-py",
+  "scope": "//...",
+  "predicted_tier": 3,
+  "extra_edited_files": 5,
+  "worker_exit": 124
+}

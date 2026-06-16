@@ -1,0 +1,32 @@
+```json
+{
+  "repo": "google/gson",
+  "approaches": [
+    {
+      "id": "java-gazelle-core",
+      "language": "Java",
+      "strategy": "A-gazelle",
+      "ruleset": "contrib_rules_jvm",
+      "scope": "//gson/...",
+      "rationale": "Gson's core library is a clean Maven module under gson/ with main + test Java sources; contrib_rules_jvm's Java gazelle extension can generate java_library/java_test targets, and rules_jvm_external supplies the JUnit/test deps from Maven Central. Scoping to the gson/ subtree avoids the auxiliary modules (extras, proto, metrics, JPMS, shrinker, graal) which carry external/protobuf/proguard complications.",
+      "module_bazel": "module(\n    name = \"gson\",\n    version = \"0.0.0\",\n)\n\nbazel_dep(name = \"rules_jvm_external\", version = \"7.0\")\nbazel_dep(name = \"contrib_rules_jvm\", version = \"0.33.0\")\nbazel_dep(name = \"gazelle\", version = \"0.51.3\")\nbazel_dep(name = \"rules_java\", version = \"8.6.1\")\nbazel_dep(name = \"bazel_skylib\", version = \"1.9.0\")\nbazel_dep(name = \"platforms\", version = \"1.1.0\")\n\nmaven = use_extension(\"@rules_jvm_external//:extensions.bzl\", \"maven\")\nmaven.install(\n    artifacts = [\n        \"junit:junit:4.13.2\",\n        \"com.google.truth:truth:1.4.4\",\n        \"org.hamcrest:hamcrest-core:1.3\",\n    ],\n    repositories = [\n        \"https://repo1.maven.org/maven2\",\n    ],\n    fetch_sources = True,\n)\nuse_repo(maven, \"maven\")\n",
+      "root_build": "load(\"@gazelle//:def.bzl\", \"gazelle\", \"gazelle_binary\")\n\n# gazelle:exclude extras\n# gazelle:exclude proto\n# gazelle:exclude metrics\n# gazelle:exclude test-jpms\n# gazelle:exclude test-graal-native-image\n# gazelle:exclude test-shrinker\n# gazelle:java_maven_install_file maven_install.json\n# gazelle:java_test_mode suite\n\ngazelle_binary(\n    name = \"gazelle_bin\",\n    languages = [\n        \"@contrib_rules_jvm//java/gazelle\",\n    ],\n)\n\ngazelle(\n    name = \"gazelle\",\n    gazelle = \":gazelle_bin\",\n)\n",
+      "bazelrc": "common --enable_bzlmod\nbuild --java_language_version=11\nbuild --java_runtime_version=remotejdk_11\nbuild --tool_java_language_version=11\nbuild --tool_java_runtime_version=remotejdk_11\ntest --test_output=errors\n",
+      "setup_commands": [
+        "bazel run //:gazelle",
+        "bazel build //gson/...",
+        "bazel test //gson/..."
+      ],
+      "anticipated_risks": [
+        "java-templates source dir (GsonBuildConfig.java is generated from java-templates, not standard src/main/java)",
+        "module-info.java in src/main/java may confuse the Java gazelle extension",
+        "test deps resolution (Truth/JUnit) mapping by gazelle to maven targets",
+        "src/main/resources (proguard META-INF) packaging",
+        "integration test OSGiManifestIT requires OSGi runtime not provided",
+        "PerformanceTest / metrics-style tests may be slow or flaky"
+      ],
+      "predicted_tier": 2
+    }
+  ]
+}
+```

@@ -1,0 +1,15 @@
+//examples/internal/integration:integration_test
+//examples/internal/integration/openapiv3:openapiv3_test
+//internal/casing:casing_test
+//internal/codegenerator:codegenerator_test
+//internal/descriptor:descriptor_test
+//internal/httprule:httprule_test
+//openapiv3-merge:openapiv3-merge_test
+//openapiv3-merge/internal/merge:merge_test
+//protoc-gen-grpc-gateway/internal/gengateway:gengateway_test
+//protoc-gen-openapiv2:protoc-gen-openapiv2_test
+//protoc-gen-openapiv2/internal/genopenapi:genopenapi_test
+//protoc-gen-openapiv3:protoc-gen-openapiv3_test
+//protoc-gen-openapiv3/internal/genopenapi:genopenapi_test
+//runtime:runtime_test
+//utilities:utilities_test

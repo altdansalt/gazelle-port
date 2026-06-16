@@ -1,0 +1,10 @@
+//examples/internal/clients/abe/client:client
+//examples/internal/clients/abe/client/a_bit_of_everything:a_bit_of_everything
+//examples/internal/clients/abe/client/camel_case_service_name:camel_case_service_name
+//examples/internal/clients/abe/client/echo_rpc:echo_rpc
+//examples/internal/clients/abe/client/snake_enum_service:snake_enum_service
+//examples/internal/clients/abe/models:models
+//examples/internal/clients/abev3:abev3
+//examples/internal/clients/echo/client:client
+//examples/internal/clients/echo/client/echo_service:echo_service
+//examples/internal/clients/echo/models:models
