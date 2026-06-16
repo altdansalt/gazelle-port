@@ -3,7 +3,7 @@
 Rolling, evidence-backed record. Each finding cites the experiment(s) that produced it.
 Hypotheses live at the bottom until confirmed/refuted.
 
-## Summary scoreboard (16 experiments across 11 repos, 2 phases)
+## Summary scoreboard (27 experiments across 19 repos, 4 phases)
 
 | Ecosystem | Strategy / ruleset | n | best | mean | Verdict |
 |-----------|--------------------|---|------|------|---------|
